@@ -1,0 +1,11 @@
+
+.gitattributes
+*.class
+*.log
+*/System
+*/Users
+/Binaries
+/Binaries/*
+Source/sources.txt
+Source/BuildScript.bat
+Source/MakeDoc.bat

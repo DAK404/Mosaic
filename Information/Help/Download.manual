@@ -1,0 +1,35 @@
+Mosaic User Reference Documentation 1.3
+
+~~~~~~~~~~~~~~~
+Download Manual
+~~~~~~~~~~~~~~~
+___________________________________________________________________________________
+
+Introduction:
+
+The Download program helps the user to download the file. The user can also encrypt
+and decrypt the file. The downloaded files are compartmentalized so that browsing 
+through them is easy.
+___________________________________________________________________________________
+
+Troubleshooting:
+
+If you encounter bugs when the program is running, please do copy the information
+displayed on the screen and submit it in the issues section in the GitHub page.
+
+The team will look into it as soon as possible, and will take action on the issue.
+
+If there is a message saying "SecureBoot Tripped. Exiting...." please make sure
+that you are running the correct version of the program and try to use the latest
+build to have minimal number of bugs and issues.
+
+___________________________________________________________________________________
+
+General Tips:
+
+[*] Always close the programs using the exit command
+[*] Contact the developers in case there is an issue with code or runtime error
+[*] Update the program regularly to have improved functionality
+
+___________________________________________________________________________________
+END OF FILE.
