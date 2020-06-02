@@ -9,11 +9,10 @@ import java.nio.channels.Channels;
 import java.nio.channels.ReadableByteChannel;
 
 class Download {
-	private static String Username;
-	protected Download(String u)
-	{
-		Username=u;
-	}
+    private static String Username;
+    protected Download(String u) {
+        Username = u;
+    }
     protected boolean downloadScript() throws Exception {
 
         Console console = System.console();
@@ -22,20 +21,20 @@ class Download {
         System.out.print("Enter the name of the file (With Extension): ");
         String fn = console.readLine();
         if (download(dl, fn) == false) {
-			return false;
+            return false;
         } else {
             return true;
         }
     }
     private boolean download(String DURL, String Filename) throws Exception {
-         String curDir = System.getProperty("user.dir");
+        String curDir = System.getProperty("user.dir");
         String UpdateURL = DURL;
-		File crDir=new File(curDir + "/Users/" + Username + "/Files/" + Filename);
-		crDir.mkdir();
+        File crDir = new File(curDir + "/Users/" + Username + "/Files/" + Filename);
+        crDir.mkdir();
         File file = new File(UpdateURL);
-        try {            
+        try {
             //downloadUsingNIO(UpdateURL, "Update.md5");
-            return downloadUsingNIO(UpdateURL, curDir + "/Users/" + Username + "/Files/" + Filename +"/"+ Filename);
+            return downloadUsingNIO(UpdateURL, curDir + "/Users/" + Username + "/Files/" + Filename + "/" + Filename);
         } catch (Exception e) {
             return false;
         }

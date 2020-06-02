@@ -25,21 +25,19 @@ import java.nio.channels.Channels;
 import java.nio.channels.ReadableByteChannel;
 
 class DownloadUpdate {
-	String UpdateURL="";
+    String UpdateURL = "";
     protected boolean download() throws Exception {
         String curDir = System.getProperty("user.dir");
-		if(System.getProperty("os.name").contains("Windows"))
-		{
-			//Download the Windows Build
-			UpdateURL = "https://raw.githubusercontent.com/ArsenicRaptors64/Zen-Quantum-Releases/master/Windows/LatestRelease.zip";
-		}
-		else
-		{
-			//Download the Unix Build
-			UpdateURL = "https://raw.githubusercontent.com/ArsenicRaptors64/Zen-Quantum-Releases/master/Unix/LatestRelease.zip";			
-		}        
+		//TEMPORARILY DISABLED UPDATE LINKS UNTIL A RELEASE BUILD IS AVAILABLE.
+        if (System.getProperty("os.name").contains("Windows")) {
+            //Download the Windows Build
+            //UpdateURL = "https://raw.githubusercontent.com/ArsenicRaptors64/Zen-Quantum-Releases/master/Windows/LatestRelease.zip";
+        } else {
+            //Download the Unix Build
+            //UpdateURL = "https://raw.githubusercontent.com/ArsenicRaptors64/Zen-Quantum-Releases/master/Unix/LatestRelease.zip";
+        }
         File file = new File(UpdateURL);
-        try {            
+        try {
             //downloadUsingNIO(UpdateURL, "Update.md5");
             return downloadUsingNIO(UpdateURL, curDir + "/Update.zip");
         } catch (Exception e) {

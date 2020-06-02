@@ -1,22 +1,21 @@
-               RELEASE NOTES FOR 
-                  Mosaic
-                 VERSION: 1.6
+                  RELEASE NOTES FOR 
+                     Mosaic
+                   VERSION: 1.6
 
-             _____________________
+               _____________________
 
-               TABLE OF CONTENTS
-             _____________________
+                 TABLE OF CONTENTS
+               _____________________
 
-             1. INTRODUCTION
-             2. SYSTEM REQUIREMENTS
-             3. FEATURES
-             4. INSTALLATION
-             5. RUNNING THE PROGRAM
-             6. TROUBLESHOOTING
-             7. ADDITIONAL LINKS
-             8. CREDITS
-             9. CONTACT INFORMATION
-
+               1. INTRODUCTION
+               2. SYSTEM REQUIREMENTS
+               3. FEATURES
+               4. INSTALLATION
+               5. RUNNING THE PROGRAM
+               6. TROUBLESHOOTING
+               7. ADDITIONAL LINKS
+               8. CREDITS
+               9. CONTACT INFORMATION
 
 -----------------------------------------------------------------------------
 _______________________
@@ -37,23 +36,15 @@ _______________________
      INTRODUCTION
 _______________________
 
-Have you ever wondered if you are able to download a file securely
-and at the same time talk to your clients and fellow employees with
-the least amount of hassle?
+Mosaic is the next iteration of the Elixir Kernel. Mosaic is a program which
+streamlines the flow of SecureBoot technology, which provides more security,
+supports the feature to load modules on the go and enhances all the built in
+features to provide the best performance while using the least amount of
+memory.
 
-Have you ever encountered errors where your web browser takes huge
-resources to load and display a ton of advertisements, along with 
-the load of the conference call?
-
-Do you want to pass a download link to your fellow members, pass on
-a generated download link to fellow members, still talk to them when
-the conference call drops or fails, and yet be confident that your 
-meeting is secure and even by using the least amount of the internet
-bandwidth and, of course, being cross platform compatible?
-
-The answers to the above questions is a program called Mosaic!
-Yes, the program has a ton of features, APIs, runs in the terminal,
-written in Java and cross platform compatible (Windows, Unix/Linux)
+Mosaic Framework now is being rebuilt with additional bug fixes which were 
+present in Elixir previously. Stay tuned to get acquainted with more features
+and program flexibility.
 
 -----------------------------------------------------------------------------
 _______________________
@@ -99,7 +90,8 @@ _______________________
        FEATURES
 _______________________
 
-- Real Time Chat (over the internet and on enterprise/closed networks)
+- Enhanced Real Time Chat (over the internet and on 
+enterprise/closed networks)
 - Censoring sub-system to keep the conversation civil and clean
 - User database for easy user management and convinience
 - Faster downloads of files using the given download links
@@ -110,6 +102,9 @@ can download it easily)
 - Small size of program, memory footprint and high performance
 - Easy and quick setup
 - Built in Help Viewer
+- Text Editor
+- Dynamic loading of required modules
+- Unified builds to provide a seamless experience irrespective of platform
 - Secure sessions which include the option of exporting the session 
 to a log file, stored with a password.
 
@@ -189,8 +184,6 @@ A) You will require the program to have "write" permission granted and if you ar
 using the program, please make sure that the program location has the write access
 permitted.
 
-<ADD MORE FAQs>
-
 -----------------------------------------------------------------------------
 _______________________
 
@@ -205,26 +198,21 @@ Oracle JDK Official Site: https://www.oracle.com/technetwork/java/javase/downloa
 WinRAR Official Site    : https://www.win-rar.com/
 WinZip Official Site    : https://www.winzip.com/
 
-Official Download       : https://github.com/ArsenicRaptors64/Zen-Quantum-Releases
+Official Download       : https://github.com/DAK404/
 SQLite Official Site    : https://sqlite.org/
 
 -----------------------------------------------------------------------------
 _______________________
 
-	CREDITS
+	   CREDITS
 _______________________
 
-Programming:          Deepak Anil Kumar
-                      Sither Tsering
-					  Bebhin Mathew
+Programming             : DAK404
 
-Documentation:        Bebhin Mathew
-                      Deepak Anil Kumar
-
-Testing:              Bebhin Mathew
-                      Sither Tsering
-
-Mentoring:	          Prof. Ravi Dandu
+Testing                 : DAK404    (Windows Builds)
+                        : Sidd_Dino (Unix Builds)
+						
+Documentation           : DAK404
 
 -----------------------------------------------------------------------------
 _______________________
@@ -232,17 +220,11 @@ _______________________
   CONTACT INFORMATION
 _______________________
 
-For providing feedback, here are a few references for contact information
+For any queries or feedbacks, here are a few links to get in touch with me.
 
-
-Team: ARSENIC RAPTORS
-
-Bebhin Mathew		(R17CA199)
-Deepak Anil Kumar	(R17CA239)
-Sither Tsering		(R17CA254)
-
-GitHub	: https://github.com/ArsenicRaptors64
-Email	: mailto://arsenicraptors64@gmail.com
+GitHub Repository       :  https://www.github.com/DAK404/Mosaic/
+Email Address           :  mailto://phantomslayer004@gmail.com/
+Website                 :  https://www.dak404.github.io/
 
 -----------------------------------------------------------------------------
 END OF FILE

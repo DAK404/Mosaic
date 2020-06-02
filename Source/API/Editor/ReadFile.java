@@ -33,41 +33,40 @@ import java.io.*;
  * - Module Author     : Deepak Anil Kumar (DAK404), Bebhin Mathew<BR></p>
  */
 public class ReadFile {
-	
-	String User="";
-	API.Information info=new API.Information();
-	/**
+
+    String User = "";
+    API.Information info = new API.Information();
+    /**
      * This constructor will receive the username of the logged in user from the previous module
      *
      * @param u: Stores the username of the logged in user
      */
-    public ReadFile(String u) 
-	{
-		User=u;
-	}
+    public ReadFile(String u) {
+        User = u;
+    }
 
     /**
      * This method loads the help file by using the FileReader and BufferedReader
      *
      * Information files resides in the ./Information folder. 
-	 * Help files reside in the ./Information/Help folder
-	 *
-	 * @throws Exception Used to catch general exceptions and error states in program
+     * Help files reside in the ./Information/Help folder
+     *
+     * @throws Exception Used to catch general exceptions and error states in program
      */
     public void ShowFile() throws Exception {
-		Console console = System.console();
-		info.AboutProgram();
-		System.out.println("Enter the name of the file to be saved (with extension): ");
-		String FileName=console.readLine();
+        Console console = System.console();
+        info.AboutProgram();
+        System.out.println("Enter the name of the file to be saved (with extension): ");
+        String FileName = console.readLine();
         String curDir = System.getProperty("user.dir");
-        
+
 
         //A link to show the build info to the user's terminal
         API.Information ShowInfo = new API.Information();
         ShowInfo.AboutProgram();
 
         //Set the directory to the intended location where the help modules reside.
-        File file = new File(curDir + "/Users/"+ User + "/Files/" + FileName + "/"+ FileName);
+        File file = new File(curDir + "/Users/" + User + "/Files/" + FileName + "/" + FileName);
 
         //A condition to check if the given file is found or not. This prevents exception, which may or may not disrupt the program.
 

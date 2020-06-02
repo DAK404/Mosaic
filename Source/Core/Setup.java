@@ -45,7 +45,7 @@ public class Setup {
     private boolean test = false;
     API.HelpViewer moduleR = new API.HelpViewer();
 
-	/**
+    /**
      * This constructor is used to intialize the SecureBoot Variable.
      *
      * @param SecureBoot : Used to transfer the SecureBoot status to the program
@@ -54,18 +54,18 @@ public class Setup {
         SB = SecureBoot;
     }
 
-	/**
+    /**
      * A script which executes the setup process
      *
      * @throws Exception Used to catch general exceptions and error states in program
-     */	
+     */
     protected void SetupScript() throws Exception {
         ShowWelcomeScreen();
         ShowPrerequisites();
         CreateDependencies();
         API.Anima.CreateDB o = new API.Anima.CreateDB();
         o.CreateDB();
-		console.readLine();
+        console.readLine();
         GetAdminData();
     }
 
@@ -132,7 +132,7 @@ public class Setup {
         //The admin username will always be #Administrator
         //The user must provide a password and a security key
         while (true) {
-			obje.AboutProgram();
+            obje.AboutProgram();
             System.out.println("2. Configure Administrator Account");
             System.out.println("This helps in setting up an administrator account.\nNote:\n-You cannot go online when logged in as an Administrator.\n-This account will be locally stored on this PC only.\n");
             System.out.println("Username: Administrator");

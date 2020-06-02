@@ -1,0 +1,17 @@
+~~~~~~~~~~~~~~~~~
+      TO DO
+~~~~~~~~~~~~~~~~~
+
+-> Code cleanup
+-> Write a front end API access for Anima
+-> Import the Improved Chat Code and adapt it to program
+-> Complete the Anima featureset by adding Delete user
+-> Add and verify that the UserDB is encrypted and non accessible.
+-> Add developer documentation in the /Documentation/DeveloperDoc
+-> Implement the dynamic module loader program
+
+//------IMPORTANT------//
+-> modularize Program restart which is OS dependent
+//------IMPORTANT------//
+
+-> Implement the "Backup" featureset
