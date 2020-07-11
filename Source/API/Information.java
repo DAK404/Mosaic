@@ -52,8 +52,12 @@ public class Information {
      */
     public void AboutProgram() throws Exception {
         ClearScreen();
-        System.out.println("Mosaic Kernel 0.0.1");
-		System.out.println("Prototype Build\n\n");
+		System.out.println("        __________________________");
+	    System.out.println("       /                         /");
+        System.out.println("      / Mosaic : A Nion Project /");
+		System.out.println("     /  Build  : Alpha 2.4.6   /");
+		System.out.println("    /_________________________/  ");
+		System.out.println("          > Alpha Build <     \n");
 		return;
     }
 	

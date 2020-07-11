@@ -138,6 +138,12 @@ public class Setup {
             System.out.println("Username: Administrator");
             System.out.print("Password: ");
             Pass = String.valueOf(console.readPassword());
+			if(Pass.length()<8)
+			{
+				System.out.println("Warning: the length of the password must be greater than 8 for security reasons. Please try again.");
+				console.readLine();
+				continue;
+			}
             //confirm the password
             System.out.print("Confirm Password: ");
             String confirm = String.valueOf(console.readPassword());
@@ -148,13 +154,7 @@ public class Setup {
             System.out.print("Confirm Security Key: ");
             String confirmKey = String.valueOf(console.readPassword());
 
-            //Assert logic for not leaving the user blank
-            if ((Pass.matches("") | confirm.equals(" "))) // & (Pass.matches("^.*[^a-zA-Z0-9 ].*$")==false))
-            {
-                System.out.println("Your password cannot contain illegal characters. Please Try Again.");
-                console.readLine();
-                continue;
-            }
+            //Assert logics
             if (confirm.equals(Pass) & confirmKey.equals(Key)) {
                 API.Anima.AddUser oa = new API.Anima.AddUser();
                 oa.AddUserScript("Administrator", Pass, Key);

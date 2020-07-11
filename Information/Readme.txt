@@ -1,6 +1,6 @@
                RELEASE NOTES FOR 
-                  Mosaic
-                VERSION: 1.6
+                    Mosaic
+                 VERSION: 2.4.6
 
             _____________________
 
@@ -103,7 +103,6 @@ can download it easily)
 - Easy and quick setup
 - Built in Help Viewer
 - Text Editor
-- Dynamic loading of required modules
 - Unified builds to provide a seamless experience irrespective of platform
 - Secure sessions which include the option of exporting the session 
 to a log file, stored with a password.
@@ -204,7 +203,7 @@ SQLite Official Site    : https://sqlite.org/
 -----------------------------------------------------------------------------
 _______________________
 
-	   CREDITS
+       CREDITS
 _______________________
 
 Programming             : DAK404
@@ -213,6 +212,7 @@ Testing                 : DAK404    (Windows Builds)
                         : Sidd_Dino (Unix Builds)
 						
 Documentation           : DAK404
+			: A Taggable Tanner
 
 -----------------------------------------------------------------------------
 _______________________

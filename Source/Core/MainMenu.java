@@ -96,7 +96,7 @@ public class MainMenu {
             while (true) {
                 ShowInfo.AboutProgram();
                 Date date = new Date();
-                System.out.println(dateFormat.format(date));
+                System.out.println(dateFormat.format(date)+"\n");
                 System.out.println("Welcome Back, " + User + "!");
                 System.out.print(User + prompt + "> ");
                 cmd = console.readLine();
@@ -120,13 +120,15 @@ public class MainMenu {
                 } else if (cmd.equalsIgnoreCase("Create User")) {
                     API.Anima.AddUser adU = new API.Anima.AddUser();
                     adU.AddUserScript();
-                } else if (cmd.equalsIgnoreCase("logout")) {
-                    new ProcessBuilder("cmd", "/c", "java Launcher").inheritIO().start();
-                    return;
                 } else if (cmd.equalsIgnoreCase("help")) {
                     API.HelpViewer hlp = new API.HelpViewer();
                     hlp.ShowHelp("Help/MainMenu.manual");
                 }
+				
+				else if (cmd.equalsIgnoreCase("restart")) {
+					API.RestartProgram restart=new API.RestartProgram();
+					restart.restart();
+				}
                 //Option to display the License file
                 else if (cmd.equalsIgnoreCase("EULA")) {
                     ViewHelp.ShowHelp("License.eula");
@@ -140,6 +142,12 @@ public class MainMenu {
                     ViewHelp.ShowHelp("Credits.txt");
 
                 }
+				else if(cmd.equalsIgnoreCase("Change Password"))
+				{
+					System.out.println("BETA FEATURE");
+					API.Anima.ChangePassword cp=new API.Anima.ChangePassword(User, SB);
+					cp.ChangePasswordRoutine();
+				}
                 //Option to view the changelog
                 else if (cmd.equalsIgnoreCase("Changelog")) {
                     ViewHelp.ShowHelp("Changelog-Master.txt");

@@ -50,45 +50,35 @@ public class UpdateInterface {
      */
     public void updateInterface() throws Exception {
         DispInfoObj.AboutProgram();
-		//REMOVE THIS LINE ONCE RELEASED IN RELEASE CHANNEL.
-        System.out.println("This program feature is under construct. Please stay tuned for more updates.");
-
-        if (!(console.readLine() == "Debug")) {
-            System.exit(1);
-        } else {
-            System.out.println("Updater 6.2.4");
-            System.out.println("Release Builds.");
-            System.out.println("SYSTEM> Initiating update.\n[ATTENTION] : THE UPDATER WILL DOWNLOAD THE LATEST RELEASE AND INSTALL IT.\n[WARNING] : DO NOT CHANGE NETWORK STATES, REMOVE DRIVES, TURN OFF DEVICE OR CLOSE THIS PROGRAM. DOING SO MAY RENDER THE PROGRAM UNUSABLE.\n[ATTENTION] : You will be logged out of your current session, and will need to restart the program and re-login to continue.\n");
-            System.out.println("-------------------------");
-            if (System.getProperty("os.name").contains("Windows")) {
-                //for Windows
-                System.out.println("SYSTEM> Downloading program from: https://raw.githubusercontent.com/ArsenicRaptors64/Zen-Quantum-Releases/master/Windows/LatestRelease.zip");
-            } else {
-                //for Unix
-                System.out.println("SYSTEM> Downloading program from: https://raw.githubusercontent.com/ArsenicRaptors64/Zen-Quantum-Releases/master/Unix/LatestRelease.zip");
-            }
-            if (download() == true) {
-                System.out.println("SYSTEM> Update downloaded successfully.");
-                System.out.println("SYSTEM> Update file location: ./Update.zip\n");
-                System.out.println("Installing update from ./Update.zip");
-                if (install() == true)
-                    System.out.println("SYSTEM> Update installed successfully.");
-                else {
-                    System.out.println("SYSTEM> Failed to install update.\n");
-                    System.out.println("Possible Causes:\n- The downloaded update file was partially downloaded or was corrupt.\n- The download session was interrupted by a network change.\n- The update location has been moved to a new URL.\n\n");
-                    System.out.println("Possible Solutions:\n- Retry the update.\n- Restart the network/routers and check the network connection stability.\n- Contact the Administrator for more information.\n\n");
-                }
-            } else {
-                System.out.println("SYSTEM> Failed to download update. Network Error.\n");
-                System.out.println("Possible Causes:\n- Limited/restricted network access, or firewall rules which prevented downloading the file.\n- The download session was interrupted by a network change.\n- The update location has been moved to a new URL.\n");
-                System.out.println("Possible Solutions:\n- Retry the update.\n- Restart the network/routers and check the network connection stability.\n- Contact the Administrator for more information.\n-------------------------\n");
-            }
-            System.out.println("Press Enter to Restart the program.");
-            console.readLine();
-            new ProcessBuilder("cmd", "/c", "java Launcher").inheritIO().start();
-            System.exit(0);
-        }
-    }
+	
+		System.out.println("Updater 6.2.4");
+		System.out.println("Release Builds.");
+		System.out.println("SYSTEM> Initiating update.\n[ATTENTION] : THE UPDATER WILL DOWNLOAD THE LATEST RELEASE AND INSTALL IT.\n[WARNING] : DO NOT CHANGE NETWORK STATES, REMOVE DRIVES, TURN OFF DEVICE OR CLOSE THIS PROGRAM. DOING SO MAY RENDER THE PROGRAM UNUSABLE.\n[ATTENTION] : You will be logged out of your current session, and will need to restart the program and re-login to continue.\n");
+		System.out.println("-------------------------");
+		System.out.println("SYSTEM> Downloading the Official Stable Build from the release channel.");
+		
+		if (download() == true) {
+			System.out.println("SYSTEM> Update downloaded successfully.");
+			System.out.println("SYSTEM> Update file location: ./Update.zip\n");
+			System.out.println("Installing update from ./Update.zip");
+			if (install() == true)
+				System.out.println("SYSTEM> Update installed successfully.");
+			else {
+				System.out.println("SYSTEM> Failed to install update.\n");
+				System.out.println("Possible Causes:\n- The downloaded update file was partially downloaded or was corrupt.\n- The download session was interrupted by a network change.\n- The update location has been moved to a new URL.\n\n");
+				System.out.println("Possible Solutions:\n- Retry the update.\n- Restart the network/routers and check the network connection stability.\n- Contact the Administrator for more information.\n\n");
+			}
+		} else {
+			System.out.println("SYSTEM> Failed to download update. Network Error.\n");
+			System.out.println("Possible Causes:\n- Limited/restricted network access, or firewall rules which prevented downloading the file.\n- The download session was interrupted by a network change.\n- The update location has been moved to a new URL.\n");
+			System.out.println("Possible Solutions:\n- Retry the update.\n- Restart the network/routers and check the network connection stability.\n- Contact the Administrator for more information.\n-------------------------\n");
+		}
+		System.out.println("Press Enter to Restart the program.");
+		console.readLine();
+		//Restart command has a separate API active for that. This is deprecated code.
+		Process p = new ProcessBuilder("java Launcher").inheritIO().start();
+		System.exit(0);
+	}
     private boolean download() throws Exception {
         try {
             DownloadUpdate downloadProgram = new DownloadUpdate();

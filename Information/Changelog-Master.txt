@@ -2,4 +2,25 @@
 |~~  Changelogs  ~~|
 ~~~~~~~~~~~~~~~~~~~~
 
-Changelogs are still under construct
+-----------------------------------------------------------
+
+                  July-2020 Changelog
+
+  _______________________________________________________
+
+               05-July-2020 0022 +0530 GMT
+  _______________________________________________________
+
+* Updated version to 0.0.3
+* Added feature Change Password (Under Construct)
+* Added restart to modularize program and linked the restart lines to the module
+* Fixed a few Restart related bugs
+* Updated the terms for the password enforcement to 8 chars for added security 
+(NOTE: FOR DEBUGGING, YOU MAY DISABLE THE ASSERT LOGIC)
+* Added a build ID to keep track of bugs and issues. 
+* Fixed the SecureBoot enforcement issues (Under Construct)
+* Chat module (BETA) being worked on.
+* Updated the Readme file
+
+-----------------------------------------------------------
+End Of File

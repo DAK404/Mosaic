@@ -91,8 +91,8 @@ public class Boot {
             //A feature to accept input to run a certain module/feature via a non priviliged guest mode
             DispInfoObj.AboutProgram();
             Date date = new Date();
-            System.out.println(dateFormat.format(date));
-            System.out.println("SYSTEM> Enter commands to access modules.\n[Type 'HELP' to get command list]");
+            System.out.println(dateFormat.format(date)+"\n");
+            System.out.println("SYSTEM> Enter commands to access modules.\n\n[Type 'HELP' to get command list]");
             System.out.print("~GUEST> ");
             command = console.readLine();
             //Send the control to command function for input and processing
@@ -137,8 +137,8 @@ public class Boot {
             } else if (command.equalsIgnoreCase("Restart")) {
                 System.out.println("All unsaved work will be lost. Press Enter to restart the program.");
                 console.readLine();
-                new ProcessBuilder("cmd", "/c", "java Launcher").inheritIO().start();
-                System.exit(0);
+               RestartProgram a=new RestartProgram();
+			   a.restart();
             }
             //Default option to display a message incase the option is invalid
             else {

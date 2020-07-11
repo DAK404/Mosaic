@@ -28,15 +28,9 @@ class DownloadUpdate {
     String UpdateURL = "";
     protected boolean download() throws Exception {
         String curDir = System.getProperty("user.dir");
-		//TEMPORARILY DISABLED UPDATE LINKS UNTIL A RELEASE BUILD IS AVAILABLE.
-        if (System.getProperty("os.name").contains("Windows")) {
-            //Download the Windows Build
-            //UpdateURL = "https://raw.githubusercontent.com/ArsenicRaptors64/Zen-Quantum-Releases/master/Windows/LatestRelease.zip";
-        } else {
-            //Download the Unix Build
-            //UpdateURL = "https://raw.githubusercontent.com/ArsenicRaptors64/Zen-Quantum-Releases/master/Unix/LatestRelease.zip";
-        }
-        File file = new File(UpdateURL);
+		//Unified builds dont need a OS version anymore. Hence unified builds are being pushed.
+		UpdateURL = "https://raw.githubusercontent.com/DAK404/Mosaic-Releases/master/LatestRelease.zip";
+		File file = new File(UpdateURL);
         try {
             //downloadUsingNIO(UpdateURL, "Update.md5");
             return downloadUsingNIO(UpdateURL, curDir + "/Update.zip");

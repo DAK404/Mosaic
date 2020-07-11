@@ -6,10 +6,17 @@ Here are the credits to people contributing to
 Mosaic!
 
 - Sidd Dino
+
 	* Suggested the Unified Build idea
 	* Tested the Unix Build!
 	
 - DAK
+
 	* Programming
 	* Tested Windows Builds
 	* Documentation
+
+- A Taggable Tanner
+
+	* Proof-read all the documents!
+	* Grammatical corrections
