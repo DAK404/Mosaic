@@ -1,17 +1,19 @@
 package API;
 
 import java.io.*;
+import API.ErrorHandler;
 
 public class RestartProgram
 {
 	public void restart()throws Exception
 	{
+		ErrorHandler eh=new ErrorHandler();
 		try
 		{
 			if(System.getProperty("os.name").contains("Windows"))
 			{
 				//For Windows Builds use this
-				new ProcessBuilder("cmd", "/c", "java Launcher").inheritIO().start();
+				new ProcessBuilder("java", "Launcher").inheritIO().start();
 				System.exit(0);
 			}
 			else
@@ -22,7 +24,7 @@ public class RestartProgram
 		}
 		catch(Exception E)
 		{
-			System.err.println("Error: "+E);
+			eh.displayError(E);
 		}
 	}
 }

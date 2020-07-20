@@ -43,7 +43,7 @@ public class Messenger {
     private boolean Admin = false;
     API.Download.DownloadInterface at = new API.Download.DownloadInterface(User);
     //Write the messages to the public chatroom only now. Implement the private chatroom later
-    String Loc = curDir + "/System/Public/ChatRooms/Chatroom.log";
+    String Loc = curDir + "./System/Public/ChatRooms/Chatroom.log";
     File file = new File(Loc);
 
     Messenger(boolean SecureBoot, String username, boolean admin) {

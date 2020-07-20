@@ -7,9 +7,9 @@ ________________________________________________________________________________
 
 Introduction:
 
-Boot program will let the user to perform task which do not require a user level of
-permission access. The guest user cannot proceed into the main program until they 
-have registered and logged into the program.
+The Boot program will let the user to perform task which does not require a user
+level of permission access. The guest user cannot proceed into the main program 
+until they have registered and logged into the program.
 
 ___________________________________________________________________________________
 
@@ -19,12 +19,12 @@ These show the commands available to the guest level.
 
 Readme        - Views the readme file
 EULA          - Views the License of the program
-Changelog     - Views the changelog of the program
+Changelog     - Views the Changelog of the program
 Help          - Views the helpfile for the boot program
 
-Login         - This will take you to the login program to sign in to an existing account
-Create User   - This will take you to the sign up program to create a new, standard user
-Update        - This will run the updater program to update it to the latest release
+Login         - This will take you to the login program to login to an account
+Create User   - This will take you to sign up for a new standard user account
+Update        - This will run the updater to upgrade to latest version of program
 Exit          - This will exit the program
 
 ___________________________________________________________________________________
@@ -32,7 +32,7 @@ ________________________________________________________________________________
 Troubleshooting:
 
 If you encounter bugs when the program is running, please copy the information
-displayed on the screen and submit it in the issues section in the GitHub page.
+displayed on the screen and submit it in the issues section on the GitHub page.
 
 The team will look into it as soon as possible, and will take action on the issue.
 
@@ -45,7 +45,7 @@ ________________________________________________________________________________
 General Tips:
 
 [*] Always close the programs using the exit command
-[*] Contact the developers in case there is an issue with code or runtime error
+[*] Contact the developers in case there is an issue with the code or runtime error
 [*] Update the program regularly to have improved functionality
 
 ___________________________________________________________________________________

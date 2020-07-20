@@ -32,7 +32,7 @@ import java.io.*;
  * - Module Version    : 1.0.0<BR>
  * - Module Author     : Deepak Anil Kumar (DAK404), Bebhin Mathew<BR></p>
  */
-public class ReadFile {
+class ReadFile {
 
     String User = "";
     API.Information info = new API.Information();
@@ -41,7 +41,7 @@ public class ReadFile {
      *
      * @param u: Stores the username of the logged in user
      */
-    public ReadFile(String u) {
+    protected ReadFile(String u) {
         User = u;
     }
 
@@ -53,10 +53,10 @@ public class ReadFile {
      *
      * @throws Exception Used to catch general exceptions and error states in program
      */
-    public void ShowFile() throws Exception {
+    protected void ShowFile() throws Exception {
         Console console = System.console();
         info.AboutProgram();
-        System.out.println("Enter the name of the file to be saved (with extension): ");
+        System.out.println("Enter the name of the file to be read (with extension): ");
         String FileName = console.readLine();
         String curDir = System.getProperty("user.dir");
 
@@ -96,7 +96,7 @@ public class ReadFile {
         }
 
         //Finally, the program awaits the user input to continue, returning to the main program.
-        System.out.println("Press enter to continue.");
+        System.out.println("\nPress enter to continue.");
         console.readLine();
         return;
     }

@@ -12,15 +12,64 @@
   _______________________________________________________
 
 * Updated version to 0.0.3
-* Added feature Change Password (Under Construct)
-* Added restart to modularize program and linked the restart lines to the module
+* Initial commit for Change Password (Under Construction)
+* Initial changes to restart sections to modularize it.
 * Fixed a few Restart related bugs
-* Updated the terms for the password enforcement to 8 chars for added security 
+* Enforced rule: 8 characters for passwords
 (NOTE: FOR DEBUGGING, YOU MAY DISABLE THE ASSERT LOGIC)
 * Added a build ID to keep track of bugs and issues. 
-* Fixed the SecureBoot enforcement issues (Under Construct)
+* Fixed the SecureBoot enforcement issues (Under Construction)
 * Chat module (BETA) being worked on.
 * Updated the Readme file
 
+***
+  _______________________________________________________
+
+               12-July-2020 0022 +0530 GMT
+  _______________________________________________________
+
+* Updated version to 0.0.6
+* Added feature to Anima DB: ChangePassword (Complete)
+* Added restart as a separate module (Complete)
+* Cross platform compatibility enhancements
+* Fixed grammatical issues in Information (Complete)
+* Initial commits for adding a common Anima Interface
+* Updated the UI to make it look better.
+* Added new blank help manuals (unlinked for now)
+
+***
+  _______________________________________________________
+
+               20-July-2020 1752 +0530 GMT
+  _______________________________________________________
+  
+  
+* Updated version to 1.8.3
+* Fixed bug where editor program crashed when the filename
+was blank when writing to file.
+* Added an ErrorHandler program to handle exceptions and
+help in debugging.
+* Minor changes to setup program to create a folder for
+logs and settings.
+* Added a settings program which helps in enforcing program
+policies.
+* Added an administrator account priviliges
+* Fixed issues of a small spike in memory for a duplicated
+instantiation of restart program.
+* Added an interface to the Editor package
+* Improved the help manual of main menu
+* Fixed a few scipts to make it more efficient
+* Updated documentation
+* Improved program performance
+* Improved code readability
+* Enabled LogService dependencies to take logs during
+program crashes
+* Better UI
+
+***
+
 -----------------------------------------------------------
-End Of File
+                   
+                ---End Of File---
+				
+-----------------------------------------------------------

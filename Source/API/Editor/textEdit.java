@@ -32,7 +32,7 @@ import API.*;
  * - Module Version    : 1.0.0<BR>
  * - Module Author     : Deepak Anil Kumar (DAK404), Bebhin Mathew<BR></p>
  */
-public class textEdit {
+class textEdit {
     private String fName = "";
     private String message = "";
     private String user = "";
@@ -47,13 +47,19 @@ public class textEdit {
      *
      * @param U: Accepts the username
      */
-    public textEdit(String U) {
+    protected textEdit(String U) {
         user = U;
     }
 
-    public void editScript() throws Exception {
+    protected void editScript() throws Exception {
         System.out.println("Enter the name of the file to be saved (with extension): ");
         fName = console.readLine();
+		if(fName.equalsIgnoreCase("") | fName.equalsIgnoreCase(" ") | fName==null)
+			{
+				System.out.println("Warning: Cannot use illegal names for files.");
+				console.readLine();
+				return;
+			}
         writeContent();
     }
 

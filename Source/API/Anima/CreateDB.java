@@ -48,7 +48,9 @@ public class CreateDB {
                 "    UserID integer PRIMARY KEY,\n" +
                 "    Username text UNIQUE,\n" +
                 "    Password text NOT NULL,\n" +
-                "    SecurityKey text NOT NULL\n);";
+                "    SecurityKey text NOT NULL,\n" +
+				"    Administrator text NOT NULL);";
+				
             stmt.execute(sql);
             System.out.println("SYSTEM> Database Initialization Successful. Press Enter to Continue.");
         } catch (SQLException e) {

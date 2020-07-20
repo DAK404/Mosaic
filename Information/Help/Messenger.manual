@@ -22,15 +22,15 @@ These show the commands available to the guest level.
 <Encrypt>     - This will allow the user to encrypt the downloaded files
 <Decrypt>     - This will allow the user to decrypt the encrypted files
 <T>           - This allows the user to insert pre-defined templates to the chat.
-                (Do contribute to this!)
+                (Contribute to this!)
 Exit          - This will exit the program
 
 ___________________________________________________________________________________
 
 Troubleshooting:
 
-If you encounter bugs when the program is running, please do copy the information
-displayed on the screen and submit it in the issues section in the GitHub page.
+If you encounter bugs when the program is running, pleas copy the information
+displayed on the screen and submit it in the issues section on the GitHub page.
 
 The team will look into it as soon as possible, and will take action on the issue.
 
@@ -43,7 +43,7 @@ ________________________________________________________________________________
 General Tips:
 
 [*] Always close the programs using the exit command
-[*] Contact the developers in case there is an issue with code or runtime error
+[*] Contact the developers in case there is an issue with the code or runtime error
 [*] Update the program regularly to have improved functionality
 
 ___________________________________________________________________________________

@@ -40,6 +40,13 @@ public class DownloadInterface {
         if (SB == false) {
             System.exit(0);
         }
+		
+		API.policyEnforce pe=new API.policyEnforce("Download");
+		
+		if(pe.checkPolicy()==false)
+		{
+			return;
+		}
 
         API.Information a = new API.Information();
         a.AboutProgram();

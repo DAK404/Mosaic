@@ -5,6 +5,8 @@
 
 package API.Anima;
 
+import java.io.*;
+
 public class AnimaInterface
 {
 	private boolean SB;

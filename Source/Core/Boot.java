@@ -72,7 +72,9 @@ public class Boot {
      *
      * @throws Exception Used to catch general exceptions and error states in program
      */
-    public void BootRoutine() throws Exception {
+    public void BootRoutine() throws Exception 
+	{
+		Login obj = new Login(SB);
         File SysChk = new File(curDir + "/System");
         File UsrChk = new File(curDir + "/Users");
         if ((SysChk.exists() == false) & (UsrChk.exists() == false)) {
@@ -81,13 +83,20 @@ public class Boot {
         }
 
         menu();
-
+		obj.ReceiveLoginReq();
     }
 
     private void menu() throws Exception {
+		API.Anima.AddUser abc = new API.Anima.AddUser(SB, false);
         API.HelpViewer ViewHelp = new API.HelpViewer();
+		API.Update.UpdateInterface update = new API.Update.UpdateInterface(SB);
+		API.RestartProgram a=new API.RestartProgram();
+		
+		
         String command = "";
-        while (true) {
+		
+        while (true) 
+		{
             //A feature to accept input to run a certain module/feature via a non priviliged guest mode
             DispInfoObj.AboutProgram();
             Date date = new Date();
@@ -95,60 +104,63 @@ public class Boot {
             System.out.println("SYSTEM> Enter commands to access modules.\n\n[Type 'HELP' to get command list]");
             System.out.print("~GUEST> ");
             command = console.readLine();
-            //Send the control to command function for input and processing
-
-            //Option to exit the program
-            if (command.equalsIgnoreCase("Exit")) {
-                System.exit(0);
-            }
-            //Option to create a Standard user account
-            else if (command.equalsIgnoreCase("Create User")) {
-                API.Anima.AddUser abc = new API.Anima.AddUser();
-                abc.AddUserScript();
-            } else if (command.equalsIgnoreCase("login")) {
-                break;
-            }
-            //Option to receive an update from the web and install it automatically
-            else if (command.equalsIgnoreCase("update")) {
-                API.Update.UpdateInterface update = new API.Update.UpdateInterface();
-                update.updateInterface();
-            }
-            //Option to display contextual help
-            else if (command.equalsIgnoreCase("Help")) {
-                ViewHelp.ShowHelp("Help/Boot.manual");
-
-            }
-            //Option to display the License file
-            else if (command.equalsIgnoreCase("EULA")) {
-                ViewHelp.ShowHelp("License.eula");
-
-            }
-            //Option to view the program about
-            else if (command.equalsIgnoreCase("Readme")) {
-                ViewHelp.ShowHelp("Readme.txt");
-
-            } else if (command.equalsIgnoreCase("Credits")) {
-                ViewHelp.ShowHelp("Credits.txt");
-
-            }
-            //Option to view the changelog
-            else if (command.equalsIgnoreCase("Changelog")) {
-                ViewHelp.ShowHelp("Changelog-Master.txt");
-            } else if (command.equalsIgnoreCase("Restart")) {
-                System.out.println("All unsaved work will be lost. Press Enter to restart the program.");
-                console.readLine();
-               RestartProgram a=new RestartProgram();
-			   a.restart();
-            }
-            //Default option to display a message incase the option is invalid
-            else {
-                System.out.println("Enter a valid command. \"Help\" provides a list of available commands.");
-                console.readLine();
-                //Send back to menu
-            }
+			command = command.toLowerCase();
+			
+			switch(command)
+			{
+				case "Exit":
+					System.exit(0);
+				
+				case "create user":
+					abc.AddUserScript();
+					break;
+				
+				case "login":
+					return;
+					
+				case "update":
+					update.updateInterface();
+					break;
+					
+				case "help":
+					ViewHelp.ShowHelp("Help/Boot.manual");
+					break;
+					
+				case "eula":
+					ViewHelp.ShowHelp("License.eula");
+					break;
+					
+				case "readme":
+					ViewHelp.ShowHelp("Readme.txt");
+					break;
+				
+				case "credits":
+					ViewHelp.ShowHelp("Credits.txt");
+					break;
+					
+				case "changelog":
+					ViewHelp.ShowHelp("Changelog-Master.txt");
+					break;
+				
+				case "restart":
+					System.out.println("All unsaved work will be lost. Press Enter to restart the program.");
+					console.readLine();
+					a.restart();
+					break;
+					
+				case "":
+					break;
+					
+				case "exit":
+					System.exit(0);
+					
+				default:
+					System.out.println("\nUnrecognized command: " + command + "\nPlease enter a valid command or module name");
+					console.readLine();
+					break;
+			}
         }
-        Login obj = new Login(SB);
-        obj.ReceiveLoginReq();
+		
 
     }
 }
@@ -160,6 +172,7 @@ class Login {
     private static String User = "";
     private static byte count = 5;
     private boolean SB = false;
+	private static boolean Admin;
     Console console = System.console();
 
 
@@ -194,6 +207,7 @@ class Login {
         API.Anima.LoginAPI LogObj = new API.Anima.LoginAPI(SB, User, Password, Key);
 
         if (LogObj.status() == true) {
+				Admin=LogObj.checkAdmin(User);
             return true;
         } else {
             //Send the logic control to reduce the count.
@@ -226,7 +240,7 @@ class Login {
         //Receive the login request and pass it on to receive the Login Info
         Login obj = new Login(SB);
         while (obj.GetLoginInfo() == false);
-        MainMenu ot = new MainMenu(SB, User);
+        MainMenu ot = new MainMenu(SB, User, Admin);
         ot.MenuScript();
     }
 }

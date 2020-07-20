@@ -17,6 +17,7 @@
 package API.Update;
 
 import java.io.*;
+import java.util.*;
 import API.*;
 
 /**
@@ -33,7 +34,10 @@ import API.*;
  * - Module Author     : Deepak Anil Kumar (DAK404), Bebhin Mathew<BR></p>
  */
 public class UpdateInterface {
+	private boolean SB=false;
+	
     API.Information DispInfoObj = new API.Information();
+	API.RestartProgram rp=new API.RestartProgram();
     Console console = System.console();
 
     /**
@@ -41,7 +45,14 @@ public class UpdateInterface {
      *
      * This constructor is a stub. It doesnt have any usable part of the program.
      */
-    public UpdateInterface() {}
+    public UpdateInterface(boolean SecureBoot) 
+	{
+		if(SecureBoot==false)
+		{
+			System.out.println("SecureBoot has tripped. Exiting...");
+		}
+		SB=SecureBoot;
+	}
 
     /**
      * This script will run to update the program to the latest version
@@ -49,6 +60,14 @@ public class UpdateInterface {
      * @throws Exception Used to catch general exceptions and error states in program
      */
     public void updateInterface() throws Exception {
+		
+		API.policyEnforce pe=new API.policyEnforce("Update");
+		
+		if(pe.checkPolicy()==false)
+		{
+			return;
+		}
+		
         DispInfoObj.AboutProgram();
 	
 		System.out.println("Updater 6.2.4");
@@ -75,9 +94,7 @@ public class UpdateInterface {
 		}
 		System.out.println("Press Enter to Restart the program.");
 		console.readLine();
-		//Restart command has a separate API active for that. This is deprecated code.
-		Process p = new ProcessBuilder("java Launcher").inheritIO().start();
-		System.exit(0);
+		rp.restart();
 	}
     private boolean download() throws Exception {
         try {

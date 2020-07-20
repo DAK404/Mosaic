@@ -1,21 +1,21 @@
-                  RELEASE NOTES FOR 
-                     Mosaic
-                   VERSION: 1.6
+               RELEASE NOTES FOR 
+                    Mosaic
+                VERSION: 2.4.6
 
-               _____________________
+            _____________________
 
-                 TABLE OF CONTENTS
-               _____________________
+              TABLE OF CONTENTS
+            _____________________
 
-               1. INTRODUCTION
-               2. SYSTEM REQUIREMENTS
-               3. FEATURES
-               4. INSTALLATION
-               5. RUNNING THE PROGRAM
-               6. TROUBLESHOOTING
-               7. ADDITIONAL LINKS
-               8. CREDITS
-               9. CONTACT INFORMATION
+            1. INTRODUCTION
+            2. SYSTEM REQUIREMENTS
+            3. FEATURES
+            4. INSTALLATION
+            5. RUNNING THE PROGRAM
+            6. TROUBLESHOOTING
+            7. ADDITIONAL LINKS
+            8. CREDITS
+            9. CONTACT INFORMATION
 
 -----------------------------------------------------------------------------
 _______________________
@@ -23,12 +23,12 @@ _______________________
 !      IMPORTANT      !
 _______________________
 
-This program source code is strictly private and the license in the
+This programs source code is strictly private and the license in the
 License file (LICENSE.EULA) are as applicable.
 
-If you do not agree to adhere to the License of the program, you must
-not install the program on the system. BY INSTALLING THE PROGRAM, YOU
-AGREE TO ADHERE TO THE END USER LICENSE AGREEMENT (EULA)
+If you do not agree with the License Agreement of the program, do not
+use or install this Software on this system. BY INSTALLING THE PROGRAM, YOU
+AGREE TO THE END USER LICENSE AGREEMENT (EULA)
 
 -----------------------------------------------------------------------------
 _______________________
@@ -42,8 +42,8 @@ supports the feature to load modules on the go and enhances all the built in
 features to provide the best performance while using the least amount of
 memory.
 
-Mosaic Framework now is being rebuilt with additional bug fixes which were 
-present in Elixir previously. Stay tuned to get acquainted with more features
+Mosaic Framework is currently being rebuilt with additional bug fixes which were 
+present in Elixir. Stay tuned to get acquainted with more features
 and program flexibility.
 
 -----------------------------------------------------------------------------
@@ -52,9 +52,9 @@ _______________________
   SYSTEM REQUIREMENTS
 _______________________
 
-This program requires Java 9 or higher to function smoothly.
-Although it may function on the previous versions, it is
-recommended to update to the latest release for security and
+This program requires Java 9 or higher to properly function.
+Although it may function on previous versions, it is
+recommended to update to the latest version for security and
 reliability.
 
 Minimum System Requirements:
@@ -90,21 +90,20 @@ _______________________
        FEATURES
 _______________________
 
-- Enhanced Real Time Chat (over the internet and on 
+- Enhanced Real Time Chat (over the Internet and on 
 enterprise/closed networks)
-- Censoring sub-system to keep the conversation civil and clean
-- User database for easy user management and convinience
+- Censoring subsystem to keep the conversation civil and clean
+- User database for easy user management and convenience
 - Faster downloads of files using the given download links
 (does not load the advertisements on pages to be loaded along with 
-the actual download content. One member can fetch the link and all 
-can download it easily)
+the actual download content. One member can fetch the link so others 
+can download it easier)
 - Easy OTA updates and quick and automated installation
 - Small size of program, memory footprint and high performance
 - Easy and quick setup
 - Built in Help Viewer
 - Text Editor
-- Dynamic loading of required modules
-- Unified builds to provide a seamless experience irrespective of platform
+- Unified builds to provide a seamless experience independent of the OS
 - Secure sessions which include the option of exporting the session 
 to a log file, stored with a password.
 
@@ -117,7 +116,7 @@ _______________________
 * PREREQUISITES
 
 The program can be downloaded officially from GitHub. The download will
-be in a "*.zip" type of a file and any program can be used to unzip it to
+be in a "*.zip" file and any program can be used to unzip it to
 a specified directory.
 
 The following programs are a few which can unzip the program:
@@ -136,7 +135,7 @@ and it is recommended NOT to delete those files for smooth
 functionality of the program.
 
 The program uses a Type 4 JDBC driver by SQLite which can be 
-updated by running the update commmand or by downloading the 
+updated by running the update command or by downloading the 
 latest driver and extracting the contents of the JAR file to
 the root of the program folder.
 
@@ -153,7 +152,7 @@ The folder structure must be in this format after the setup.
   |- Run_Program (*.bat or *.sh)
 
 If there are issues with the build, grab the latest one from 
-the official github repository or clone it to customize the 
+the official GitHub repository or clone it to customize the 
 program and deploy it!
 
 -----------------------------------------------------------------------------
@@ -162,8 +161,7 @@ _______________________
   RUNNING THE PROGRAM
 _______________________
 
-Use the Run_Program.bat or Run_Program.sh in the folder to get the program
-running!
+Use the Run_Program.bat or Run_Program.sh in the folder to execute the program!
 
 -----------------------------------------------------------------------------
 _______________________
@@ -176,13 +174,11 @@ These are the FAQs which are encountered while running the program.
 Q) The program encounters some Java errors.
 A) If you are not using the latest version of Java, you may encounter errors
 which may be the cause of the errors. If you are using the latest version of Java,
-please do send a copy of the encountered errors and we will be able to use it to
+please send a copy of the encountered errors so we are able to use it to
 debug the program.
 
-Q) The program fails to add the user to database.
-A) You will require the program to have "write" permission granted and if you are
-using the program, please make sure that the program location has the write access
-permitted.
+Q) The program fails to add the user to the database.
+A) Please make sure that the program folder has write access permitted.
 
 -----------------------------------------------------------------------------
 _______________________
@@ -204,15 +200,17 @@ SQLite Official Site    : https://sqlite.org/
 -----------------------------------------------------------------------------
 _______________________
 
-	   CREDITS
+       CREDITS
 _______________________
 
 Programming             : DAK404
 
 Testing                 : DAK404    (Windows Builds)
                         : Sidd_Dino (Unix Builds)
+						: Bebhin Mathew (Additional Module Testing)
 						
 Documentation           : DAK404
+                        : Taggable Tanner (Proof-reading)
 
 -----------------------------------------------------------------------------
 _______________________

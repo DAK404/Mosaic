@@ -11,31 +11,55 @@ Main Menu is displayed once the user is successfully logged in. Once done, the
 user can execute various built in commands. Loading user defined modules will 
 soon make its way in an upcoming update!
 
+                                    ---xxx---
+
+DID YOU KNOW?
+
+The prompt symbol signifies the type of user accessing the program.
+
+-> The asterisk (*) symbolizes that its a standard user logged in
+-> The exclamation (!) symbolizes that its an administrator logged in
+
+The asterisk symbolizes as "all" generally in programming and regex, apt for 
+standard accounts
+
+The exclamation symbolizes importance and priority, apt for administrators
+ 
+                                    ---xxx---
+
 ___________________________________________________________________________________
 
 Available Commands:
 
-These show the commands available to the guest level.
+These are the commands available to the guest level.
 
-Readme        - Views the readme file
-EULA          - Views the License of the program
-Changelog     - Views the changelog of the program
-Help          - Views the helpfile for the Main Menu program
+Readme          - Views the readme file
+EULA            - Views the License of the program
+Changelog       - Views the Changelog of the program
+Help            - Views the helpfile for the Main Menu program
 
-Chat          - This will open up the messenger module
-Download      - This will allow the user to download a file
-Encrypt       - This will allow the user to encrypt the downloaded files
-Decrypt       - This will allow the user to decrypt the encrypted files
-Logout        - This will log the user out of the current session
-Update        - This will run the updater program
-Exit          - This will exit the program
+Chat            - This will open up the messenger module
+Download        - This will allow the user to download a file
+Encrypt         - This will allow the user to encrypt the downloaded files
+Decrypt         - This will allow the user to decrypt the encrypted files
+Create user     - This will help in creating a standard user
+Change Password - This will allow users to change their account password
+Restart         - This will restart the program
+Logout          - This will log the user out of the current session
+Update          - This will run the updater program
+Exit            - This will exit the program
+
+These are the commands available to the Administrator level.
+
+Settings        - This will allow Administrators to set policies and settings
+Create user     - This will help in creating a standard or an administrator user
 
 ___________________________________________________________________________________
 
 Troubleshooting:
 
-If you encounter bugs when the program is running, please do copy the information
-displayed on the screen and submit it in the issues section in the GitHub page.
+If you encounter bugs when the program is running, pleas copy the information
+displayed on the screen and submit it in the issues section on the GitHub page.
 
 The team will look into it as soon as possible, and will take action on the issue.
 
@@ -48,7 +72,7 @@ ________________________________________________________________________________
 General Tips:
 
 [*] Always close the programs using the exit command
-[*] Contact the developers in case there is an issue with code or runtime error
+[*] Contact the developers in case there is an issue with the code or runtime error
 [*] Update the program regularly to have improved functionality
 
 ___________________________________________________________________________________

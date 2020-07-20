@@ -19,6 +19,7 @@ package Core;
 import API.*;
 import API.Anima.*;
 import java.io.*;
+import java.util.*;
 
 
 /**
@@ -63,6 +64,7 @@ public class Setup {
         ShowWelcomeScreen();
         ShowPrerequisites();
         CreateDependencies();
+		StoreSettings();
         API.Anima.CreateDB o = new API.Anima.CreateDB();
         o.CreateDB();
         console.readLine();
@@ -104,10 +106,12 @@ public class Setup {
         String FilesList[] = {
             "/System",
             "/System/Public",
+			"/System/Public/Logs",
             "/System/Private",
             "/System/Private/Info",
             "/System/Private/_hashes",
             "/System/Private/ChatRooms",
+			"/System/Private/Settings",
             "/System/Public/ChatRooms",
             "/Users"
         };
@@ -126,7 +130,26 @@ public class Setup {
         }
         if (stat == true)
             System.out.println("SYSTEM> Folders Created Successfully.");
-    }
+		else
+		{
+			System.out.println("Failed to Created Dependencies. Please Try Again.");
+			System.exit(0);
+		}   
+	}
+
+	public void StoreSettings()throws Exception
+	{
+		String propsFileName="./System/Private/Settings/Settings.burn";
+		Properties props = new Properties(); 
+		props.setProperty("Update", "on");
+		props.setProperty("Download", "on");
+		props.setProperty("Chat", "on");
+		props.setProperty("Editor", "on");
+		FileOutputStream output = new FileOutputStream(propsFileName);
+		props.store(output, "GlobalSettings");
+		output.close();
+		System.out.println("SYSTEM> Settings Stored Successfully!");
+	}
 
     private void GetAdminData() throws Exception {
         //The admin username will always be #Administrator
@@ -156,7 +179,7 @@ public class Setup {
 
             //Assert logics
             if (confirm.equals(Pass) & confirmKey.equals(Key)) {
-                API.Anima.AddUser oa = new API.Anima.AddUser();
+                API.Anima.AddUser oa = new API.Anima.AddUser(SB, true);
                 oa.AddUserScript("Administrator", Pass, Key);
                 System.out.println("Administrator user has been configured. Press enter to continue!");
                 console.readLine();
