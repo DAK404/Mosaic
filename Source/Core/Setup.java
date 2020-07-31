@@ -142,7 +142,7 @@ public class Setup {
 	private void StoreSettings()throws Exception
 	{
 		Core.SettingsInterface ae = new Core.SettingsInterface(SB, true);
-		ae.SettingsMenu();
+		ae.writeDefaultSettings();
 		System.out.println("SYSTEM> Settings Stored Successfully!");
 	}
 

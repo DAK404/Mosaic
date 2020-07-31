@@ -107,7 +107,8 @@ public class SettingsInterface
 								break;
 								
 				default:
-								System.out.println("Please enter a valid command.");
+								System.out.println("Unrecognized command: "+Choice+"\nPlease enter a valid command or module name");
+								console.readLine();
 								break;
 			}
 		}

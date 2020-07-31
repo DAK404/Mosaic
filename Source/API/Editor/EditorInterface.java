@@ -54,7 +54,7 @@ public class EditorInterface
 	*/
 	public void EditorScript(String Mode, String User)throws Exception
 	{
-		API.policyEnforce pe=new API.policyEnforce("Editor");
+		API.policyEnforce pe=new API.policyEnforce("editor");
 		
 		if(pe.checkPolicy()==false)
 		{

@@ -41,7 +41,7 @@ public class DownloadInterface {
             System.exit(0);
         }
 		
-		API.policyEnforce pe=new API.policyEnforce("Download");
+		API.policyEnforce pe=new API.policyEnforce("download");
 		
 		if(pe.checkPolicy()==false)
 		{

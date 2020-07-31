@@ -61,7 +61,7 @@ public class UpdateInterface {
      */
     public void updateInterface() throws Exception {
 		
-		API.policyEnforce pe=new API.policyEnforce("Update");
+		API.policyEnforce pe=new API.policyEnforce("update");
 		
 		if(pe.checkPolicy()==false)
 		{
