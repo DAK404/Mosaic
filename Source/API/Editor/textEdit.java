@@ -32,7 +32,7 @@ import API.*;
  * - Module Version    : 1.0.0<BR>
  * - Module Author     : Deepak Anil Kumar (DAK404), Bebhin Mathew<BR></p>
  */
-class textEdit {
+class textEdit {	
     private String fName = "";
     private String message = "";
     private String user = "";
@@ -52,6 +52,7 @@ class textEdit {
     }
 
     protected void editScript() throws Exception {
+		info.AboutProgram();
         System.out.println("Enter the name of the file to be saved (with extension): ");
         fName = console.readLine();
 		if(fName.equalsIgnoreCase("") | fName.equalsIgnoreCase(" ") | fName==null)

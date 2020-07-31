@@ -1,0 +1,55 @@
+Mosaic User Reference Documentation 1.5
+
+~~~~~~~~~~~~~~~~
+Login API Manual
+~~~~~~~~~~~~~~~~
+___________________________________________________________________________________
+
+Introduction:
+
+This is the front end for the system to help the user login to the program and
+access specific account files stored.
+
+There are 2 types of accounts who can login: Administrator and the standard 
+account.
+
+The Administrator account will have privileges to change the program policies,
+limit program features, and help in managing the program.
+
+The Standard account will have access to the standard features, whilst not having
+advanced controls of certain features.
+
+
+! IMPORTANT !
+
+A person cannot cancel the login process, if they wish to, they will need to force
+close the program or press CTRL + C keys to terminate the current process.
+
+A new instance can be created to login again when needed. Previous builds featured
+where users could go back to the guest interface, which introduced a security loop
+hole and couldn't be patched without removing the transition back to the guest
+interface.
+
+___________________________________________________________________________________
+
+Troubleshooting:
+
+If you encounter bugs when the program is running, please copy the information
+displayed on the screen and submit it in the issues section on the GitHub page.
+
+The team will look into it as soon as possible, and will take action on the issue.
+
+If there is a message saying "SecureBoot Tripped. Exiting...." please make sure
+that you are running the correct version of the program and try to use the latest
+build to have minimal number of bugs and issues.
+
+___________________________________________________________________________________
+
+General Tips:
+
+[*] Always close the programs using the exit command
+[*] Contact the developers in case there is an issue with the code or runtime error
+[*] Update the program regularly to have improved functionality
+
+___________________________________________________________________________________
+END OF FILE.

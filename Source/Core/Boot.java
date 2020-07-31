@@ -108,9 +108,6 @@ public class Boot {
 			
 			switch(command)
 			{
-				case "Exit":
-					System.exit(0);
-				
 				case "create user":
 					abc.AddUserScript();
 					break;
@@ -126,6 +123,10 @@ public class Boot {
 					ViewHelp.ShowHelp("Help/Boot.manual");
 					break;
 					
+				case "help login":
+					ViewHelp.ShowHelp("Help/LoginAPI.manual");
+					break;	
+				
 				case "eula":
 					ViewHelp.ShowHelp("License.eula");
 					break;
@@ -168,6 +169,7 @@ public class Boot {
 //---------------------------------------------------------------------------------------------------------------------------------
 
 class Login {
+	API.Information DispInfoObj = new API.Information();
     DateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy HH:mm:ss");
     private static String User = "";
     private static byte count = 5;
@@ -186,7 +188,6 @@ class Login {
     }
     private boolean GetLoginInfo() throws Exception {
         //the login interface to the program.
-        API.Information DispInfoObj = new API.Information();
         DispInfoObj.AboutProgram();
         Date date = new Date();
         System.out.println(dateFormat.format(date) + "\n");

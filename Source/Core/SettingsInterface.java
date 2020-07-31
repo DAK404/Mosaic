@@ -1,9 +1,38 @@
+/*
+ *****************************************************
+ *                                                   *
+ * ! IMPORTANT ! DO NOT DELETE COMMENT ! IMPORTANT ! *
+ *                                                   *
+ *****************************************************
+ *                                                   *
+ *            THIS CODE IS RELEASE READY.            *
+ *                                                   *
+ *       THIS CODE HAS BEEN TESTED HEAVILY AND       *
+ *       CONSIDERED STABLE. THIS MODULE HAS NO       *
+ *       KNOWN ISSUES. CONSIDERED RELEASE READY      *
+ *                                                   *
+ *****************************************************
+ */
+
 package Core;
 
 import java.io.*;
 import java.util.*;
 import API.Information;
 
+/**
+ * An interface for administrators to configure program policies
+ *
+ * <br>
+ * @author Deepak Anil Kumar (DAK404)
+ * @version 1.0.0
+ * @since 20-July-2020
+ * <p>
+ * *** Technical Details ***<br>
+ * - Module Name       : Mosaic: API_09<BR>
+ * - Module Version    : 1.0.0<BR>
+ * - Module Author     : Deepak Anil Kumar (DAK404)<BR></p>
+ */
 public class SettingsInterface
 {
 	private String SettingName="";
@@ -12,13 +41,18 @@ public class SettingsInterface
 	private String Choice="";
 	private boolean SB=false;
 	
+	API.HelpViewer ViewHelp = new API.HelpViewer();
+	API.Information view=new API.Information();
 	
 	Properties props = new Properties();    
 	Console console=System.console();
 	
-	API.Information view=new API.Information();
-	
-	
+	/**
+     * This constructor helps initializing the SecureBoot variable and Administrator Status
+	 *
+	 * @param SecureBoot Gets the SecureBoot value
+	 * @param Administrator Gets the Administrator status value
+     */
 	protected SettingsInterface(boolean SecureBoot, boolean Administrator)
 	{
 		if(SecureBoot==true)
@@ -36,29 +70,45 @@ public class SettingsInterface
 		}
 	}
 	
+	/**
+     * This method helps in interfacing the policies, accessible only to the SettingsInterface
+	 *
+	 * @throws Exception Used to catch general exceptions and error states in program
+     */
 	protected void SettingsMenu()throws Exception
 	{
 		do
 		{
 			view.AboutProgram();
-			System.out.println("Here you can add, change or view the settings of the program.\nAvailable options: [Create, Change, Display, Reset, Exit]");
+			System.out.println("Here you can add, change or view the settings of the program.\nAvailable options: [Change, Display, Help, Reset, Exit]");
 			Choice=console.readLine();
-			if(Choice.equalsIgnoreCase("Create") | Choice.equalsIgnoreCase("Change"))
+			Choice=Choice.toLowerCase();
+			switch(Choice)
 			{
-				changeSettings();
-			}
-			else if(Choice.equalsIgnoreCase("Display"))
-			{
-				DisplayCurrentSettings();
-				System.out.println("Press Enter to Continue.");
-				console.readLine();
-			}
-			else if(Choice.equalsIgnoreCase("Reset"))
-			{
-				Setup rs=new Setup(SB);
-				rs.StoreSettings();
-				System.out.println("Reset Settings Complete.");
-				console.readLine();
+				case "change":  
+								changeSettings();
+								break;
+								
+				case "display":
+								DisplayCurrentSettings();
+								System.out.println("Press Enter to Continue.");
+								console.readLine();
+								break;
+								
+				case "reset":
+								resetSettings();
+								break;
+								
+				case "help":
+								ViewHelp.ShowHelp("Help/PolicyEnforcement.manual");
+								break;
+								
+				case "exit":
+								break;
+								
+				default:
+								System.out.println("Please enter a valid command.");
+								break;
 			}
 		}
 		while(!Choice.equalsIgnoreCase("Exit"));
@@ -68,21 +118,28 @@ public class SettingsInterface
 	{
 		try
 		{
-			//first load old one:
+			//Load the initial configuration file present.
 			FileInputStream configStream = new FileInputStream(propsFileName);
 			props.load(configStream);
 			configStream.close();
 			
+			//display the current settings stored
 			do
 			{
 				//Display the current settings poliy values here.
 				DisplayCurrentSettings();
 				
+				//Request new settings which are supposed to be written to the file
 				System.out.println("Please enter which setting or policy you want to create or modify.\n");
+				
+				//Converts both the name and value to lowercase so that the file has no conflicts
 				System.out.print("Enter the name of the setting or policy  : ");
 				SettingName=console.readLine();
+				SettingName=SettingName.toLowerCase();
+				
 				System.out.print("Enter the value of the setting or policy : ");
 				SettingValue=console.readLine();
+				SettingValue=SettingValue.toLowerCase();
 				
 				//modifies existing or adds new property
 				props.setProperty(SettingName, SettingValue);
@@ -113,10 +170,11 @@ public class SettingsInterface
 	private void DisplayCurrentSettings()throws Exception
 	{
 		view.AboutProgram();
-		System.out.println("Reading Configuration files from: "+propsFileName);
+		System.out.println("Current Configuration file: "+propsFileName);
 		File file=new File(propsFileName);
 		if (file.exists() == false) {
-            System.out.println("SYSTEM> The specified text module cannot be found/loaded.");
+            System.out.println("SYSTEM> Settings file is missing or corrupt. Repairing Settings files...");
+			resetSettings();
         }
 		else
 		{
@@ -129,5 +187,45 @@ public class SettingsInterface
 			f.close();
 		}
 		return;
+	}
+	
+	private void resetSettings()
+	{
+		try
+		{
+			File f=new File(propsFileName);
+			if(f.exists()==true)
+			{
+				System.out.println("Trying to delete the configuration file...");
+				f.delete();
+			}
+			System.out.println("Writing configuration file...");
+			writeDefaultSettings();		
+			System.out.println("Settings have been reset to default values. Press Enter to continue.");
+			console.readLine();
+			return;
+		}
+		catch(Exception E)
+		{
+			E.printStackTrace();
+		}
+	}
+	
+	protected void writeDefaultSettings()
+	{
+		try
+		{
+			props.setProperty("update", "on");
+			props.setProperty("download", "on");
+			props.setProperty("chat", "on");
+			props.setProperty("editor", "on");
+			FileOutputStream output = new FileOutputStream(propsFileName);
+			props.store(output, "GlobalSettings");
+			output.close();
+		}
+		catch(Exception E)
+		{
+			E.printStackTrace();
+		}
 	}
 }

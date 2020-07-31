@@ -40,12 +40,14 @@ public class Setup {
     private boolean stat;
     private String Pass = "";
     private String Key = "";
-    Console console = System.console();
-    Information obje = new Information();
     private boolean SB = false;
     private boolean test = false;
-    API.HelpViewer moduleR = new API.HelpViewer();
+    
+	API.HelpViewer moduleR = new API.HelpViewer();
+	Information obje = new Information();
 
+	Console console = System.console();
+	
     /**
      * This constructor is used to intialize the SecureBoot Variable.
      *
@@ -137,17 +139,10 @@ public class Setup {
 		}   
 	}
 
-	public void StoreSettings()throws Exception
+	private void StoreSettings()throws Exception
 	{
-		String propsFileName="./System/Private/Settings/Settings.burn";
-		Properties props = new Properties(); 
-		props.setProperty("Update", "on");
-		props.setProperty("Download", "on");
-		props.setProperty("Chat", "on");
-		props.setProperty("Editor", "on");
-		FileOutputStream output = new FileOutputStream(propsFileName);
-		props.store(output, "GlobalSettings");
-		output.close();
+		Core.SettingsInterface ae = new Core.SettingsInterface(SB, true);
+		ae.SettingsMenu();
 		System.out.println("SYSTEM> Settings Stored Successfully!");
 	}
 

@@ -1,3 +1,19 @@
+/*
+ *****************************************************
+ *                                                   *
+ * ! IMPORTANT ! DO NOT DELETE COMMENT ! IMPORTANT ! *
+ *                                                   *
+ *****************************************************
+ *                                                   *
+ *            THIS CODE IS RELEASE READY.            *
+ *                                                   *
+ *       THIS CODE HAS BEEN TESTED HEAVILY AND       *
+ *       CONSIDERED STABLE. THIS MODULE HAS NO       *
+ *       KNOWN ISSUES. CONSIDERED RELEASE READY      *
+ *                                                   *
+ *****************************************************
+ */
+
 package API.Anima;
 
 import java.io.*;

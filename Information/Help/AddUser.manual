@@ -1,0 +1,54 @@
+Mosaic User Reference Documentation 1.5
+
+~~~~~~~~~~~~~~~
+Add User Manual
+~~~~~~~~~~~~~~~
+___________________________________________________________________________________
+
+Introduction:
+
+This command will add a user to the local database created during the setup.
+The users types which can be added are Standard and Administrator accounts.
+
+Administrator accounts can only be made by Administrators but standard accounts 
+can be created by anyone from the guest interface or the command "create user"
+in MainMenu after logging in.
+
+___________________________________________________________________________________
+
+Available Commands:
+
+These show the commands available to the Standard level.
+
+Help          - This will display the help page for create user.
+
+
+
+These show the commands available to the Administrator level.
+
+Admin         - This will allow another Administrator account to be created
+Standard      - This will allow a new Standard user account to be created
+
+___________________________________________________________________________________
+
+Troubleshooting:
+
+If you encounter bugs when the program is running, please copy the information
+displayed on the screen and submit it in the issues section on the GitHub page.
+
+The team will look into it as soon as possible, and will take action on the issue.
+
+If there is a message saying "SecureBoot Tripped. Exiting...." please make sure
+that you are running the correct version of the program and try to use the latest
+build to have minimal number of bugs and issues.
+
+___________________________________________________________________________________
+
+General Tips:
+
+[*] Always close the programs using the exit command
+[*] Contact the developers in case there is an issue with the code or runtime error
+[*] Update the program regularly to have improved functionality
+
+___________________________________________________________________________________
+END OF FILE.

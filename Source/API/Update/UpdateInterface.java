@@ -41,9 +41,9 @@ public class UpdateInterface {
     Console console = System.console();
 
     /**
-     * This constructor has little use in this program.
+     * This constructor gets the SecureBoot value initialized
      *
-     * This constructor is a stub. It doesnt have any usable part of the program.
+     * @param SecureBoot Initializes the SecureBoot variable value
      */
     public UpdateInterface(boolean SecureBoot) 
 	{

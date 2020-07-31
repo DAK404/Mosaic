@@ -55,9 +55,10 @@ public class Information {
 		System.out.println("    __________________________");
 	    System.out.println("   /                         /");
         System.out.println("  / Mosaic : A Nion Project /");
-		System.out.println(" /  Build  : Alpha 1.8.3   /");
+		System.out.println(" /  Build  : Alpha 0.2.1   /");
 		System.out.println("/_________________________/");
 		System.out.println("      > Alpha Build <     \n");
+		System.out.println("Process ID: "+ProcessHandle.current().pid()+"\n");
 		return;
     }
 	
@@ -77,7 +78,8 @@ public class Information {
 		else
 		{
 			//For Linux/Unix or Mac Builds use this
-			System.out.print("\033[H\033[2J");
+			//System.out.print("\033[H\033[2J");
+			new ProcessBuilder("/bin/bash", "-c" ,"clear").inheritIO().start().waitFor();
 			System.out.flush();
 		}		
 		return;

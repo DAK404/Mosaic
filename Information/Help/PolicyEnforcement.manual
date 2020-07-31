@@ -1,29 +1,32 @@
-Mosaic User Reference Documentation 1.5
+PMosaic User Reference Documentation 1.5
 
 ~~~~~~~~~~~~~~~~
-Messenger Manual
+Settings Manual 
 ~~~~~~~~~~~~~~~~
 ___________________________________________________________________________________
 
 Introduction:
 
-Messenger is a chat platform to chat, collaborate and download files together!
-This chat can be hosted on a local network for now, but in future updates, you
-will be able to chat with anyone with the given IP address!
+NOTE: THIS TOOL IS STRICTLY FOR ADMINISTRATORS.
+
+If Administrators of the program do not want a certain feature to be used, a 
+restriction can be placed on the functionality which will not allow any user to
+access the feature or module.
+
+This will also mean that individual features and modules will have a finer control 
+on the access limits.
 
 ___________________________________________________________________________________
 
 Available Commands:
 
-These show the commands available to the guest level.
+These show the commands available to the Administrator level.
 
-<Help>        - Views the helpfile for the Main Menu program
-<Download>    - This will allow the user to download a file
-<Encrypt>     - This will allow the user to encrypt the downloaded files
-<Decrypt>     - This will allow the user to decrypt the encrypted files
-<T>           - This allows the user to insert pre-defined templates to the chat.
-                (Contribute to this!)
-Exit          - This will exit the program
+Change        - This will allow administrators to change or create a policy for
+                enforcement.
+Display       - This will view the policies and values in the configuration file
+Help          - This will open up the help module
+Reset         - This will revert back to the initial values
 
 ___________________________________________________________________________________
 

@@ -29,7 +29,7 @@ class DownloadUpdate {
     protected boolean download() throws Exception {
         String curDir = System.getProperty("user.dir");
 		//Unified builds dont need a OS version anymore. Hence unified builds are being pushed.
-		UpdateURL = "https://raw.githubusercontent.com/DAK404/Mosaic-Releases/master/LatestRelease.zip";
+		UpdateURL = "https://raw.githubusercontent.com/DAK404/Mosaic-Releases/master/Release.zip";
 		File file = new File(UpdateURL);
         try {
             //downloadUsingNIO(UpdateURL, "Update.md5");

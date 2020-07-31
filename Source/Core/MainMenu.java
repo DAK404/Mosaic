@@ -55,8 +55,9 @@ public class MainMenu {
 	/**
      * This constructor is used to intialize the SecureBoot Variable.
      *
-     * @param SecureBoot : Used to transfer the SecureBoot status to the program
-     * @param Username   : Used to receive the username from Login
+     * @param SecureBoot    : Used to transfer the SecureBoot status to the program
+     * @param Username      : Used to receive the username from Login
+	 * @param Administrator : Used to get the Administrator status value of the current user
      */
 	protected MainMenu(boolean SecureBoot, String Username, boolean Administrator) {
 		if (SecureBoot == false) {

@@ -1,3 +1,19 @@
+/*
+ *****************************************************
+ *                                                   *
+ * ! IMPORTANT ! DO NOT DELETE COMMENT ! IMPORTANT ! *
+ *                                                   *
+ *****************************************************
+ *                                                   *
+ *            THIS CODE IS RELEASE READY.            *
+ *                                                   *
+ *       THIS CODE HAS BEEN TESTED HEAVILY AND       *
+ *       CONSIDERED STABLE. THIS MODULE HAS NO       *
+ *       KNOWN ISSUES. CONSIDERED RELEASE READY      *
+ *                                                   *
+ *****************************************************
+ */
+
 package API.Anima;
 
 import java.sql.*;
@@ -5,6 +21,19 @@ import java.io.*;
 import API.*;
 import API.Anima.*;
 
+/**
+ * Program to change the account password which is logged in
+ *
+ * <br>
+ * @author Deepak Anil Kumar (DAK404)
+ * @version 1.0.0
+ * @since 06-May-2020
+ * <p>
+ * *** Technical Details ***<br>
+ * - Module Name       : Mosaic: API_02<BR>
+ * - Module Version    : 1.0.0<BR>
+ * - Module Author     : Deepak Anil Kumar (DAK404), Bebhin Mathew<BR></p>
+ */
 public class ChangePassword
 {
 	String url = "jdbc:sqlite:./System/Private/Fractal.db";
@@ -25,8 +54,14 @@ public class ChangePassword
 	//Initialize the streams and dependencies.
 	Console console=System.console();
 	API.Information show=new API.Information();
+	API.HelpViewer ViewHelp = new API.HelpViewer();
 	
-	
+	/**
+     * This constructor initializes the SecureBoot and name of user who has logged in
+     *
+     * @param U Gets the user currently logged in
+	 * @param SecureBoot Gets the status of the SecureBoot
+     */
 	public ChangePassword(String U, boolean SecureBoot)
 	{
 		if(SecureBoot==false)
@@ -38,7 +73,11 @@ public class ChangePassword
 		SB=SecureBoot;
 	}
 	
-	//a publicly accessible method which is always executed
+	/**
+     * This method will change the currently logged in user's password
+     *
+	 * @throws Exception Used to catch general exceptions and error states in program
+     */
 	public void ChangePasswordRoutine()throws Exception
 	{
 		while(GetCurrentCredentials()==false)
@@ -53,6 +92,11 @@ public class ChangePassword
 	private boolean GetCurrentCredentials()throws Exception
 	{
 		show.AboutProgram();
+		System.out.println("Type HELP to get help info or press Enter to continue.");
+		if(console.readLine().equalsIgnoreCase("Help"))
+		{
+			ViewHelp.ShowHelp("Help/ChangePassword.manual");
+		}
 		System.out.println("Username: "+user);
 		System.out.print("Password: ");
 		CurrentPassword=String.valueOf(console.readPassword());

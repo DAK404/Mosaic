@@ -68,6 +68,26 @@ program crashes
 
 ***
 
+  _______________________________________________________
+
+               31-July-2020 1842 +0530 GMT
+  _______________________________________________________
+ 
+ 
+* Updated to version Alpha 0.2.1
+* Updated help version to 1.5
+* Updated and filled documentation for complete modules
+* Streamlined the SettingsInterface program
+* Added update links for update functionality to work
+* Added SecureBoot for a few modules to enhance security
+* Removed RestartProgram support for Linux (See Issues)
+
+ISSUES:
+
+* https://github.com/DAK404/Mosaic/issues
+
+***
+
 -----------------------------------------------------------
                    
                 ---End Of File---

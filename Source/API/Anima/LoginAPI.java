@@ -1,3 +1,19 @@
+/*
+ *****************************************************
+ *                                                   *
+ * ! IMPORTANT ! DO NOT DELETE COMMENT ! IMPORTANT ! *
+ *                                                   *
+ *****************************************************
+ *                                                   *
+ *            THIS CODE IS RELEASE READY.            *
+ *                                                   *
+ *       THIS CODE HAS BEEN TESTED HEAVILY AND       *
+ *       CONSIDERED STABLE. THIS MODULE HAS NO       *
+ *       KNOWN ISSUES. CONSIDERED RELEASE READY      *
+ *                                                   *
+ *****************************************************
+ */
+ 
 package API.Anima;
 
 import Core.*;
@@ -39,6 +55,7 @@ public class LoginAPI {
      * @param Us Used to initialize and store the username to be validated.
      * @param Pa Used to initialize and store the password provided to be validated.
      * @param SK Used to initialize and store the Security Key to complement the fractal decryption.
+	 * @throws Exception Used to catch general exceptions and error states in program
      */
     public LoginAPI(boolean SecureBoot, String Us, String Pa, String SK)throws Exception 
 	{
@@ -51,6 +68,11 @@ public class LoginAPI {
 		
     }
 	
+	/**
+     * Returns whether the credentials provided exist in the database
+     *
+     * @return boolean returns the status of login
+     */
 	public boolean status(){
 		return checkDetails();
 	}
@@ -89,6 +111,13 @@ public class LoginAPI {
 		}
     }
 	
+	
+	/**
+     * Returns whether the credentials provided have administrator privileges
+     *
+     * @return boolean returns if the user is an administrator
+	 * @param AccName gets the name of the user currently logged in
+     */
 	public boolean checkAdmin(String AccName)
 	{
 		Connection conn = null;
