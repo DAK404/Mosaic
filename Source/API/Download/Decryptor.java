@@ -42,8 +42,7 @@ class Decryptor {
             Pass = pw + Key;
             System.out.println("Attempting to decrypt file....");
             Decr();
-            System.out.println("File Successfully Decrypted! Press Enter to Continue.");
-            console.readLine();
+            console.readLine("File Successfully Decrypted! Press Enter to Continue.");
         }
     }
 

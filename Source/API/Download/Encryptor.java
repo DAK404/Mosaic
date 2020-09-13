@@ -109,7 +109,6 @@ class Encryptor {
         outFile.close();
         File del = new File(newDir + nm);
         del.delete();
-        System.out.println("File Is Encrypted Successfully! Press Enter to Continue.");
-        console.readLine();
+        console.readLine("File Is Encrypted Successfully! Press Enter to Continue.");
     }
 }

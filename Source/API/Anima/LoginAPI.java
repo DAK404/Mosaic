@@ -34,17 +34,16 @@ import java.io.*;
  * - Module Version    : 1.0.0<BR>
  * - Module Author     : Deepak Anil Kumar (DAK404), Bebhin Mathew<BR></p>
  */
-public class LoginAPI {
+public final class LoginAPI {
     //a universal string to read the file
     Console console = System.console();
     private String curDir = System.getProperty("user.dir");
     private String User, Pass, SecKey;
     private boolean SB;
 	
-	
 	PreparedStatement pstmt = null;
 	ResultSet rs = null;
-	String url = "jdbc:sqlite:./System/Private/Fractal.db";
+	private String url = "jdbc:sqlite:./System/Private/Fractal.db";
 	
 	
     /**
@@ -90,7 +89,7 @@ public class LoginAPI {
             while (rs.next()) {
                 if (rs.getString("Username").equals(User) & rs.getString("Password").equals(Pass) & rs.getString("SecurityKey").equals(SecKey))
                     return true;
-                else
+				else
 					continue;
             }
 			System.out.println("Incorrect Credentials, Please try again.");
@@ -110,42 +109,4 @@ public class LoginAPI {
 			}
 		}
     }
-	
-	
-	/**
-     * Returns whether the credentials provided have administrator privileges
-     *
-     * @return boolean returns if the user is an administrator
-	 * @param AccName gets the name of the user currently logged in
-     */
-	public boolean checkAdmin(String AccName)
-	{
-		Connection conn = null;
-		try {           
-			conn = DriverManager.getConnection(url);
-            String sql = "SELECT Administrator FROM FSAD WHERE Username = ? ;";
-            pstmt = conn.prepareStatement(sql);
-            pstmt.setString(1, AccName);
-            rs = pstmt.executeQuery();
-            while (rs.next()) {
-                if (rs.getString("Administrator").equals("Yes"))
-                    return true;
-                else
-					continue;
-            }
-            return false;
-        } catch (Exception E) {
-			E.printStackTrace();
-			return false;
-        }
-        finally{
-			try{
-				conn.close();
-			}
-			catch(Exception E){
-				System.out.println("Connection couldnt be closed. Error.");
-				System.exit(0);
-			}
-		}
-	}
 }

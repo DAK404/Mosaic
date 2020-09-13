@@ -64,24 +64,8 @@ public class RestartProgram
 			}
 			else
 			{
-				System.out.println("NOTE: LINUX SUPPORT HAS BEEN DROPPED SINCE THERE IS A RESTART ISSUE.\nIf you are using Linux, the program will exit.\nPress enter to continue.");
-				console.readLine();
+				console.readLine("NOTE: LINUX SUPPORT HAS BEEN DROPPED SINCE THERE IS A RESTART ISSUE.\nIf you are using Linux, the program will exit.\nPress enter to continue.");
 				System.exit(0);
-				/*
-				
-				FEATURE BEING DEVELOPED
-				
-				//For Linux/Unix or Mac Builds use this
-				String a=String.valueOf(pid);
-				Thread.sleep(5000);
-				System.out.flush();
-				System.err.flush();
-				new ProcessBuilder("java", "Launcher").inheritIO().start();
-				System.out.println(new ProcessBuilder("kill", "-9", a).inheritIO().start());
-				//System.exit(1);
-				
-				
-				*/
 			}
 		}
 		catch(Exception E)

@@ -22,11 +22,11 @@ Available Commands:
 
 These show the commands available to the Administrator level.
 
-Change        - This will allow administrators to change or create a policy for
+Modify        - This will allow administrators to change or create a policy for
                 enforcement.
-Display       - This will view the policies and values in the configuration file
-Help          - This will open up the help module
 Reset         - This will revert back to the initial values
+Help          - This will open up the help module
+Exit          - This will exit from the settings shell
 
 ___________________________________________________________________________________
 

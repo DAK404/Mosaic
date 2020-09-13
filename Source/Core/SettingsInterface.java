@@ -1,228 +1,191 @@
-/*
- *****************************************************
- *                                                   *
- * ! IMPORTANT ! DO NOT DELETE COMMENT ! IMPORTANT ! *
- *                                                   *
- *****************************************************
- *                                                   *
- *            THIS CODE IS RELEASE READY.            *
- *                                                   *
- *       THIS CODE HAS BEEN TESTED HEAVILY AND       *
- *       CONSIDERED STABLE. THIS MODULE HAS NO       *
- *       KNOWN ISSUES. CONSIDERED RELEASE READY      *
- *                                                   *
- *****************************************************
- */
-
 package Core;
 
 import java.io.*;
 import java.util.*;
 import API.Information;
 
-/**
- * An interface for administrators to configure program policies
- *
- * <br>
- * @author Deepak Anil Kumar (DAK404)
- * @version 1.0.0
- * @since 20-July-2020
- * <p>
- * *** Technical Details ***<br>
- * - Module Name       : Mosaic: API_09<BR>
- * - Module Version    : 1.0.0<BR>
- * - Module Author     : Deepak Anil Kumar (DAK404)<BR></p>
- */
 public class SettingsInterface
 {
-	private String SettingName="";
-	private String SettingValue="";
-	private	String propsFileName = "";
-	private String Choice="";
+	private String FileName="./System/Private/Settings/Settings.burn";
+	private String pName="";
+	private String pValue="";
 	private boolean SB=false;
+	private boolean Admin=false;
 	
-	API.HelpViewer ViewHelp = new API.HelpViewer();
-	API.Information view=new API.Information();
-	
-	Properties props = new Properties();    
+	Properties props = new Properties();
 	Console console=System.console();
 	
-	/**
-     * This constructor helps initializing the SecureBoot variable and Administrator Status
-	 *
-	 * @param SecureBoot Gets the SecureBoot value
-	 * @param Administrator Gets the Administrator status value
-     */
+	resetSettings re=new resetSettings();
+	
+	API.Tools.ReadFile ViewHelp = new API.Tools.ReadFile();
+	API.Information view=new API.Information();
+	API.RestartProgram restart = new API.RestartProgram();
+
 	protected SettingsInterface(boolean SecureBoot, boolean Administrator)
 	{
-		if(SecureBoot==true)
-		{
-			SB=SecureBoot;
-			if(Administrator==true)
-			{
-				propsFileName="./System/Private/Settings/Settings.burn";
-			}
-		}
+		if(SecureBoot==false)
+			System.exit(0);
 		else
 		{
-			System.out.println("SecureBoot has tripped. Exiting....");
-			System.exit(0);
+			SB=SecureBoot;
+			Admin=Administrator;
 		}
 	}
 	
-	/**
-     * This method helps in interfacing the policies, accessible only to the SettingsInterface
-	 *
-	 * @throws Exception Used to catch general exceptions and error states in program
-     */
-	protected void SettingsMenu()throws Exception
-	{
-		do
-		{
-			view.AboutProgram();
-			System.out.println("Here you can add, change or view the settings of the program.\nAvailable options: [Change, Display, Help, Reset, Exit]");
-			Choice=console.readLine();
-			Choice=Choice.toLowerCase();
-			switch(Choice)
-			{
-				case "change":  
-								changeSettings();
-								break;
-								
-				case "display":
-								DisplayCurrentSettings();
-								System.out.println("Press Enter to Continue.");
-								console.readLine();
-								break;
-								
-				case "reset":
-								resetSettings();
-								break;
-								
-				case "help":
-								ViewHelp.ShowHelp("Help/PolicyEnforcement.manual");
-								break;
-								
-				case "exit":
-								break;
-								
-				default:
-								System.out.println("Unrecognized command: "+Choice+"\nPlease enter a valid command or module name");
-								console.readLine();
-								break;
-			}
-		}
-		while(!Choice.equalsIgnoreCase("Exit"));
-	}
-	
-	private void changeSettings()throws Exception
+	protected void Menu()
 	{
 		try
 		{
-			//Load the initial configuration file present.
-			FileInputStream configStream = new FileInputStream(propsFileName);
-			props.load(configStream);
-			configStream.close();
+			//assert if admin is true
+			if(Admin==false)
+			{
+				System.out.println("Only Administrators can access the settings interface. Press enter to return to main menu.");
+				return;
+			}
 			
-			//display the current settings stored
+			String Choice="";
+			
+			//Asserts are run only once
+			File file=new File(FileName);
+			if(file.exists()==false)
+			{
+				re.reset();
+			}
+			
 			do
 			{
-				//Display the current settings poliy values here.
-				DisplayCurrentSettings();
-				
-				//Request new settings which are supposed to be written to the file
-				System.out.println("Please enter which setting or policy you want to create or modify.\n");
-				
-				//Converts both the name and value to lowercase so that the file has no conflicts
-				System.out.print("Enter the name of the setting or policy  : ");
-				SettingName=console.readLine();
-				SettingName=SettingName.toLowerCase();
-				
-				System.out.print("Enter the value of the setting or policy : ");
-				SettingValue=console.readLine();
-				SettingValue=SettingValue.toLowerCase();
-				
-				//modifies existing or adds new property
-				props.setProperty(SettingName, SettingValue);
-				System.out.print("Do you want to create or change a policy or setting? [Y/N]   ");
+				DisplaySettings();
+				System.out.print("\nEnter command to manage policies/settings\n[ Modify | Reset | Help | Exit ]\n>> ");
+				Choice=console.readLine().toLowerCase();
+				switch(Choice)
+				{
+					case "modify":  
+									Modify();
+									break;
+									
+					case "reset":	
+									resetInterface();
+									return;
+									
+					case "help":
+									ViewHelp.ShowHelp("Help/PolicyEnforcement.manual");
+									break;
+									
+					case "":
+					case "exit":
+									break;
+									
+					default:
+									console.readLine("Unrecognized command: "+Choice+"\nPlease enter a valid command or module name.");
+									break;
+				}
 			}
-			while(console.readLine().equalsIgnoreCase("Y"));
-			
-			System.out.println("Saving..... DO NOT TURN OFF OR RESET SYSTEM WHILE SAVING.\n");
-			
-			//save modified property file
-			FileOutputStream output = new FileOutputStream(propsFileName);
-			props.store(output, "GlobalSettings");
-			output.close();
-			System.out.println("Save Complete. Press Enter to Continue.");
-			console.readLine();
-			DisplayCurrentSettings();
-			System.out.println("Press Enter to Continue");
-			console.readLine();
+			while(!Choice.equals("exit"));
 			return;
 		}
 		catch(Exception E)
 		{
-			System.err.println("Error: "+E);
 			E.printStackTrace();
 		}
 	}
 	
-	private void DisplayCurrentSettings()throws Exception
+	protected void resetInterface()throws Exception
+	{
+		re.reset();
+	}
+	
+	private void Modify()
+	{
+		try
+		{
+			
+			do
+			{
+				DisplaySettings();
+				pName=console.readLine("Enter the Name of the Policy/Setting:\n>> ").toLowerCase();
+				pValue=console.readLine("Enter the Value of the Policy/Setting:\n>> ").toLowerCase();
+				
+				//logic to save the file
+				savePolicy();
+			}
+			while(console.readLine("Do you want to change another Policy/Setting?[ Y | N ]\n>> ").equalsIgnoreCase("Y"));
+			return;
+		}
+		catch(Exception E)
+		{
+			E.printStackTrace();
+		}
+	}
+	
+	private void DisplaySettings()throws Exception
 	{
 		view.AboutProgram();
-		System.out.println("Current Configuration file: "+propsFileName);
-		File file=new File(propsFileName);
-		if (file.exists() == false) {
-            System.out.println("SYSTEM> Settings file is missing or corrupt. Repairing Settings files...");
-			resetSettings();
-        }
-		else
-		{
-			String p;
-			FileReader f = new FileReader(file);
-			BufferedReader ob = new BufferedReader(f);
-			while ((p = ob.readLine()) != null)
-				System.out.println(p);
-			ob.close();
-			f.close();
-		}
+		System.out.println("\nCurrent Configuration file: "+FileName+"\n");
+		FileInputStream configStream = new FileInputStream(FileName);
+		props.load(configStream);
+		configStream.close();
+		props.list(System.out);
 		return;
 	}
 	
-	private void resetSettings()
+	private void savePolicy()throws Exception
 	{
 		try
 		{
-			File f=new File(propsFileName);
-			if(f.exists()==true)
-			{
-				System.out.println("Trying to delete the configuration file...");
-				f.delete();
-			}
-			System.out.println("Writing configuration file...");
-			writeDefaultSettings();		
-			System.out.println("Settings have been reset to default values. Press Enter to continue.");
-			console.readLine();
+			System.out.println("Saving the settings...\nDO NOT TURN OFF OR RESET THE SYSTEM.\n");
+			props.setProperty(pName, pValue);
+			FileOutputStream output = new FileOutputStream(FileName);
+			props.store(output, "GlobalSettings");
+			output.close();
+			System.out.println("Settings Saved Successfully.");
+			System.out.println("NOTE: BETA FEATURE USED. KNOWN ISSUE HERE.\nTo see the reflected changes, please restart the program!");
 			return;
 		}
 		catch(Exception E)
 		{
 			E.printStackTrace();
+			console.readLine("ERROR: Settings could not be saved.");
+			return;
 		}
 	}
-	
-	protected void writeDefaultSettings()
+}
+
+
+class resetSettings
+{
+	protected void reset()throws Exception
 	{
+		Console console=System.console();
+		String FileName="./System/Private/Settings/Settings.burn";
+		Properties r=new Properties();
+		File file=new File(FileName);
+		FileOutputStream resetSettings = new FileOutputStream(file, false);
+		BufferedWriter obj = new BufferedWriter(new FileWriter(file, false));
+        PrintWriter pr = new PrintWriter(obj);
 		try
 		{
-			props.setProperty("update", "on");
-			props.setProperty("download", "on");
-			props.setProperty("chat", "on");
-			props.setProperty("editor", "on");
-			FileOutputStream output = new FileOutputStream(propsFileName);
-			props.store(output, "GlobalSettings");
-			output.close();
+			if(file.exists()==true)
+				System.out.println("Cleaning Configuration File.\nCleaning: " + FileName);
+			pr.println();
+			System.out.println("Writing default values to file...");
+			String [] Settings = 
+			{
+				"update",
+				"download",
+				"chat",
+				"FileManager"
+			};
+
+			for(int i=0; i<Settings.length;i++)
+			{
+				r.setProperty(Settings[i], "on");
+				r.store(resetSettings, "GlobalSettings");
+			}
+			obj.close();
+			pr.close();
+			resetSettings.flush();
+			resetSettings.close();
+			console.readLine("Default Settings saved! Press enter to continue.");
 		}
 		catch(Exception E)
 		{

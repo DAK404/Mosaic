@@ -31,7 +31,7 @@ import java.sql.*;
  * - Module Version    : 1.0.0<BR>
  * - Module Author     : Deepak Anil Kumar (DAK404)<BR></p>
  */
-public class CreateDB {
+public final class CreateDB {
 	
 	/**
      * This constructor has little use in this program.
@@ -62,9 +62,11 @@ public class CreateDB {
             System.out.println("SYSTEM> Database created successfully. Initializing...");
             String sql = "CREATE TABLE IF NOT EXISTS FSAD (\n" +
                 "    UserID integer PRIMARY KEY,\n" +
+				"    Name text NOT NULL,\n" +
                 "    Username text UNIQUE,\n" +
                 "    Password text NOT NULL,\n" +
                 "    SecurityKey text NOT NULL,\n" +
+				"    PIN text NOT NULL,\n" +
 				"    Administrator text NOT NULL);";
 				
             stmt.execute(sql);

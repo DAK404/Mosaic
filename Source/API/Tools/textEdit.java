@@ -14,7 +14,7 @@
  *****************************************************
  */
 
-package API.Editor;
+package API.Tools;
 
 import java.io.*;
 import API.*;
@@ -29,59 +29,51 @@ import API.*;
  * <p>
  * *** Technical Details ***<br>
  * - Module Name       : Mosaic: API_S04<BR>
- * - Module Version    : 1.0.0<BR>
+ * - Module Version    : 1.7.0<BR>
  * - Module Author     : Deepak Anil Kumar (DAK404), Bebhin Mathew<BR></p>
  */
 class textEdit {	
     private String fName = "";
     private String message = "";
-    private String user = "";
+    private String User = "";
     Console console = System.console();
     BufferedWriter obj = null;
     PrintWriter pr = null;
     API.Information info = new API.Information();
 
 
-    /**
-     * Receive the username from the previous module
-     *
-     * @param U: Accepts the username
-     */
-    protected textEdit(String U) {
-        user = U;
-    }
-
-    protected void editScript() throws Exception {
-		info.AboutProgram();
-        System.out.println("Enter the name of the file to be saved (with extension): ");
-        fName = console.readLine();
-		if(fName.equalsIgnoreCase("") | fName.equalsIgnoreCase(" ") | fName==null)
-			{
-				System.out.println("Warning: Cannot use illegal names for files.");
-				console.readLine();
-				return;
-			}
-        writeContent();
-    }
-
-    /**
-     * This method helps in actually writing the content to the file.
-     *
-     * The loop keeps going on until it encounters the exit condition
-     * upon where the streams are closed and the program control is returned to the previous program.
-     */
+    protected textEdit(){}
+	
+	
+    public void editScript(String User) throws Exception {
+	{
+		try
+		{
+			fName = console.readLine("Enter the name of file to be stored: ");
+			writeContent();
+		}
+	}
+	
     private void writeContent() throws Exception {
         try {
-            File file = new File("./Users/" + user + "/Files/" + fName);
-            file.mkdir();
-            obj = new BufferedWriter(new FileWriter(file + "/" + fName, true));
+			boolean writeMode=true;
+            File file = new File("./Users/" + user + "/" + fName+".nFile");
+			if(file.exists()==true)
+			{
+				System.out.println("Do you want to overwrite the file or append to the file?\n[ Overwrite | Append ]");
+				if(console.readLine().toLowerCase().equals("overwrite"))
+					writeMode=false;
+			}
+            obj = new BufferedWriter(new FileWriter(file + "/" + fName, writeMode));
             pr = new PrintWriter(obj);
             info.AboutProgram();
             System.out.println("Text Editor 1.3\n\n");
-            while (!(message.equalsIgnoreCase("<exit>"))) {
-                pr.println(message);
-                message = console.readLine();
-            }
+            do {
+				pr.println(message);
+				message=console.readLine();
+			}while(! (message.equalsIgnoreCase("<exit>")) );
+			
+			
         } catch (Exception E) {
             System.out.println("Error.");
             E.printStackTrace();

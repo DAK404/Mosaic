@@ -50,9 +50,8 @@ public class DownloadInterface {
 
         API.Information a = new API.Information();
         a.AboutProgram();
-        System.out.println("SYSTEM> Type HELP to show help for download. Else press enter to continue");
-        if (console.readLine().equalsIgnoreCase("Help")) {
-            API.HelpViewer h = new API.HelpViewer();
+        if (console.readLine("Type HELP to show help for download. Else press enter to continue").equalsIgnoreCase("Help")) {
+            API.Tools.ReadFile h = new API.Tools.ReadFile();
             h.ShowHelp("Help/Download.manual");
         }
         API.Download.Download aa = new API.Download.Download(User);

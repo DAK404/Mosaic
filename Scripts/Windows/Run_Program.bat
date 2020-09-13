@@ -1,7 +1,7 @@
 @echo off
 cls
 echo ~~~~~~~~~~~~~~~~~~~~~~~~
-echo  Unified Build Test 6.2
+echo  Unified Build Test 8.0
 echo ~~~~~~~~~~~~~~~~~~~~~~~~
 echo Platform: Windows NT
 echo Description: Starts Mosaic Program

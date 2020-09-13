@@ -1,0 +1,258 @@
+Nion Documentation 1.0
+
+~~~~~~~~~~~~~~~~~~~~~~~~~
+|  MOSAIC DOCUMENTATION |
+~~~~~~~~~~~~~~~~~~~~~~~~~
+
+A Documentation for the program by the developers to
+enhance the comprehension and guidance for people who
+want to develop, build, add and improve to the current
+code.
+
+TIME TO READ: Approximately 10 minutes.
+
+--------------------------------------------------------
+
+~~~~~~~~~~~~~~~~~~~
+ Table of Contents
+~~~~~~~~~~~~~~~~~~~
+
+1. Introduction
+2. About the Program
+3. History
+4. Approach
+5. Getting Started
+
+--------------------------------------------------------
+
+________________
+
+  INTRODUCTION
+________________
+
+
+Welcome!
+
+This is a documentation by the developers of Mosaic.
+
+This comprehensive guide will allow people and users
+to understand the program, the working, and provide
+a clear vision of the program and the way it works.
+
+More information can be supplemented via the program
+documentation provided.
+
+The language used to write the program is in Java.
+It is simple, straight-forward and flexible which
+helps in writing modules and code easily with minimal
+amount of efforts.
+
+This program will use terms and code related to Java,
+so the reader is assumed to have basic knowledge in
+Java or Kotlin. Additional documentation is written in
+CSS, JavaScript and HTML.
+
+--------------------------------------------------------
+
+____________________
+
+ ABOUT THE PROGRAM
+____________________
+
+
+This program will deal with practical applications of
+software required for small enterprises and organizations
+to administrate and deploy services or, in terms of this 
+program, modules.
+
+Modules are programs written and compiled, which are then
+linked to the main program to enable the functionality.
+
+The modules can additionally make use of policies which
+can help administrators to deploy modules which are under
+testing or are faulty or buggy.
+
+The API documentation is comprehensive which will help
+understanding the use and incorporate functionalities
+which need not be written again for specific uses.
+
+--------------------------------------------------------
+
+__________
+
+ HISTORY
+__________
+
+An encapsulation on the project versions which were 
+developed over time. These show the project direction
+and focuses during each timeline.
+
+***
+
+Nion: "DARK-X" era [2013-2014]
+
+The program began from a simple "exercise" program of
+making a login program without a database backend.
+
+The program was simple, had an if loop which validated
+the user entered credentials.
+
+As more exercise programs were written, experimenting
+to link all the exercise programs were attempted and
+passed. To access a specific exercise program, a menu
+frontend was written to help the user choose from a 
+list displayed.
+
+Slowly, the menu was entirely rewitten to accomodate
+a newer program: a simple chat program.
+
+The chat program had a simple implementation:
+
+- Read the chatlog file
+- Wait for user input
+- Write the user message to the chatlog file
+- repeat steps until input is "exit"
+
+The same logic is still being used even today, albeit
+not being very efficient.
+
+The program was not efficient at all, methods were
+repeatedly called, memory optimization was next to
+non existent.
+
+The program was developed using the BlueJ IDE which
+focused on learning and understanding Java.
+
+Contributors : DAK
+
+***
+
+Nion: "ArcLight" era [2014-2016]
+
+After studying more about programming and appproaches
+on writing efficient programs, the project was rewitten.
+A setup program was added to initialize the program,
+where a new folder was created in the program's project
+folder to accomodate files. This project had the initial 
+implementation of SecureBoot.
+
+Further which the program development had a low
+progress since, until Nemesis.
+
+Contributors : DAK
+
+***
+
+Nion: "Nemesis" era [2016-2017]
+
+This phase was a very varied and vivid one.
+The Setup program was rewritten, the program got a new
+UI, the program was restructured and rewritten.
+
+For most of the parts, the core code was intact, while
+the method calling and program links were changed.
+
+Later on the program had more updates which included a
+(broken) file manager, an audio player (which froze the
+program) and a useless contact manager (which was so
+useless that the program had it forcefully disabled.)
+
+Contributors : DAK
+Testing      : Bebhin Mathew
+
+***
+
+Nion "Flux-Nova" [2018-2018]
+
+This project had major focus on security, where features
+were rewritten and focused on fixing bugs and issues.
+The program was then ported to Core Java, which didn't
+have dependencies on the IDE.
+
+All programs which used the libraries/dependencies from
+the IDE were either rewritten with dependencies of Core
+Java or rewritten completely in the form of APIs or 
+a core module.
+
+Memory optimization were small but since the focus on
+security was bigger, the program used almost or more
+memory compared to the previous versions of the project.
+
+Renascor had a troubled and an unstable development with 
+concepts being thrown around to check which fits the 
+best with the requirements of the project.
+
+Contributors : DAK, Bebhin Mathew
+Testing      : Bebhin Mathew
+
+***
+
+Nion: "Renascor" [2018-2019]
+
+The project source code and the folder structure were
+reformed and rewritten to make the source code more 
+organized and neat. The code was also put into packages
+and the binaries were now in a single folder which were
+separate from the source. This project had a primitive
+user profile system, complemented by encrypting the 
+password files known as Fractal File Saving System.
+There were huge problems with respect to memory usage
+which led into troubles managing the system.
+
+The quality of code written were better and the informal,
+exercise code were rewritten and optimized to perform 
+better like actual code, with new  tools being written 
+to compile, debug and document the program.
+
+Contributors              : DAK
+Testing and Documentation : Bebhin Mathew
+
+***
+
+Nion: "Zen Quantum" [2019-2020]
+
+This project was a proof of concept code which was used
+to show and prove the concept of using database (JDBC),
+Encryption, update system, and an Editor subsystem to 
+write data to a plaintext file.
+
+This also optimized memory to a huge extent, reduced the
+code size, improved functionality and added more APIs to
+be used.
+
+This project was the biggest milestone in the development
+of all Nion project as this proved a lot of code which 
+were just concepts. Linux builds were officially supported!
+
+Contributors              : DAK
+Testing and Documentation : Bebhin Mathew, Siddharth (@Sidd_Dino)
+
+***
+
+Nion: "Mosaic" [2020-present]
+
+The current project: most optimized till date, easy to use,
+user friendly, straight forward, easy to develop and work on,
+fast and reliable, robust and secure.
+
+Most features were now fine tuned, optimized and improved on
+fixing bugs, issues and deprecating or removing old and outdated
+code. More improvements on the way!
+
+New features such as multiple Administrators, Policy enforcement,
+dedicated encryption and decryption service, changing password of
+currently logged in user and adding more users as Administrator or
+standard user. This project unified both Linux and Windows build
+to a single build.
+
+Contributors              : DAK
+Testing and Documentation : Bebhin Mathew, Siddharth (@Sidd_Dino)
+
+
+***
+
+Nion: "Lamashtu" [Future, Classified]
+
+[REDACTED]
+
+***

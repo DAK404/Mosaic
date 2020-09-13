@@ -38,21 +38,23 @@ EULA            - Views the License of the program
 Changelog       - Views the Changelog of the program
 Help            - Views the helpfile for the Main Menu program
 
-Chat            - This will open up the messenger module
-Download        - This will allow the user to download a file
-Encrypt         - This will allow the user to encrypt the downloaded files
-Decrypt         - This will allow the user to decrypt the encrypted files
-Create user     - This will help in creating a standard user
 Change Password - This will allow users to change their account password
-Restart         - This will restart the program
-Logout          - This will log the user out of the current session
-Update          - This will run the updater program
+Chat            - This will open up the messenger module
+Create user     - This will help in creating a standard user
+Download        - This will allow the user to download a file
+Decrypt         - This will allow the user to decrypt the encrypted files
+Encrypt         - This will allow the user to encrypt the downloaded files
+Editor          - This will open the editor which will help in reading or 
+                  writing files.
 Exit            - This will exit the program
+Lock Console    - This will block all inputs, unlock PIN will resume session.
+Restart         - This will restart the program
+Update          - This will run the updater program
 
 These are the commands available to the Administrator level.
 
-Settings        - This will allow Administrators to set policies and settings
 Create user     - This will help in creating a standard or an administrator user
+Settings        - This will allow Administrators to set policies and settings
 
 ___________________________________________________________________________________
 

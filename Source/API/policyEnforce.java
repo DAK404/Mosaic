@@ -65,10 +65,7 @@ public class policyEnforce
 		FileInputStream configStream = new FileInputStream(propsFileName);
 		prop.load(configStream);
 		if(prop.getProperty(PN).equalsIgnoreCase("off"))
-		{
-			System.out.println("The Administrator has disabled this feature. Contact the Administrator for more information.\nPress enter to continue.");
-			console.readLine();
-		}
+			console.readLine("The Administrator has disabled this feature. Contact the Administrator for more information.\nPress enter to continue.");
 		else if(prop.getProperty(PN).equalsIgnoreCase("on"))
 			stat=true;
 		

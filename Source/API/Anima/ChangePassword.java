@@ -38,6 +38,7 @@ public class ChangePassword
 {
 	String url = "jdbc:sqlite:./System/Private/Fractal.db";
 	
+	private String name="";
 	private String user="";
 	
 	//Store the current password and key
@@ -54,7 +55,8 @@ public class ChangePassword
 	//Initialize the streams and dependencies.
 	Console console=System.console();
 	API.Information show=new API.Information();
-	API.HelpViewer ViewHelp = new API.HelpViewer();
+	API.Tools.ReadFile ViewHelp = new API.Tools.ReadFile();
+	API.SHA256 sha=new API.SHA256();
 	
 	/**
      * This constructor initializes the SecureBoot and name of user who has logged in
@@ -62,7 +64,7 @@ public class ChangePassword
      * @param U Gets the user currently logged in
 	 * @param SecureBoot Gets the status of the SecureBoot
      */
-	public ChangePassword(String U, boolean SecureBoot)
+	public ChangePassword(String U, String N, boolean SecureBoot)
 	{
 		if(SecureBoot==false)
 		{
@@ -92,16 +94,15 @@ public class ChangePassword
 	private boolean GetCurrentCredentials()throws Exception
 	{
 		show.AboutProgram();
-		System.out.println("Type HELP to get help info or press Enter to continue.");
-		if(console.readLine().equalsIgnoreCase("Help"))
+		if(console.readLine("Type HELP to get help info or press Enter to continue.").equalsIgnoreCase("Help"))
 		{
 			ViewHelp.ShowHelp("Help/ChangePassword.manual");
 		}
 		System.out.println("Username: "+user);
 		System.out.print("Password: ");
-		CurrentPassword=String.valueOf(console.readPassword());
+		CurrentPassword=sha.encodedString(String.valueOf(console.readPassword()));
 		System.out.print("Security Key: ");
-		CurrentKey=String.valueOf(console.readPassword());
+		CurrentKey=sha.encodedString(String.valueOf(console.readPassword()));
 		API.Anima.LoginAPI login=new API.Anima.LoginAPI(SB, user, CurrentPassword, CurrentKey);
 		return login.status();
 	}
@@ -111,14 +112,14 @@ public class ChangePassword
 	{
 		show.AboutProgram();
 		System.out.print("Enter New Password: ");
-		NewPassword=String.valueOf(console.readPassword());
+		NewPassword=sha.encodedString(String.valueOf(console.readPassword()));
 		System.out.print("Confirm New Password: ");
-		String ConfirmPass=String.valueOf(console.readPassword());
+		String ConfirmPass=sha.encodedString(String.valueOf(console.readPassword()));
 						
 		System.out.print("Enter New Security Key: ");
-		NewKey=String.valueOf(console.readPassword());
+		NewKey=sha.encodedString(String.valueOf(console.readPassword()));
 		System.out.print("Confirm New Security Key: ");
-		String ConfirmKey=String.valueOf(console.readPassword());
+		String ConfirmKey=sha.encodedString(String.valueOf(console.readPassword()));
 		
 		if(NewPassword.equals(ConfirmPass) & NewKey.equals(ConfirmKey) & !(NewPassword.equals(CurrentPassword) & NewKey.equals(CurrentKey)) & !(NewPassword.equals("")) & (NewPassword.length()>=8))
 			return true;
@@ -150,8 +151,7 @@ public class ChangePassword
 			pstmt.setString(3, user);
             pstmt.executeUpdate();
             conn.close();
-			System.out.println("Updated Database Connection Successfully! Press Enter to Continue.");
-			console.readLine();
+			console.readLine("Updated Database Connection Successfully! Press Enter to Continue.");
 			return;
 		}
 		catch(Exception E)

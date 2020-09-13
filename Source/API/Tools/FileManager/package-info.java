@@ -6,4 +6,4 @@
 * The file reader program will Read all the contents in the file, and if not found, will return an error message.
 */
 
-package API.Editor;
+package API.FileManager;

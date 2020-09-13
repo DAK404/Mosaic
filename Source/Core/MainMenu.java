@@ -21,9 +21,10 @@ import java.util.*;
 import java.text.*;
 import Core.*;
 import API.*;
+import API.Tools.*;
+import API.Tools.FileManager.*;
 import API.Download. *;
 import API.Anima.*;
-import API.Editor.*;
 
 /**
  * Program to provide an interface for displaying the Main Menu
@@ -42,16 +43,20 @@ public class MainMenu {
 	private boolean SB = false;
 	private boolean Admin = false;
 	private String User = "";
+	private String Name = "";
 	private char prompt = '*';
 	private String cmd = "";
-
+	private String PIN_Value="";
+	private File usrDir = null;
+	
 	//Initialize the streams
 	Console console = System.console();
 	API.Information ShowInfo = new API.Information();
-	API.HelpViewer ViewHelp = new API.HelpViewer();
+	API.Tools.ReadFile ViewHelp = new API.Tools.ReadFile();
 	API.ErrorHandler eh=new API.ErrorHandler();
 	API.RestartProgram restart = new API.RestartProgram();
-	
+	API.Update.UpdateInterface update = new API.Update.UpdateInterface();
+	API.SHA256 sha=new API.SHA256();
 	/**
      * This constructor is used to intialize the SecureBoot Variable.
      *
@@ -59,7 +64,7 @@ public class MainMenu {
      * @param Username      : Used to receive the username from Login
 	 * @param Administrator : Used to get the Administrator status value of the current user
      */
-	protected MainMenu(boolean SecureBoot, String Username, boolean Administrator) {
+	protected MainMenu(boolean SecureBoot, String name ,String Username, boolean Administrator, String Pin) {
 		if (SecureBoot == false) {
 			System.out.println("SecureBoot fuse tripped. Exiting Program... ");
 			System.exit(0);
@@ -69,11 +74,14 @@ public class MainMenu {
 				System.exit(0);
 			} else {
 				SB = SecureBoot;
+				Name = name;
 				User = Username;
+				usrDir = new File("./Users/"+User+"/");
 				if (Administrator == true) {
 					Admin = true;
 					prompt = '!';
 				}
+				PIN_Value=Pin;
 			}
 		}
 	}
@@ -92,23 +100,27 @@ public class MainMenu {
 	private void choices() throws Exception {
 		try {
 			API.Download.DownloadInterface at = new API.Download.DownloadInterface(User);
-			API.Editor.EditorInterface ei = new API.Editor.EditorInterface();
-			API.Anima.AddUser adU = new API.Anima.AddUser(SB, Admin);
-			API.Anima.ChangePassword cp = new API.Anima.ChangePassword(User, SB);
-			API.Update.UpdateInterface update = new API.Update.UpdateInterface(SB);
-			
-			Core.SettingsInterface ae = new Core.SettingsInterface(SB, Admin);
-			Messenger oj = new Messenger(SB, User, Admin);
+			//API.Tools.Editor.EditorInterface ei = new API.Tools.Editor.EditorInterface();
+			API.Tools.FileManager.FileManager fm=new API.Tools.FileManager.FileManager(SB, User ,Name);
+			API.Anima.AddUser adU = new API.Anima.AddUser(Admin);
+			API.Anima.ChangePassword cp = new API.Anima.ChangePassword(User, Name, SB);
 
-			DateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy HH:mm:ss");
+			Core.SettingsInterface ae = new Core.SettingsInterface(SB, Admin);
+			Messenger oj = new Messenger(SB, Name, Admin);
+
+			
+			if(usrDir.exists()==false)
+			{
+				setupFolders();
+				System.out.println("DEBUG: SETUP COMPLETE.");
+				Thread.sleep(10000);
+			}
+	
 			while (true) {
 				ShowInfo.AboutProgram();
-				Date date = new Date();
-				System.out.println(dateFormat.format(date) + "\n");
-				System.out.println("Welcome Back, " + User + "!");
-				System.out.print(User + prompt + "> ");
-				cmd = console.readLine();
-				cmd = cmd.toLowerCase();
+				System.out.println("Welcome Back, " + Name + "!");
+				System.out.print(Name + prompt + "> ");
+				cmd = console.readLine().toLowerCase();
 				switch (cmd) {
 					//Update program
 				case "update":
@@ -117,9 +129,8 @@ public class MainMenu {
 
 					//Chat program
 				case "chat":
-					if (User.contains("Administrator")) {
-						System.out.println("\n[ATTENTION]: Administrator cannot access chat module, please login as standard user and try again.\nPress Enter to continue. ");
-						console.readLine();
+					if (User.contains(sha.encodedString("Administrator"))) {
+						console.readLine("\n[ATTENTION]: Administrator cannot access chat module, please login as standard user and try again.\nPress Enter to continue.");
 					} else {
 						oj.MsgScript();
 					}
@@ -131,7 +142,7 @@ public class MainMenu {
 					break;
 
 					//Encrypt program
-				case "encrypt":
+				/*case "encrypt":
 					at.Encrypt();
 					break;
 
@@ -139,6 +150,7 @@ public class MainMenu {
 				case "decrypt":
 					at.Decrypt();
 					break;
+				*/
 
 					//Create User (Anima) program
 				case "create user":
@@ -153,7 +165,7 @@ public class MainMenu {
 
 					//changelog
 				case "changelog":
-					ViewHelp.ShowHelp("Changelog-Master.txt");
+					ViewHelp.ShowHelp("Changelog.txt");
 					break;
 
 					//readme
@@ -176,13 +188,13 @@ public class MainMenu {
 					break;
 
 					//Text editor
-				case "edit":
-					ei.EditorScript("Write", User);
+				/*case "editor":
+					ei.EditorScript(User);
 					break;
-
-					//read file
-				case "read file":
-					ei.EditorScript("Read", User);
+				*/
+				
+				case "file manager":
+					fm.FileManagerScript();
 					break;
 
 					//restart program
@@ -197,7 +209,12 @@ public class MainMenu {
 					if (Admin == false) {
 						System.out.println("[ATTENTION] Standard user accounts cannot change settings. Contact the administrators for further information.");
 						console.readLine();
-					} else ae.SettingsMenu();
+					} else ae.Menu();
+					break;
+					
+					//Lock the console
+				case "lock console":
+					consoleLock();
 					break;
 
 					//refresh the program
@@ -216,6 +233,59 @@ public class MainMenu {
 			}
 		} catch(Exception E) {
 			eh.displayError(E);
+		}
+	}
+	
+	
+	private void consoleLock()throws Exception
+	{
+		byte count=5;
+		while(true)
+		{
+			ShowInfo.AboutProgram();
+			System.out.println(Name+"> Locked.");
+			if(console.readLine("~AFK> ").toLowerCase().equals("unlock console"))
+				break;
+			else
+				console.readLine("Console is locked. Cannot execute commands.");
+		}
+		while(true)
+		{
+			ShowInfo.AboutProgram();
+			System.out.println("Attempts Remaining: "+count);
+			System.out.println("Username: "+Name);
+			if(sha.encodedString(String.valueOf(console.readPassword("Unlock PIN: "))).equals(PIN_Value))
+			{
+				count=5;
+				break;
+			}	
+			else
+			{
+				
+				count--;
+				System.out.println("WARNING : Incorrect PIN entered.");
+				if(count==0)
+				{
+					System.out.println("SYSTEM!> Suspending All Input For 5 Minutes.");
+					Thread.sleep(300000);
+					count=1;
+					System.out.println("Please try again.\nPress enter to continue.");
+				}
+				console.readLine();
+			}
+		}
+		return;
+	}
+	
+	private void setupFolders()
+	{
+		byte i = 0;
+		String [] FileList = { User, User+"/Documents", User+"/Downloads", User+"/Miscellaneous" };
+		for(i = 0; i < FileList.length; i++)
+		{
+			System.out.print("DEBUG: CREATED FOLDER: "+"./Users/"+User+"/"+FileList[i]+"/     -   ");
+			usrDir = new File("./Users/"+FileList[i]+"/");
+			System.out.println("[ " + usrDir.mkdir() + " ]" );
 		}
 	}
 }

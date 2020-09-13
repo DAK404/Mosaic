@@ -1,7 +1,7 @@
 @echo off
 cls
 echo ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-echo   Mosaic DocMaker Tool 1.0
+echo   Mosaic DocMaker Tool 1.2
 echo ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 echo An in-house tool developed to create Program Documentation
 echo Creating Documentation from Source Files...

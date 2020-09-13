@@ -1,7 +1,7 @@
 @echo off
 cls
 echo ~~~~~~~~~~~~~~~~~~~~~~~~~~~
-echo   Mosaic Build Tool 1.0
+echo   Mosaic Build Tool 1.3
 echo ~~~~~~~~~~~~~~~~~~~~~~~~~~~
 echo An in-house tool developed to compile the program
 echo Compiling Program...

@@ -1,7 +1,13 @@
-~~~~~~~~~~~~~~~~~
-      TO DO
-~~~~~~~~~~~~~~~~~
+~~~~~~~~~
+ TO - DO
+~~~~~~~~~
 
--> Write a front end API access for Anima (Done For Editor)
--> Complete the Anima featureset by adding Delete user
--> Add and verify that the UserDB is encrypted and non accessible.
+STAGE A
+
+-> Finish the filemanager implementation
+-> Integrate the Download and Update modules
+-> Add encryption and decryption modules to the API.Tools
+
+STAGE B
+-> Add Change PIN functionality to the ChangePassword.java
+-> Add logging to file for debugging for log collections

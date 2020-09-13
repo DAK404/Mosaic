@@ -45,13 +45,8 @@ public class UpdateInterface {
      *
      * @param SecureBoot Initializes the SecureBoot variable value
      */
-    public UpdateInterface(boolean SecureBoot) 
+    public UpdateInterface() 
 	{
-		if(SecureBoot==false)
-		{
-			System.out.println("SecureBoot has tripped. Exiting...");
-		}
-		SB=SecureBoot;
 	}
 
     /**

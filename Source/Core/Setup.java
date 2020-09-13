@@ -35,7 +35,7 @@ import java.util.*;
  * - Module Version    : 1.0.0<BR>
  * - Module Author     : Deepak Anil Kumar (DAK404)<BR></p>
  */
-public class Setup {
+public final class Setup {
     private String curDir = System.getProperty("user.dir");
     private boolean stat;
     private String Pass = "";
@@ -43,7 +43,7 @@ public class Setup {
     private boolean SB = false;
     private boolean test = false;
     
-	API.HelpViewer moduleR = new API.HelpViewer();
+	API.Tools.ReadFile moduleR = new API.Tools.ReadFile();
 	Information obje = new Information();
 
 	Console console = System.console();
@@ -77,14 +77,12 @@ public class Setup {
         obje.AboutProgram();
         System.out.println("Welcome to Mosaic!\nThis program is a platform to use multiple tools in form of modules with the least amount of trouble!\n");
         System.out.println("[WARNING] : DO NOT QUIT PROGRAM DURING SETUP.\n");
-        System.out.println("Close this program if you want to setup another time, or press enter to continue.");
-        console.readLine();
+        console.readLine("Close this program if you want to setup another time, or press enter to continue.");
     }
 
     private void ShowPrerequisites() throws Exception {
         obje.AboutProgram();
-        System.out.println("1. Legal and Important Information.\nThis will show the license of the program.\nIf you accept the the license, you declare that you have read and understood the license, you consent to abide the conditions specified.\nPress Enter to Continue.");
-        console.readLine();
+        console.readLine("1. Legal and Important Information.\nThis will show the license of the program.\nIf you accept the the license, you declare that you have read and understood the license, you consent to abide the conditions specified.\nPress Enter to Continue.");
         moduleR.ShowHelp("License.eula");
         System.out.print("\nDo you agree with the terms and conditions of the license of the program shown above? [Y/N]: ");
         String TAC = console.readLine();
@@ -142,48 +140,17 @@ public class Setup {
 	private void StoreSettings()throws Exception
 	{
 		Core.SettingsInterface ae = new Core.SettingsInterface(SB, true);
-		ae.writeDefaultSettings();
+		ae.resetInterface();
 		System.out.println("SYSTEM> Settings Stored Successfully!");
 	}
 
     private void GetAdminData() throws Exception {
         //The admin username will always be #Administrator
         //The user must provide a password and a security key
-        while (true) {
-            obje.AboutProgram();
-            System.out.println("2. Configure Administrator Account");
-            System.out.println("This helps in setting up an administrator account.\nNote:\n-You cannot go online when logged in as an Administrator.\n-This account will be locally stored on this PC only.\n");
-            System.out.println("Username: Administrator");
-            System.out.print("Password: ");
-            Pass = String.valueOf(console.readPassword());
-			if(Pass.length()<8)
-			{
-				System.out.println("Warning: the length of the password must be greater than 8 for security reasons. Please try again.");
-				console.readLine();
-				continue;
-			}
-            //confirm the password
-            System.out.print("Confirm Password: ");
-            String confirm = String.valueOf(console.readPassword());
-            //Security key is optional, can be used for enhanced Security
-            System.out.print("Security Key (optional): ");
-            Key = String.valueOf(console.readPassword());
-            //Confirming the key value
-            System.out.print("Confirm Security Key: ");
-            String confirmKey = String.valueOf(console.readPassword());
-
-            //Assert logics
-            if (confirm.equals(Pass) & confirmKey.equals(Key)) {
-                API.Anima.AddUser oa = new API.Anima.AddUser(SB, true);
-                oa.AddUserScript("Administrator", Pass, Key);
-                System.out.println("Administrator user has been configured. Press enter to continue!");
-                console.readLine();
-                break;
-            } else {
-                System.out.println("The Passwords do not match. Please try again. Press Enter to Continue.");
-                console.readLine();
-                continue;
-            }
-        }
+		obje.AboutProgram();
+		System.out.println("2. Configure Administrator Account");
+		console.readLine("This helps in setting up an administrator account.\nNote:\n-You cannot go online when logged in as an Administrator.\n-This account will be locally stored on this PC only.\n");
+		API.Anima.AddUser oa = new API.Anima.AddUser(SB, true, "Administrator", "Administrator");
+		oa.Setup();
     }
 }

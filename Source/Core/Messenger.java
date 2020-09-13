@@ -59,6 +59,11 @@ public class Messenger {
 
 
     protected void MsgScript() throws Exception {
+		API.policyEnforce pe=new API.policyEnforce("chat");
+		if(pe.checkPolicy()==false)
+		{
+			return;
+		}
 
         while (WriteMessage() == true);
         return;
@@ -87,7 +92,7 @@ public class Messenger {
                 return true;
             }
         } else if (input.equalsIgnoreCase("<help>")) {
-            API.HelpViewer HEV = new API.HelpViewer();
+            API.Tools.ReadFile HEV = new API.Tools.ReadFile();
             HEV.ShowHelp("Help/Messenger.manual");
         } else if (input.equalsIgnoreCase("") || input.equalsIgnoreCase(" "))
             return true;
