@@ -4,7 +4,7 @@ import java.io.*;
 import java.util.*;
 import API.Information;
 
-public class SettingsInterface
+public final class SettingsInterface
 {
 	private String FileName="./System/Private/Settings/Settings.burn";
 	private String pName="";
@@ -19,7 +19,7 @@ public class SettingsInterface
 	
 	API.Tools.ReadFile ViewHelp = new API.Tools.ReadFile();
 	API.Information view=new API.Information();
-	API.RestartProgram restart = new API.RestartProgram();
+	
 
 	protected SettingsInterface(boolean SecureBoot, boolean Administrator)
 	{
@@ -36,6 +36,7 @@ public class SettingsInterface
 	{
 		try
 		{
+			System.gc();
 			//assert if admin is true
 			if(Admin==false)
 			{
@@ -138,7 +139,6 @@ public class SettingsInterface
 			props.store(output, "GlobalSettings");
 			output.close();
 			System.out.println("Settings Saved Successfully.");
-			System.out.println("NOTE: BETA FEATURE USED. KNOWN ISSUE HERE.\nTo see the reflected changes, please restart the program!");
 			return;
 		}
 		catch(Exception E)
@@ -153,37 +153,31 @@ public class SettingsInterface
 
 class resetSettings
 {
+	API.RestartProgram rp = new API.RestartProgram();
 	protected void reset()throws Exception
 	{
+		System.gc();
 		Console console=System.console();
 		String FileName="./System/Private/Settings/Settings.burn";
 		Properties r=new Properties();
 		File file=new File(FileName);
-		FileOutputStream resetSettings = new FileOutputStream(file, false);
-		BufferedWriter obj = new BufferedWriter(new FileWriter(file, false));
-        PrintWriter pr = new PrintWriter(obj);
+		FileOutputStream resetSettings = new FileOutputStream(file);
 		try
 		{
-			if(file.exists()==true)
-				System.out.println("Cleaning Configuration File.\nCleaning: " + FileName);
-			pr.println();
 			System.out.println("Writing default values to file...");
+			resetSettings.flush();
 			String [] Settings = 
 			{
 				"update",
 				"download",
+				"editor",
 				"chat",
-				"FileManager"
+				"filemanager"
 			};
 
 			for(int i=0; i<Settings.length;i++)
-			{
 				r.setProperty(Settings[i], "on");
-				r.store(resetSettings, "GlobalSettings");
-			}
-			obj.close();
-			pr.close();
-			resetSettings.flush();
+			r.store(resetSettings, "GlobalSettings");
 			resetSettings.close();
 			console.readLine("Default Settings saved! Press enter to continue.");
 		}

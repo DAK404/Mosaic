@@ -32,7 +32,7 @@ import java.io.*;
  * - Module Version    : 1.0.0<BR>
  * - Module Author     : Deepak Anil Kumar (DAK404), Bebhin Mathew<BR></p>
  */
-public class ReadFile {
+public final class ReadFile {
 
 	private File file;
 	
@@ -63,11 +63,18 @@ public class ReadFile {
 		}
 	}
 	
-	public void userReadFile(String User, String FileName)
+	public void userReadFile(String User, String FileName)throws Exception
 	{
+		API.policyEnforce pe=new API.policyEnforce("editor");
+		
+		if(pe.checkPolicy()==false)
+		{
+			return;
+		}
+		
 		try
 		{
-			file=new File("./Users/"+User+"/"+FileName);
+			file=new File(FileName+console.readLine("Enter the name of the file to be read: "));
 			readFile();
 			return;
 		}

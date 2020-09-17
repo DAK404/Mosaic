@@ -34,7 +34,8 @@ import java.time.*;
  * - Module Version    : 1.0.0<BR>
  * - Module Author     : Deepak Anil Kumar (DAK404)<BR></p>
  */
-public final class Information {
+public final class Information 
+{
 	DateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy HH:mm:ss");
 	Console console=System.console();
 	final static String MOTD=MOTD();
@@ -60,21 +61,22 @@ public final class Information {
 	 * @throws Exception Used to catch general exceptions and error states in program 
      */
     public void AboutProgram() throws Exception {
-        ClearScreen();
-		System.out.println("    __________________________");
-	    System.out.println("   /                         /");
-        System.out.println("  / Mosaic : A Nion Project /");
-		System.out.println(" /  Build  : Alpha 0.7.4   /");
-		System.out.println("/_________________________/");
-		System.out.println("    > Prototype Build <   \n");
-		
+        System.gc();
+		ClearScreen();
+		System.out.println("      _________________________");
+	    System.out.println("     /                        /");
+        System.out.println("    /    ---  Mosaic  ---    / ");
+		System.out.println("   /________________________/  ");
+		System.out.println("       > Prototype Build <     ");
+		System.out.println("           Build: 0.8        \n");
 		Date date = new Date();
-		System.out.println(dateFormat.format(date));
-		System.out.println("Good "+ timeOfDayGreeting() + "!" + "\n");
 		System.out.println(day+"'s MOTD: "+MOTD+"\n");
+		System.out.println("Good "+ timeOfDayGreeting() + "!");
+		System.out.println(dateFormat.format(date)+ ", "+ day +"\n");
+		System.out.println("              ******         \n");
 		
 		//ATTENTION! Uncomment debug() only when developing the program. It is a debug feature.
-		debug();
+		//debug();
 		
 		return;
     }
@@ -146,12 +148,12 @@ public final class Information {
 			
 			case TUESDAY: String [] Tuesday=
 							{
-								"Tuesday isn't so bad... It's a sign that I've somehow survived Monday.",
+								"You're doing great! Keep up the good work! :)",
 								"Tuesday is a huge day.",
 								"I don't want it good. I want it Tuesday.",
 								"Tuesday! Worry less, live more.",
 								"If you don't burn out at the end of each day, you're a bum.",
-								"A lack of focus leads to a lack of progress. Focus. Grind. Grow.",
+								"A lack of focus leads to a lack of progress. Tuesday = No Due Day.",
 								"Happy Tuesday! You got to admit, at least it sounds better than happy Monday."			
 							};
 							day="Tuesday";
@@ -172,13 +174,13 @@ public final class Information {
 							
 			case THURSDAY: String [] Thursday=
 							{
-								"Thursday, I forecast as mostly sunny. It's a much-needed break.",
+								"Thursday, I forecast as mostly happy. It's a much-needed break.",
 								"Heave Ho! Push it a day and its a weekend go!",
 								"Today is a new day. Expect great things!",
 								"I wonder how to turn water into wine. Happy thirsty Thursday",
 								"Some people call it Thursday, I like to call it Friday Eve.",
-								"It's Thursday and it really feels like a Thursday. Sometimes things just work out",
-								"Don't count the days. Make the days count."
+								"It really feels like a Thursday. Sometimes, things just work out.",
+								"Don't count the days. Make the days count. (2 days for the weekend!)"
 							};
 							day="Thursday";
 							return Thursday[evalRand];
@@ -211,13 +213,13 @@ public final class Information {
 							
 			case SUNDAY: String [] Sunday=
 							{
-								"Oooooh boy. What's up?",
-								"Oh no.",
+								"You're working on a Sunday?!",
+								"Reminder: Sleep and fun is important. Today is a Sunday :)",
 								"Why are you even here on a sunday?! :V",
-								"Go awei and have fun already!",
+								"Task List: Have fun, and chill! ",
 								"What?! Why?! Today's work is to have fun!",
 								"I see you here everyday -_-",
-								"Dude, don't be a workaholic, have fun a lil bit ;)"
+								"All work and no play makes Jack a dull boy."
 							};
 							day="Sunday";
 							return Sunday[evalRand];
@@ -231,10 +233,11 @@ public final class Information {
  
 		// get Runtime instance
 		Runtime instance = Runtime.getRuntime();
-		System.out.println("\n\n*********************************************");
+		System.out.println("\n*********************************************");
 		System.out.println("        ---   DEBUG INFORMATION   ---        ");
 		System.out.println("*********************************************");
 		System.out.println("\n   - Heap utilization statistics [MB] -  \n");
+		System.out.println("      [*]  Process ID   : "+ProcessHandle.current().pid());
  		// available memory
 		System.out.println("      [*]  Total Memory : " + instance.totalMemory() / mb + " MB");
 		// free memory

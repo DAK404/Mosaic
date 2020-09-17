@@ -2,12 +2,6 @@
  TO - DO
 ~~~~~~~~~
 
-STAGE A
+- Copy and move files/folders in file manager
 
--> Finish the filemanager implementation
--> Integrate the Download and Update modules
--> Add encryption and decryption modules to the API.Tools
-
-STAGE B
--> Add Change PIN functionality to the ChangePassword.java
--> Add logging to file for debugging for log collections
+End of List ;)

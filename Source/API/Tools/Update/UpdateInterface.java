@@ -14,7 +14,7 @@
  *****************************************************
  */
 
-package API.Update;
+package API.Tools.Update;
 
 import java.io.*;
 import java.util.*;
@@ -33,7 +33,7 @@ import API.*;
  * - Module Version    : 1.0.0<BR>
  * - Module Author     : Deepak Anil Kumar (DAK404), Bebhin Mathew<BR></p>
  */
-public class UpdateInterface {
+public final class UpdateInterface {
 	private boolean SB=false;
 	
     API.Information DispInfoObj = new API.Information();
@@ -65,7 +65,7 @@ public class UpdateInterface {
 		
         DispInfoObj.AboutProgram();
 	
-		System.out.println("Updater 6.2.4");
+		System.out.println("Updater 8.0.0");
 		System.out.println("Release Builds.");
 		System.out.println("SYSTEM> Initiating update.\n[ATTENTION] : THE UPDATER WILL DOWNLOAD THE LATEST RELEASE AND INSTALL IT.\n[WARNING] : DO NOT CHANGE NETWORK STATES, REMOVE DRIVES, TURN OFF DEVICE OR CLOSE THIS PROGRAM. DOING SO MAY RENDER THE PROGRAM UNUSABLE.\n[ATTENTION] : You will be logged out of your current session, and will need to restart the program and re-login to continue.\n");
 		System.out.println("-------------------------");
@@ -83,7 +83,7 @@ public class UpdateInterface {
 				System.out.println("Possible Solutions:\n- Retry the update.\n- Restart the network/routers and check the network connection stability.\n- Contact the Administrator for more information.\n\n");
 			}
 		} else {
-			System.out.println("SYSTEM> Failed to download update. Network Error.\n");
+			System.out.println("SYSTEM> Failed to download update. Error.\n");
 			System.out.println("Possible Causes:\n- Limited/restricted network access, or firewall rules which prevented downloading the file.\n- The download session was interrupted by a network change.\n- The update location has been moved to a new URL.\n");
 			System.out.println("Possible Solutions:\n- Retry the update.\n- Restart the network/routers and check the network connection stability.\n- Contact the Administrator for more information.\n-------------------------\n");
 		}
@@ -93,8 +93,8 @@ public class UpdateInterface {
 	}
     private boolean download() throws Exception {
         try {
-            DownloadUpdate downloadProgram = new DownloadUpdate();
-            return downloadProgram.download();
+            API.Tools.Download du=new API.Tools.Download();
+            return du.updateProgram();
         } catch (Exception E) {
             return false;
         }

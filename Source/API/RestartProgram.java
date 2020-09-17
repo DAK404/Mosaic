@@ -32,7 +32,7 @@ import API.ErrorHandler;
  * - Module Version    : 1.0.0<BR>
  * - Module Author     : Deepak Anil Kumar (DAK404)<BR></p>
  */
-public class RestartProgram
+public final class RestartProgram
 {
 	/**
      * This constructor has little use in this program.
@@ -59,12 +59,12 @@ public class RestartProgram
 			if(System.getProperty("os.name").contains("Windows"))
 			{
 				//For Windows Builds use this
-				new ProcessBuilder("cmd", "/c", "java Launcher").inheritIO().start();
+				new ProcessBuilder("Run_Program.bat").inheritIO().start();
 				System.exit(0);
 			}
 			else
 			{
-				console.readLine("NOTE: LINUX SUPPORT HAS BEEN DROPPED SINCE THERE IS A RESTART ISSUE.\nIf you are using Linux, the program will exit.\nPress enter to continue.");
+				console.readLine("Due to implementation issues of restart in Linux Systems, please manually restart the program.\nA fix will be rolled out via an OTA update once resolved.\nPress enter to continue.");
 				System.exit(0);
 			}
 		}

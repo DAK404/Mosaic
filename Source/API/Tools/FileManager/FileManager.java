@@ -16,8 +16,12 @@ public final class FileManager
 	Console console=System.console();
 	
 	API.Information show=new API.Information();
+	API.Tools.ReadFile rF=new API.Tools.ReadFile();
+	API.Tools.textEdit te = new API.Tools.textEdit();
+	API.Tools.FileManager.Encryptor enc=new API.Tools.FileManager.Encryptor();
+	API.Tools.FileManager.Decryptor dec=new API.Tools.FileManager.Decryptor();
+	API.Tools.Download dl=new API.Tools.Download();
 	API.SHA256 sha=new API.SHA256();
-	API.Tools.ReadFile viewHelp=new API.Tools.ReadFile();
 	
 	//take secureboot, username and admin values
 	public FileManager(boolean SecureBoot, String Username, String name)
@@ -31,7 +35,7 @@ public final class FileManager
 	
 	public void FileManagerScript()throws Exception
 	{
-		API.policyEnforce pe=new API.policyEnforce("download");
+		API.policyEnforce pe=new API.policyEnforce("filemanager");
 		
 		if(pe.checkPolicy()==false)
 		{
@@ -64,6 +68,7 @@ public final class FileManager
 	
 	private void FileManager()throws Exception
 	{
+		System.gc();
 		show.ClearScreen();
 		console.readLine("[ ATTENTION ]  :  BY USING THIS FILE MANAGER, YOU HEREBY ACCEPT THAT ANY CHANGES MADE TO YOUR FILES ARE YOUR RESPONSIBILITY AND YOUR LIABILITY.\nSOME CHANGES MADE MAY BE IRREVERSABLE.\nBY USING THIS FEATURE, YOU ARE RESPONSIBLE FOR YOUR ACTIONS. PRESS ENTER TO CONTINUE.");
 		show.AboutProgram();
@@ -76,7 +81,7 @@ public final class FileManager
 				case "exit": return;
 				
 				case "help": 
-							viewHelp.ShowHelp("Readme.txt");
+							rF.ShowHelp("Help/FileManager.manual");
 							break;
 							
 				case "clear":
@@ -95,18 +100,38 @@ public final class FileManager
 							makeDir();
 							break;
 				
-				case "delete dir":
-							delDir();
+				case "delete":
+							del();
 							break;
 							
-				case "rename dir":
-							renameDir();
+				case "rename":
+							rename();
+							break;
+				
+				case "encrypt": 
+							enc.encr(User, CurDir);
+							break;
+				
+				case "decrypt": 
+							dec.dcr(User, CurDir);
+							break;
+				
+				case "read file":
+							rF.userReadFile(User, CurDir);
+							break;
+				
+				case "edit file": 
+							te.editScript(User, CurDir);
+							break;
+							
+				case "download":
+							dl.downloadFile(User, CurDir);
 							break;
 				
 				case "": 
 							break;
 				
-				default: System.out.println("Unrecognized command. Type Help to know available commands.");
+				default: System.out.println("Unrecognized command. Type Help to know available commands.\n");
 						break;
 			}
 			
@@ -131,11 +156,29 @@ public final class FileManager
 	private void changeDir()throws Exception
 	{
 		String tPath=console.readLine("Enter the directory name: ");
+		if(tPath.equals(".."))
+		{
+			prevDir();
+			return;
+		}
+		
 		tPath=CurDir+tPath+"/";
 		if(checkFile(tPath)==true)
 			CurDir=tPath;
 		else
 			System.out.println("[ ERROR ] : The specified file/directory does not exist.");
+		return;
+	}
+	
+	private void prevDir()
+	{
+		CurDir=CurDir.substring(0, CurDir.length()-1);
+		CurDir=CurDir.replace(CurDir.substring(CurDir.lastIndexOf('/'), CurDir.length()), "/");
+		if(CurDir.equals("./Users/"))
+		{
+			System.out.println("[ WARNING ] : File Management cannot be out of user's home path. Reverting to default user's home path.");
+			CurDir="./Users/"+User+"/";
+		}
 		return;
 	}
 	
@@ -191,12 +234,12 @@ public final class FileManager
 		}
 	}
 	
-	private void delDir()
+	private void del()
 	{
 		try
 		{
-			String delFile=console.readLine("Enter the name of the the folder to be deleted: ");
-			delFile=CurDir+delFile+"/";
+			String delFile=console.readLine("Enter the name of the the file/folder to be deleted: ");
+			delFile=CurDir+delFile;
 			if(checkFile(delFile)==true)
 			{
 				f=new File(delFile);
@@ -213,16 +256,16 @@ public final class FileManager
 		}
 	}
 	
-	private void renameDir()
+	private void rename()
 	{
 		try
 		{
-			String rnFile=console.readLine("Enter the name of the folder to rename: ");
-			rnFile=CurDir+rnFile+"/";
+			String rnFile=console.readLine("Enter the name of the file/folder to rename: ");
+			rnFile=CurDir+rnFile;
 			if(checkFile(rnFile)==true)
 			{
 				f=new File(rnFile);
-				File fn=new File(CurDir+console.readLine("Enter the new name of the file: "));
+				File fn=new File(CurDir+console.readLine("Enter new name: "));
 				f.renameTo(fn);
 			}
 			else

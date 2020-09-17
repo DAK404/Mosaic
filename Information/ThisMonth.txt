@@ -1,94 +1,48 @@
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-|~~  Monthly Changelogs  ~~|
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+|~~  Monthly Patch Notes  ~~|
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 -----------------------------------------------------------
 
-                  July-2020 Changelog
+                September-2020 Changelog
 
   _______________________________________________________
 
-               05-July-2020 0022 +0530 GMT
-  _______________________________________________________
-
-* Updated version to 0.0.3
-* Initial commit for Change Password (Under Construction)
-* Initial changes to restart sections to modularize it.
-* Fixed a few Restart related bugs
-* Enforced rule: 8 characters for passwords
-(NOTE: FOR DEBUGGING, YOU MAY DISABLE THE ASSERT LOGIC)
-* Added a build ID to keep track of bugs and issues. 
-* Fixed the SecureBoot enforcement issues (Under Construction)
-* Chat module (BETA) being worked on.
-* Updated the Readme file
-
-***
-  _______________________________________________________
-
-               12-July-2020 0022 +0530 GMT
-  _______________________________________________________
-
-* Updated version to 0.0.6
-* Added feature to Anima DB: ChangePassword (Complete)
-* Added restart as a separate module (Complete)
-* Cross platform compatibility enhancements
-* Fixed grammatical issues in Information (Complete)
-* Initial commits for adding a common Anima Interface
-* Updated the UI to make it look better.
-* Added new blank help manuals (unlinked for now)
-
-***
-  _______________________________________________________
-
-               20-July-2020 1752 +0530 GMT
+               17-Sept-2020 0614 +0530 GMT
   _______________________________________________________
   
   
-* Updated version to 1.8.3
-* Fixed bug where editor program crashed when the filename
-was blank when writing to file.
-* Added an ErrorHandler program to handle exceptions and
-help in debugging.
-* Minor changes to setup program to create a folder for
-logs and settings.
-* Added a settings program which helps in enforcing program
-policies.
-* Added an administrator account priviliges
-* Fixed issues of a small spike in memory for a duplicated
-instantiation of restart program.
-* Added an interface to the Editor package
-* Improved the help manual of main menu
-* Fixed a few scipts to make it more efficient
-* Updated documentation
-* Improved program performance
-* Improved code readability
-* Enabled LogService dependencies to take logs during
-program crashes
-* Better UI
+* Updated to version Alpha 0.8
+* Updated help modules with better content
+* Added SHA3-256 Hashing algorithm
+* Fixed critical issues regarding user nomenclature
+* Refactored Boot module code 
+* Memory Optimizations
+* Refactored user database code and table structure
+* Implemented fixes regarding encryption
+* Security improvements, using the SHA3-256 hashing
+* Reverted the CLI aesthetics to v2019-0.5.2
+* Fixed a few MOTDs
+* Improved security by making core classes as final
+* Refactored the Updater
+* Minor improvements regarding Policy Enforcement
+* Added clearer password rules, during user creation
+* Added lock console functionality
+* Added FileManager for user file management
+* Removed Program Documentation [will be reworked]
+* Initial addition of Developer Documentation
+* Removed the `Run_Program_WSL.bat`
+* Improved Error Handling
+* Experimental fix to RestartProgram
+* Improved Setup experience
+* Minor improvements to encryption/decryption modules
+* Improved performance and program stability
+* Improved User Experience for all modules
+* Added debug info code for testing (deactivated)
+* Added more data to be displayed in Information.java
 
 ***
-
-  _______________________________________________________
-
-               31-July-2020 1842 +0530 GMT
-  _______________________________________________________
- 
- 
-* Updated to version Alpha 0.2.1
-* Updated help version to 1.5
-* Updated and filled documentation for complete modules
-* Streamlined the SettingsInterface program
-* Added update links for update functionality to work
-* Added SecureBoot for a few modules to enhance security
-* Removed RestartProgram support for Linux (See Issues)
-
-ISSUES:
-
-* https://github.com/DAK404/Mosaic/issues
-
-***
-
+  
 -----------------------------------------------------------
                    
                 ---End Of File---

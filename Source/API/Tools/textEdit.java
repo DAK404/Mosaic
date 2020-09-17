@@ -32,54 +32,77 @@ import API.*;
  * - Module Version    : 1.7.0<BR>
  * - Module Author     : Deepak Anil Kumar (DAK404), Bebhin Mathew<BR></p>
  */
-class textEdit {	
-    private String fName = "";
+public final class textEdit {	
     private String message = "";
-    private String User = "";
+    private String User    = "";
+	private File file = null;
+	
     Console console = System.console();
-    BufferedWriter obj = null;
-    PrintWriter pr = null;
     API.Information info = new API.Information();
 
-
-    protected textEdit(){}
+	BufferedWriter obj = null;
+	PrintWriter pr = null;
+	
+    public textEdit()
+	{
+		
+	}
 	
 	
-    public void editScript(String User) throws Exception {
+    public void editScript(String user, String dir) throws Exception
 	{
 		try
 		{
-			fName = console.readLine("Enter the name of file to be stored: ");
+			User=user;
+			file = new File(dir+console.readLine("Enter the name of file to be saved: "));
 			writeContent();
+			return;
+		}
+		catch(Exception E)
+		{
+			//E.printStackTrace();
 		}
 	}
 	
-    private void writeContent() throws Exception {
-        try {
+    private void writeContent() throws Exception 
+	{
+        try 
+		{
 			boolean writeMode=true;
-            File file = new File("./Users/" + user + "/" + fName+".nFile");
-			if(file.exists()==true)
+            if(file.exists()==true)
 			{
 				System.out.println("Do you want to overwrite the file or append to the file?\n[ Overwrite | Append ]");
 				if(console.readLine().toLowerCase().equals("overwrite"))
 					writeMode=false;
 			}
-            obj = new BufferedWriter(new FileWriter(file + "/" + fName, writeMode));
+			
+            obj = new BufferedWriter(new FileWriter(file, writeMode));
             pr = new PrintWriter(obj);
-            info.AboutProgram();
-            System.out.println("Text Editor 1.3\n\n");
-            do {
-				pr.println(message);
+            
+			info.AboutProgram();
+			
+            System.out.println("Mosaic Text Editor 1.7");
+			System.out.println("______________________\n\n");
+			
+			while(true)
+			{
 				message=console.readLine();
-			}while(! (message.equalsIgnoreCase("<exit>")) );
-			
-			
-        } catch (Exception E) {
+				
+				//Keep receiving inputs until the user types <exit>
+				if(message.equalsIgnoreCase("<exit>"))
+					break;
+				
+				pr.println(message);
+			}
+        } catch (Exception E)
+		{
             System.out.println("Error.");
             E.printStackTrace();
-        } finally {
+        } finally 
+		{
             pr.close();
             obj.close();
+			System.gc();
             return;
         }
     }

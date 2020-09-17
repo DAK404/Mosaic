@@ -1,0 +1,68 @@
+Mosaic User Reference Documentation 1.5
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~
+Mosaic File Manager Manual
+~~~~~~~~~~~~~~~~~~~~~~~~~~
+___________________________________________________________________________________
+
+Introduction:
+
+Mosaic File Manager helps in managing the current user's files. The file manager
+will assist the users to make a new directory, delete and rename an existing
+directory, list the directory, and change it to a subsequent directory.
+
+The file manager is being worked on actively, expect more features soon!
+The following is undertaken for implementation:
+ 
+ [x] Copy Files
+ [x] Move Files
+ 
+In the near future, the optimizations and flexible features will be more prominent
+and easy to work with. But if you find any issues or problems, please report it 
+to the developers! Much Appreciated!
+
+___________________________________________________________________________________
+
+Available Commands:
+
+These are the commands available to all.
+
+Clear           - Clears the screen. Will display the default prompt.
+Change Dir      - Changes the directory into a new hierarchical level.
+Delete          - Deletes a directory or a file.
+Download        - Helps to download a file off the internet by using a URL.
+Help            - Opens this help page for File Manager program.
+List Dir        - Lists the contents of the current directory.
+Make Dir        - Creates a new folder in current directory.
+Rename          - Renames a directory or a file.
+Exit            - This will exit Mosaic File Manager.
+
+Encrypt         - Helps in Encrypting a file to a Mosaic Encrypted '.LOCK' file.
+Decrypt         - Helps in Decrypting a Mosaic Encrypted '.LOCK' file.
+
+Edit File       - Opens the Editor program to write into a file.
+Read File       - Opens the Mosaic File Reader to read a file.
+
+___________________________________________________________________________________
+
+Troubleshooting:
+
+If you encounter bugs when the program is running, please copy the information
+displayed on the screen and submit it in the issues section on the GitHub page.
+
+The team will look into it as soon as possible, and will take action on the issue.
+
+If there is a message saying "SecureBoot Tripped. Exiting...." please make sure
+that you are running the correct version of the program and try to use the latest
+build to have minimal number of bugs and issues.
+
+___________________________________________________________________________________
+
+General Tips:
+
+[*] Always close the programs using the exit command
+[*] Contact the developers in case there is an issue with the code or runtime error
+[*] Update the program regularly to have improved functionality
+
+___________________________________________________________________________________
+END OF FILE.

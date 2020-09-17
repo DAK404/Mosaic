@@ -148,8 +148,9 @@ public final class AddUser {
 		displayDetails();
 		PWD  = String.valueOf(console.readPassword("Account Password : "));
 		String CPWD = String.valueOf(console.readPassword("Confirm Password : "));
-		if(PWD.length() < 8 & ! ( PWD.equals(CPWD) ) )
+		if(PWD.length() < 8 | ( PWD.equals(CPWD) == false ) )
 		{
+			PWD="";
 			console.readLine("Password Policy not followed. Please try again which follows the Password Policy.");
 			return false;
 		}
@@ -163,8 +164,9 @@ public final class AddUser {
 		displayDetails();
 		KEY  = String.valueOf(console.readPassword("Security Key : "));
 		String CKEY = String.valueOf(console.readPassword("Confirm Key  : "));
-		if(!(KEY.equals(CKEY)))
+		if(KEY.equals(CKEY) == false)
 		{
+			KEY="";
 			console.readLine("Security Key Policy not followed. Please try again which follows the Security Key Policy.");
 			return false;
 		}
@@ -178,8 +180,9 @@ public final class AddUser {
 		displayDetails();
 		PIN  = String.valueOf(console.readPassword("Unlock PIN   : "));
 		String CPIN = String.valueOf(console.readPassword("Confirm PIN  : "));
-		if(PIN.length() < 4 & ! ( PIN.equals(CPIN) ))
+		if(PIN.length() < 4 | ( PIN.equals(CPIN) == false ))
 		{
+			PIN="";
 			console.readLine("PIN Policy not followed. Please change the username and try again.");
 			return false;
 		}

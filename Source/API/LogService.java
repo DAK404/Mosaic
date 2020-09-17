@@ -32,7 +32,7 @@ import java.io.*;
  * - Module Version    : 0.0.1<BR>
  * - Module Author     : Deepak Anil Kumar (DAK404)<BR></p>
  */
-public class LogService {
+public final class LogService {
     /**
      * This constructor has little use in this program.
      *
@@ -57,6 +57,7 @@ public class LogService {
      * @throws Exception Used to catch general exceptions and error states in program
      */
     public void Log(String PrintToFile, String FileName) throws Exception {
+		System.gc();
         BufferedWriter obj = new BufferedWriter(new FileWriter("./" + FileName + ".log", true));
         PrintWriter pr = new PrintWriter(obj);
         pr.println(dateFormat.format(date) + ": " + PrintToFile);

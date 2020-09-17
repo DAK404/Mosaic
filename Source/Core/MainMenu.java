@@ -23,7 +23,7 @@ import Core.*;
 import API.*;
 import API.Tools.*;
 import API.Tools.FileManager.*;
-import API.Download. *;
+import API.Tools.Update.*;
 import API.Anima.*;
 
 /**
@@ -39,7 +39,7 @@ import API.Anima.*;
  * - Module Version    : 1.0.0<BR>
  * - Module Author     : Deepak Anil Kumar (DAK404), Bebhin Mathew<BR></p>
  */
-public class MainMenu {
+public final class MainMenu {
 	private boolean SB = false;
 	private boolean Admin = false;
 	private String User = "";
@@ -55,7 +55,7 @@ public class MainMenu {
 	API.Tools.ReadFile ViewHelp = new API.Tools.ReadFile();
 	API.ErrorHandler eh=new API.ErrorHandler();
 	API.RestartProgram restart = new API.RestartProgram();
-	API.Update.UpdateInterface update = new API.Update.UpdateInterface();
+	API.Tools.Update.UpdateInterface update = new API.Tools.Update.UpdateInterface();
 	API.SHA256 sha=new API.SHA256();
 	/**
      * This constructor is used to intialize the SecureBoot Variable.
@@ -98,9 +98,9 @@ public class MainMenu {
 	}
 
 	private void choices() throws Exception {
-		try {
-			API.Download.DownloadInterface at = new API.Download.DownloadInterface(User);
-			//API.Tools.Editor.EditorInterface ei = new API.Tools.Editor.EditorInterface();
+		try {			
+			//API.Download.DownloadInterface at = new API.Download.DownloadInterface(User);
+			API.Tools.ReadFile rf = new API.Tools.ReadFile();
 			API.Tools.FileManager.FileManager fm=new API.Tools.FileManager.FileManager(SB, User ,Name);
 			API.Anima.AddUser adU = new API.Anima.AddUser(Admin);
 			API.Anima.ChangePassword cp = new API.Anima.ChangePassword(User, Name, SB);
@@ -110,13 +110,10 @@ public class MainMenu {
 
 			
 			if(usrDir.exists()==false)
-			{
 				setupFolders();
-				System.out.println("DEBUG: SETUP COMPLETE.");
-				Thread.sleep(10000);
-			}
-	
+			
 			while (true) {
+				System.gc();
 				ShowInfo.AboutProgram();
 				System.out.println("Welcome Back, " + Name + "!");
 				System.out.print(Name + prompt + "> ");
@@ -135,22 +132,6 @@ public class MainMenu {
 						oj.MsgScript();
 					}
 					break;
-
-					//Download program
-				case "download":
-					at.DInterfaceScript(SB);
-					break;
-
-					//Encrypt program
-				/*case "encrypt":
-					at.Encrypt();
-					break;
-
-					//Decrypt program
-				case "decrypt":
-					at.Decrypt();
-					break;
-				*/
 
 					//Create User (Anima) program
 				case "create user":
@@ -186,30 +167,24 @@ public class MainMenu {
 				case "change password":
 					cp.ChangePasswordRoutine();
 					break;
-
-					//Text editor
-				/*case "editor":
-					ei.EditorScript(User);
-					break;
-				*/
-				
+					
+					//file manager
 				case "file manager":
 					fm.FileManagerScript();
 					break;
 
 					//restart program
 				case "restart":
-					System.out.println("All unsaved work will be lost. Press Enter to restart the program.");
-					console.readLine();
+					console.readLine("All unsaved work will be lost. Press Enter to restart the program.");
 					restart.restart();
 					break;
 
 					//Settings program
 				case "settings":
-					if (Admin == false) {
-						System.out.println("[ATTENTION] Standard user accounts cannot change settings. Contact the administrators for further information.");
-						console.readLine();
-					} else ae.Menu();
+					if (Admin == false)
+						console.readLine("[ATTENTION] Standard user accounts cannot change settings. Contact the administrators for further information.");
+					else 
+						ae.Menu();
 					break;
 					
 					//Lock the console
@@ -226,8 +201,7 @@ public class MainMenu {
 					
 					//Default String when the command module is not found.
 				default:
-					System.out.println("\nUnrecognized command: " + cmd + "\nPlease enter a valid command or module name");
-					console.readLine();
+					console.readLine("\nUnrecognized command: " + cmd + "\nPlease enter a valid command or module name");
 					break;
 				}
 			}
@@ -240,15 +214,11 @@ public class MainMenu {
 	private void consoleLock()throws Exception
 	{
 		byte count=5;
-		while(true)
+		do
 		{
 			ShowInfo.AboutProgram();
 			System.out.println(Name+"> Locked.");
-			if(console.readLine("~AFK> ").toLowerCase().equals("unlock console"))
-				break;
-			else
-				console.readLine("Console is locked. Cannot execute commands.");
-		}
+		}while(!(console.readLine("~AFK> ").toLowerCase().equals("unlock console")));
 		while(true)
 		{
 			ShowInfo.AboutProgram();
@@ -283,9 +253,8 @@ public class MainMenu {
 		String [] FileList = { User, User+"/Documents", User+"/Downloads", User+"/Miscellaneous" };
 		for(i = 0; i < FileList.length; i++)
 		{
-			System.out.print("DEBUG: CREATED FOLDER: "+"./Users/"+User+"/"+FileList[i]+"/     -   ");
 			usrDir = new File("./Users/"+FileList[i]+"/");
-			System.out.println("[ " + usrDir.mkdir() + " ]" );
+			usrDir.mkdir();
 		}
 	}
 }

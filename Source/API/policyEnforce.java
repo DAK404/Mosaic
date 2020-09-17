@@ -33,7 +33,7 @@ import java.io.*;
  * - Module Version    : 1.0.0<BR>
  * - Module Author     : Deepak Anil Kumar (DAK404)<BR></p>
  */
-public class policyEnforce
+public final class policyEnforce
 {
 	Console console=System.console();
 	private String PN;
@@ -60,6 +60,7 @@ public class policyEnforce
      */
 	public boolean checkPolicy()throws Exception
 	{
+		System.gc();
 		Properties prop = new Properties();
 		String propsFileName="./System/Private/Settings/Settings.burn";
 		FileInputStream configStream = new FileInputStream(propsFileName);

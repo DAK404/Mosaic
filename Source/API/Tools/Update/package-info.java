@@ -1,4 +1,4 @@
-/**
+/*
 * Contains programs which downloads and installs latest version of the release builds.
 *
 * This package downloads the lastest builds from the servers and downloads it to the machine.<BR>
@@ -8,4 +8,8 @@
 * <b><a href="https://github.com/DAK404/Mosaic-Releases">Build Repository</a></b><BR> 
 */
 
-package API.Update;
+/**
+* Documentation under construct
+*/
+
+package API.Tools.Update;

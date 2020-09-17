@@ -35,7 +35,7 @@ import API.RestartProgram;
  * - Module Version    : 1.0.0<BR>
  * - Module Author     : Deepak Anil Kumar (DAK404)<BR></p>
  */
-public class ErrorHandler
+public final class ErrorHandler
 {
 	API.LogService ls=new API.LogService();
 	API.RestartProgram rp=new RestartProgram();
@@ -58,6 +58,7 @@ public class ErrorHandler
      */
 	public void displayError(Exception error)throws Exception
 	{
+		System.gc();
 		System.out.println("[ERROR] Stopped execution due to the following:");
 		error.printStackTrace();
 		console.readLine("Press Enter to Continue.");

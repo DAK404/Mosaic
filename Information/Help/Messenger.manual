@@ -17,13 +17,9 @@ Available Commands:
 
 These show the commands available to the guest level.
 
-<Help>        - Views the helpfile for the Main Menu program
-<Download>    - This will allow the user to download a file
-<Encrypt>     - This will allow the user to encrypt the downloaded files
-<Decrypt>     - This will allow the user to decrypt the encrypted files
+<Help>        - Views the helpfile for the Main Menu program.
 <T>           - This allows the user to insert pre-defined templates to the chat.
-                (Contribute to this!)
-Exit          - This will exit the program
+Exit          - This will exit the program.
 
 ___________________________________________________________________________________
 

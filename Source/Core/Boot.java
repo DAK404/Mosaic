@@ -7,7 +7,7 @@ import Core.*;
 import API.*;
 import API.Anima.*;
 
-public class Boot
+public final class Boot
 {
 	private boolean SB    = false;
 	private boolean Admin = false;
@@ -17,7 +17,7 @@ public class Boot
 	private String Name   = "";
 		
 	API.Anima.AddUser abc = new API.Anima.AddUser(false);
-	API.Update.UpdateInterface update = new API.Update.UpdateInterface();
+	API.Tools.Update.UpdateInterface update = new API.Tools.Update.UpdateInterface();
 	API.RestartProgram a=new API.RestartProgram();
     API.Information DispInfoObj = new API.Information();
     API.Tools.ReadFile ViewHelp = new API.Tools.ReadFile();
@@ -35,7 +35,6 @@ public class Boot
 
 	public void BootScript()throws Exception
 	{
-		
 		File SysChk = new File("./System");
         File UsrChk = new File("./Users");
         if ((SysChk.exists() == false) & (UsrChk.exists() == false)) {
@@ -51,6 +50,7 @@ public class Boot
 	
 	private boolean menu()throws Exception
 	{
+		System.gc();
 		DispInfoObj.AboutProgram();
         System.out.println("SYSTEM> Enter commands to access modules.\n[Type 'HELP' to get command list]\n");
 		switch(console.readLine("~GUEST> ").toLowerCase())

@@ -34,7 +34,7 @@ import API.Anima.*;
  * - Module Version    : 1.0.0<BR>
  * - Module Author     : Deepak Anil Kumar (DAK404), Bebhin Mathew<BR></p>
  */
-public class ChangePassword
+public final class ChangePassword
 {
 	String url = "jdbc:sqlite:./System/Private/Fractal.db";
 	
@@ -68,7 +68,7 @@ public class ChangePassword
 	{
 		if(SecureBoot==false)
 		{
-			System.out.println("Error. SecureBoot is false");
+			System.out.println("SecureBoot Error : NOT_INITIALIZED");
 			System.exit(0);
 		}
 		user=U;
@@ -82,6 +82,9 @@ public class ChangePassword
      */
 	public void ChangePasswordRoutine()throws Exception
 	{
+		if(console.readLine("Type HELP to get help info or press Enter to continue.").equalsIgnoreCase("Help"))
+			ViewHelp.ShowHelp("Help/ChangePassword.manual");
+		
 		while(GetCurrentCredentials()==false)
 		{
 			console.readLine();
@@ -94,10 +97,6 @@ public class ChangePassword
 	private boolean GetCurrentCredentials()throws Exception
 	{
 		show.AboutProgram();
-		if(console.readLine("Type HELP to get help info or press Enter to continue.").equalsIgnoreCase("Help"))
-		{
-			ViewHelp.ShowHelp("Help/ChangePassword.manual");
-		}
 		System.out.println("Username: "+user);
 		System.out.print("Password: ");
 		CurrentPassword=sha.encodedString(String.valueOf(console.readPassword()));

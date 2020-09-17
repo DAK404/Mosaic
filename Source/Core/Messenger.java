@@ -34,14 +34,17 @@ import java.util.*;
  * - Module Version    : 1.0.0<BR>
  * - Module Author     : Deepak Anil Kumar (DAK404)<BR></p>
  */
-public class Messenger {
+public final class Messenger {
     Console console = System.console();
     DateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy HH:mm:ss");
     private String curDir = System.getProperty("user.dir");
     private String User = "";
     private boolean SB = false;
     private boolean Admin = false;
-    API.Download.DownloadInterface at = new API.Download.DownloadInterface(User);
+	
+	API.Tools.ReadFile HEV = new API.Tools.ReadFile();
+	
+    //API.Download.DownloadInterface at = new API.Download.DownloadInterface(User);
     //Write the messages to the public chatroom only now. Implement the private chatroom later
     String Loc = curDir + "./System/Public/ChatRooms/Chatroom.log";
     File file = new File(Loc);
@@ -77,37 +80,29 @@ public class Messenger {
         ReadMessageLog();
         System.out.print(User + "> ");
         String input = console.readLine();
-        if (input.equalsIgnoreCase("<T>")) {
-            Templates();
-            return true;
-        } else if (input.equalsIgnoreCase("<exit>") || input.equalsIgnoreCase("<Quit>")) {
-            return false;
-        } else if (input.equalsIgnoreCase("<delete>")) {
-            if (Admin == true) {
-                file.delete();
-
-            } else {
-                System.out.println("[ATTENTION] Only Administrators can execute this command.");
-                console.readLine();
-                return true;
-            }
-        } else if (input.equalsIgnoreCase("<help>")) {
-            API.Tools.ReadFile HEV = new API.Tools.ReadFile();
-            HEV.ShowHelp("Help/Messenger.manual");
-        } else if (input.equalsIgnoreCase("") || input.equalsIgnoreCase(" "))
-            return true;
-        else if (input.equalsIgnoreCase("<Download>")) {
-            at.DInterfaceScript(SB);
-            return true;
-        } else if (input.equalsIgnoreCase("<Encrypt>")) {
-            at.Encrypt();
-            return true;
-        } else if (input.equalsIgnoreCase("<Decrypt>")) {
-            at.Decrypt();
-            return true;
-        }
-        WriteMessageLog(User, input, Loc);
-        return true;
+		
+		switch(input.toLowerCase())
+		{
+			case "<t>":
+						Templates();
+						break;
+			case "<exit>":
+						return false;
+			case "<delete>":
+						if(Admin==true)
+							file.delete();
+						else
+							System.out.println("[ SYSTEM ] : Standard users cannot delete chat.");
+						break;
+			case "<help>":
+						HEV.ShowHelp("Help/Messenger.manual");
+						break;
+			case "": break;
+			
+			default: WriteMessageLog(User, input, Loc);
+					break;
+		}
+		return true;
     }
 
 
@@ -139,10 +134,8 @@ public class Messenger {
             "nigga",
             "nude",
             "bastard",
-            "Whore",
-            "Jizz",
-            "Faggot",
-            "Jerk"
+            "whore",
+            "faggot",
         };
         for (int i = 0; i < Censor.length; i++) {
             Message = Message.replaceAll("(?i)" + Censor[i] + "(?i)", "****");
@@ -165,7 +158,7 @@ public class Messenger {
             "Legends needn't respond to this shit.",
             "Ohh wait...  Yet another lamer with a lame joke.",
             "Hmmm. I'm surrounded by fools for the fools themselves have made a fool out of them yet again.",
-            "Cow Goes Mooooooooo, Cats go Meow!"
+            "Cows Go Mooooooooo, Cats go Meow!"
         };
         System.out.println("Built-in Templates: ");
         for (int i = 0; i < Macros.length; i++) {

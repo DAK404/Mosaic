@@ -44,7 +44,7 @@
   _______________________________________________________
   
   
-* Updated version to 1.8.3
+* Updated version to Test 1.8.3
 * Fixed bug where editor program crashed when the filename
 was blank when writing to file.
 * Added an ErrorHandler program to handle exceptions and
@@ -88,6 +88,47 @@ ISSUES:
 
 ***
 
+-----------------------------------------------------------
+
+                September-2020 Changelog
+
+  _______________________________________________________
+
+               17-Sept-2020 0614 +0530 GMT
+  _______________________________________________________
+  
+  
+* Updated to version Alpha 0.8
+* Updated help modules with better content
+* Added SHA3-256 Hashing algorithm
+* Fixed critical issues regarding user nomenclature
+* Refactored Boot module code 
+* Memory Optimizations
+* Refactored user database code and table structure
+* Implemented fixes regarding encryption
+* Security improvements, using the SHA3-256 hashing
+* Reverted the CLI aesthetics to v2019-0.5.2
+* Fixed a few MOTDs
+* Improved security by making core classes as final
+* Refactored the Updater
+* Minor improvements regarding Policy Enforcement
+* Added clearer password rules, during user creation
+* Added lock console functionality
+* Added FileManager for user file management
+* Removed Program Documentation [will be reworked]
+* Initial addition of Developer Documentation
+* Removed the `Run_Program_WSL.bat`
+* Improved Error Handling
+* Experimental fix to RestartProgram
+* Improved Setup experience
+* Minor improvements to encryption/decryption modules
+* Improved performance and program stability
+* Improved User Experience for all modules
+* Added debug info code for testing (deactivated)
+* Added more data to be displayed in Information.java
+
+***
+  
 -----------------------------------------------------------
                    
                 ---End Of File---

@@ -14,7 +14,7 @@
  *****************************************************
  */
 
-package API.Update;
+package API.Tools.Update;
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -24,7 +24,7 @@ import java.util.List;
 import java.util.zip.ZipEntry;
 import java.util.zip.ZipInputStream;
 
-class InstallUpdate {
+final class InstallUpdate {
     List < String > fileList;
     private String curDir = System.getProperty("user.dir");
     private final String INPUT_ZIP_FILE = curDir + "/Update.zip";

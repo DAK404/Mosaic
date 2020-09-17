@@ -1,1 +1,1 @@
-packageSearchIndex = [{"l":"All Packages","url":"allpackages-index.html"},{"l":"API"},{"l":"API.Anima"},{"l":"API.Download"},{"l":"API.Editor"},{"l":"API.Update"},{"l":"Core"}]
+packageSearchIndex = [{"l":"All Packages","url":"allpackages-index.html"},{"l":"API"},{"l":"API.Anima"},{"l":"API.Download"},{"l":"API.Tools"},{"l":"API.Tools.FileManager"},{"l":"API.Update"},{"l":"Core"}]
