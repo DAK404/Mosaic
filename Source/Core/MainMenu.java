@@ -7,18 +7,21 @@
  *                                                   *
  *            THIS CODE IS RELEASE READY.            *
  *                                                   *
- *       THIS CODE HAS BEEN TESTED HEAVILY AND       *
- *       CONSIDERED STABLE. THIS MODULE HAS NO       *
- *       KNOWN ISSUES. CONSIDERED RELEASE READY      *
+ *      THIS CODE HAS BEEN TESTED, REVIEWED AND      *
+ *      REVISED. THIS CODE HAS NO KNOWN ISSUES,      *
+ *      HENCE IT IS CONSIDERED AS RELEASE READY      *
  *                                                   *
  *****************************************************
  */
 
 package Core;
 
+//import java libraries
 import java.io.*;
 import java.util.*;
 import java.text.*;
+
+//import Mosaic libraries and APIs
 import Core.*;
 import API.*;
 import API.Tools.*;
@@ -26,19 +29,20 @@ import API.Tools.FileManager.*;
 import API.Tools.Update.*;
 import API.Anima.*;
 
-/**
- * Program to provide an interface for displaying the Main Menu
- *
- * <br>
- * @author Deepak Anil Kumar (DAK404)
- * @version 1.0.0
- * @since 06-May-2020
- * <p>
- * *** Technical Details ***<br>
- * - Module Name       : Mosaic: CM_03<BR>
- * - Module Version    : 1.0.0<BR>
- * - Module Author     : Deepak Anil Kumar (DAK404), Bebhin Mathew<BR></p>
- */
+/** 
+* A class which handles modules and user inputs after login.
+* <BR>
+* <pre>
+* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+* |            TECHNICAL DETAILS            |
+* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+* | Class ID    :  B02-Mosaic-MainMenu-CORE |
+* | Class Name  :  MainMenu                 |
+* | Since       :  0.0.1, 17-August-2013    |
+* | Updated on  :  0.7.3, 29-September-2020 |
+* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+* </pre>
+*/
 public final class MainMenu {
 	private boolean SB = false;
 	private boolean Admin = false;
@@ -49,20 +53,25 @@ public final class MainMenu {
 	private String PIN_Value="";
 	private File usrDir = null;
 	
-	//Initialize the streams
-	Console console = System.console();
+	//Invoke the required libraries and classes required by the program
 	API.Information ShowInfo = new API.Information();
 	API.Tools.ReadFile ViewHelp = new API.Tools.ReadFile();
 	API.ErrorHandler eh=new API.ErrorHandler();
 	API.RestartProgram restart = new API.RestartProgram();
 	API.Tools.Update.UpdateInterface update = new API.Tools.Update.UpdateInterface();
 	API.SHA256 sha=new API.SHA256();
+	
+	//Initialize the stream for accepting inputs from the user.
+	Console console = System.console();
+	
 	/**
-     * This constructor is used to intialize the SecureBoot Variable.
+     * Constructor to initialize MainMenu data
      *
-     * @param SecureBoot    : Used to transfer the SecureBoot status to the program
-     * @param Username      : Used to receive the username from Login
-	 * @param Administrator : Used to get the Administrator status value of the current user
+     * @param SecureBoot    : Used to initialize the SecureBoot variable
+	 * @param name          : Used to receive the name of the user
+     * @param Username      : Used to receive the username of the user
+	 * @param Administrator : Used to receive the Administrator status of the user
+	 * @param Pin           : Used to receive the Unlock PIN for the logged in user
      */
 	protected MainMenu(boolean SecureBoot, String name ,String Username, boolean Administrator, String Pin) {
 		if (SecureBoot == false) {
@@ -87,32 +96,38 @@ public final class MainMenu {
 	}
 
 	/**
-     * A script which executes the menu script for entering the required module to load
+     * A script which is run once, to deal with functionalities and sub-modules
      *
-     * @throws Exception Used to catch general exceptions and error states in program
+     * @throws Exception  : Throws any exception caught during runtime/execution
      */
 	protected void MenuScript() throws Exception {
-		choices();
-		System.exit(0);
-
+		try
+		{
+			choices();
+			System.exit(0);
+		}
+		catch(Exception E)
+		{
+			E.printStackTrace();
+		}
 	}
 
+	/**
+     * Method which loads and runs the sub-modules and functionalities
+     *
+     * @throws Exception  : Throws any exception caught during runtime/execution
+     */
 	private void choices() throws Exception {
-		try {			
-			//API.Download.DownloadInterface at = new API.Download.DownloadInterface(User);
-			API.Tools.ReadFile rf = new API.Tools.ReadFile();
+		try 
+		{
 			API.Tools.FileManager.FileManager fm=new API.Tools.FileManager.FileManager(SB, User ,Name);
-			API.Anima.AddUser adU = new API.Anima.AddUser(Admin);
-			API.Anima.ChangePassword cp = new API.Anima.ChangePassword(User, Name, SB);
-
-			Core.SettingsInterface ae = new Core.SettingsInterface(SB, Admin);
-			Messenger oj = new Messenger(SB, Name, Admin);
-
+			API.Anima.AddUser adU = new API.Anima.AddUser(User, Name, Admin);
+			API.Anima.UpdateCredentials cp = new API.Anima.UpdateCredentials(User, Name, SB);
 			
-			if(usrDir.exists()==false)
-				setupFolders();
 			
 			while (true) {
+				if(usrDir.exists()==false)
+					setupFolders();
 				System.gc();
 				ShowInfo.AboutProgram();
 				System.out.println("Welcome Back, " + Name + "!");
@@ -122,15 +137,6 @@ public final class MainMenu {
 					//Update program
 				case "update":
 					update.updateInterface();
-					break;
-
-					//Chat program
-				case "chat":
-					if (User.contains(sha.encodedString("Administrator"))) {
-						console.readLine("\n[ATTENTION]: Administrator cannot access chat module, please login as standard user and try again.\nPress Enter to continue.");
-					} else {
-						oj.MsgScript();
-					}
 					break;
 
 					//Create User (Anima) program
@@ -164,7 +170,7 @@ public final class MainMenu {
 					break;
 
 					//change the password
-				case "change password":
+				case "update info":
 					cp.ChangePasswordRoutine();
 					break;
 					
@@ -181,6 +187,7 @@ public final class MainMenu {
 
 					//Settings program
 				case "settings":
+					Core.SettingsInterface ae = new Core.SettingsInterface(SB, Admin);
 					if (Admin == false)
 						console.readLine("[ATTENTION] Standard user accounts cannot change settings. Contact the administrators for further information.");
 					else 
@@ -196,6 +203,7 @@ public final class MainMenu {
 				case "":
 					break;
 
+					//Exit the program
 				case "exit":
 					return;
 					
@@ -206,11 +214,15 @@ public final class MainMenu {
 				}
 			}
 		} catch(Exception E) {
-			eh.displayError(E);
+			eh.handleError(E);
 		}
 	}
 	
-	
+	/**
+	* Method which provides the Lock console functionality.
+	*
+	* @throws Exception  : Throws any exception caught during runtime/execution
+	*/
 	private void consoleLock()throws Exception
 	{
 		byte count=5;
@@ -247,14 +259,26 @@ public final class MainMenu {
 		return;
 	}
 	
-	private void setupFolders()
+	/**
+	* Method which is run when the user folders are not found or has not been setup
+	*
+	* @throws Exception  : Throws any exception caught during runtime/execution
+	*/
+	private void setupFolders()throws Exception
 	{
-		byte i = 0;
-		String [] FileList = { User, User+"/Documents", User+"/Downloads", User+"/Miscellaneous" };
-		for(i = 0; i < FileList.length; i++)
+		try
 		{
-			usrDir = new File("./Users/"+FileList[i]+"/");
-			usrDir.mkdir();
+			byte i = 0;
+			String [] FileList = { User, User+"/Documents", User+"/Downloads", User+"/Miscellaneous" };
+			for(i = 0; i < FileList.length; ++i)
+			{
+				usrDir = new File("./Users/"+FileList[i]+"/");
+				usrDir.mkdir();
+			}
+		}
+		catch(Exception E)
+		{
+			E.printStackTrace();
 		}
 	}
 }

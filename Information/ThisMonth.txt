@@ -4,44 +4,94 @@
 
 -----------------------------------------------------------
 
-                September-2020 Changelog
+                  October-2020 Changelog
 
   _______________________________________________________
 
-               17-Sept-2020 0614 +0530 GMT
+                02-Oct-2020 0050 +0530 GMT
   _______________________________________________________
   
   
-* Updated to version Alpha 0.8
-* Updated help modules with better content
-* Added SHA3-256 Hashing algorithm
-* Fixed critical issues regarding user nomenclature
-* Refactored Boot module code 
-* Memory Optimizations
-* Refactored user database code and table structure
-* Implemented fixes regarding encryption
-* Security improvements, using the SHA3-256 hashing
-* Reverted the CLI aesthetics to v2019-0.5.2
-* Fixed a few MOTDs
-* Improved security by making core classes as final
-* Refactored the Updater
-* Minor improvements regarding Policy Enforcement
-* Added clearer password rules, during user creation
-* Added lock console functionality
-* Added FileManager for user file management
-* Removed Program Documentation [will be reworked]
-* Initial addition of Developer Documentation
-* Removed the `Run_Program_WSL.bat`
-* Improved Error Handling
-* Experimental fix to RestartProgram
-* Improved Setup experience
-* Minor improvements to encryption/decryption modules
-* Improved performance and program stability
-* Improved User Experience for all modules
-* Added debug info code for testing (deactivated)
-* Added more data to be displayed in Information.java
+  * Initial update to the documentation
+  * Updated build version to 0.8.3
+  * Refactored and improved Add User code 
+  * Re-implemented and updated Change password program
+    to UpdateCredentials
+  * Reworked guest user interface in Boot program
+  * Changed input lock out period to 15 minutes in Boot
+    program
+  * Minor code improvements to Main Menu and Messenger
+  
+  NOTE : WORK STILL UNDER PROGRESS. DO NOT COMMIT.
 
-***
+  ***
+  _______________________________________________________
+
+                18-Oct-2020 0504 +0530 GMT
+  _______________________________________________________
+  
+  
+  [ ADDED ]  
+  
+  * Added program and developer documentation
+  * Added a debugger to debug the program
+  * Added Debug Builds and Release builds scripts
+  * Added ASCII ART format for program info.
+  * Added tree view in file manager
+  * Added copy/move function in file manager.
+  
+  [ IMPROVEMENTS ]
+  
+  * Improved UpdateCredentials program
+  * Improved program scripts
+  * Improved the ErrorHandler program
+  * Improved policy enforcement efficiency.
+  * Improved the Time of Day detection logic.
+  * Improved setup code significantly
+  * Improved the help manuals
+  * Improved LoginAPI, AddUser and UpdateCredentials.
+  * Improved memory usage by removing unwanted classes.
+    in MainMenu program.
+	
+  [ REMOVED ]
+  
+  * Removed Messenger program.
+  * Remove ChangePassword program.
+  * Removed Add user command from guest user interface.
+  * Fixed bug where Reset didn't work until the program
+    was restarted.
+  
+  [ FIXED ]
+  
+  * Fixed documentation format to latest specification.
+  * Fixed memory leak issues.
+  * Fix bug where user files are re-created if deleted.
+  
+  [ CHANGED ]
+  
+  * Changed database table name from FSAD to FCAD
+    (Fractal Credential Account Database)
+  
+  NOTE : THIS IS THE LAST MAJOR UPDATE FOR MOSAIC. FUTURE
+  SUPPORT WILL BE LIMITED TO SECURITY, PERFORMANCE AND BUG
+  FIXES, IMPROVEMENTS AND PATCHES. DEVELOPER DOCUMENTATION
+     WILL BE RELEASED IN A FUTURE UPDATE. STAY TUNED.
+  
+  
+  
+ *********************************************************
+ *                   ! IMPORTANT !                       *
+ *********************************************************
+ *	                                                     *
+ * MOSAIC 0.8.7 WILL BE THE LAST UPDATE FOR THIS PROJECT *
+ *  2 UPDATES ARE SCHEDULED RIGHT AFTER UPDATE 0.8.7 IS  *
+ *  ROLLED OUT. ON FEBRUARY 2022, MOSAIC WILL REACH END  * 
+ *  OF LIFE (EOL) STAGE. NEW FEATURES AND CONCEPTS WILL  *
+ *    NOT BE INCORPORATED, IMPLEMENTED AND DEVELOPED.    *
+ *	                                                     *
+ *********************************************************
+    
+  ***
   
 -----------------------------------------------------------
                    

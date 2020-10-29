@@ -1,4 +1,4 @@
-Mosaic User Reference Documentation 1.5
+Mosaic User Reference Documentation 1.6
 
 ~~~~~~~~~~~~~~~~
 Main Menu Manual
@@ -38,7 +38,7 @@ EULA            - Views the License of the program.
 Changelog       - Views the Changelog of the program.
 Help            - Views the helpfile for the Main Menu program.
 
-Change Password - Helps the user to change the current user's password
+Update Info     - Helps user to change credential information
 Chat            - Opens the messenger to chat over LAN
 Create user     - Create a new standard user
 File Manager    - Opens Mosaic File Manager, inside the user's folder.

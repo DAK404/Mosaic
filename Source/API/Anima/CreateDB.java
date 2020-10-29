@@ -7,49 +7,54 @@
  *                                                   *
  *            THIS CODE IS RELEASE READY.            *
  *                                                   *
- *       THIS CODE HAS BEEN TESTED HEAVILY AND       *
- *       CONSIDERED STABLE. THIS MODULE HAS NO       *
- *       KNOWN ISSUES. CONSIDERED RELEASE READY      *
+ *      THIS CODE HAS BEEN TESTED, REVIEWED AND      *
+ *      REVISED. THIS CODE HAS NO KNOWN ISSUES,      *
+ *      HENCE IT IS CONSIDERED AS RELEASE READY      *
  *                                                   *
  *****************************************************
  */
+ 
 
 package API.Anima;
 
+//import java libraries
 import java.sql.*;
 
-/**
- * An API for the program to Initialize a user database
- *
- * <br>
- * @author Deepak Anil Kumar (DAK404)
- * @version 1.0.0
- * @since 06-May-2020
- * <p>
- * *** Technical Details ***<br>
- * - Module Name       : Mosaic: API_01_S01<BR>
- * - Module Version    : 1.0.0<BR>
- * - Module Author     : Deepak Anil Kumar (DAK404)<BR></p>
- */
+/** 
+* A class to initialize the database file
+* <BR>
+* <pre>
+* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+* |            TECHNICAL DETAILS            |
+* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+* | Class ID    :  AA2-Mosaic-CrDB-API      |
+* | Class Name  :  CreateDB                 |
+* | Since       :  0.0.1, 16-December-2019  |
+* | Updated on  :  0.4.6, 04-October-2020   |
+* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+* </pre>
+*/
 public final class CreateDB {
 	
 	/**
-     * This constructor has little use in this program.
-     *
-     * This constructor is a stub. It doesnt have any usable part of the program.
+     * This constructor is a stub
      */
 	public CreateDB() {}
 	
 	/**
-	* This method will run the actual steps to create the database
+	* Public method which is an API, executes the method required to create the database
 	*
-	* The database will be created and then be initialized.	
-	* @throws Exception Used to catch general exceptions and error states in program
+	* @throws Exception :  Throws any exception caught during runtime/execution
 	*/
     public void CreateDB() throws Exception {
         connect();
     }
 
+	/**
+	* Implementation of the API to to create and initialize a blank and new database
+	*
+	* @throws Exception :  Throws any exception caught during runtime/execution
+	*/
     private void connect() throws Exception {
         Connection conn = null;
         try {
@@ -59,8 +64,8 @@ public final class CreateDB {
             Class.forName("org.sqlite.JDBC");
             conn = DriverManager.getConnection(url);
             Statement stmt = conn.createStatement();
-            System.out.println("SYSTEM> Database created successfully. Initializing...");
-            String sql = "CREATE TABLE IF NOT EXISTS FSAD (\n" +
+            System.out.println("[ SYSTEM ] > Database created successfully. Initializing...");
+            String sql = "CREATE TABLE IF NOT EXISTS FCAD (\n" +
                 "    UserID integer PRIMARY KEY,\n" +
 				"    Name text NOT NULL,\n" +
                 "    Username text UNIQUE,\n" +
@@ -70,9 +75,9 @@ public final class CreateDB {
 				"    Administrator text NOT NULL);";
 				
             stmt.execute(sql);
-            System.out.println("SYSTEM> Database Initialization Successful. Press Enter to Continue.");
-        } catch (SQLException e) {
-            System.out.println(e.getMessage());
+            System.out.println("[ SYSTEM ] > Database Initialization Successful. Press Enter to Continue.");
+        } catch (Exception E) {
+            E.printStackTrace();
         } finally {
             try {
                 if (conn != null) {

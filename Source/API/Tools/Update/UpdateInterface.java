@@ -7,13 +7,13 @@
  *                                                   *
  *            THIS CODE IS RELEASE READY.            *
  *                                                   *
- *       THIS CODE HAS BEEN TESTED HEAVILY AND       *
- *       CONSIDERED STABLE. THIS MODULE HAS NO       *
- *       KNOWN ISSUES. CONSIDERED RELEASE READY      *
+ *      THIS CODE HAS BEEN TESTED, REVIEWED AND      *
+ *      REVISED. THIS CODE HAS NO KNOWN ISSUES,      *
+ *      HENCE IT IS CONSIDERED AS RELEASE READY      *
  *                                                   *
  *****************************************************
  */
-
+ 
 package API.Tools.Update;
 
 import java.io.*;
@@ -21,18 +21,19 @@ import java.util.*;
 import API.*;
 
 /**
- * Program to help the user to download latest version of the program
- *
- * <br>
- * @author Deepak Anil Kumar (DAK404)
- * @version 1.0.0
- * @since 06-May-2020
- * <p>
- * *** Technical Details ***<br>
- * - Module Name       : Mosaic: API_S03<BR>
- * - Module Version    : 1.0.0<BR>
- * - Module Author     : Deepak Anil Kumar (DAK404), Bebhin Mathew<BR></p>
- */
+* A class which is a front end to update the program.
+* <BR>
+* <pre>
+* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+* |            TECHNICAL DETAILS            |
+* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+* | Class ID    :  BB3-Mosaic-Updater-Update|
+* | Class Name  :  UpdateInterface          |
+* | Since       :  0.0.1, 06-February-2020  |
+* | Updated on  :  0.2.6, 29-September-2020 |
+* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+* </pre>
+*/
 public final class UpdateInterface {
 	private boolean SB=false;
 	
@@ -41,9 +42,7 @@ public final class UpdateInterface {
     Console console = System.console();
 
     /**
-     * This constructor gets the SecureBoot value initialized
-     *
-     * @param SecureBoot Initializes the SecureBoot variable value
+     * This constructor is a stub.
      */
     public UpdateInterface() 
 	{

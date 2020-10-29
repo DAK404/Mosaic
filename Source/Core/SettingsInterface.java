@@ -1,21 +1,51 @@
+/*
+ *****************************************************
+ *                                                   *
+ * ! IMPORTANT ! DO NOT DELETE COMMENT ! IMPORTANT ! *
+ *                                                   *
+ *****************************************************
+ *                                                   *
+ *            THIS CODE IS RELEASE READY.            *
+ *                                                   *
+ *      THIS CODE HAS BEEN TESTED, REVIEWED AND      *
+ *      REVISED. THIS CODE HAS NO KNOWN ISSUES,      *
+ *      HENCE IT IS CONSIDERED AS RELEASE READY      *
+ *                                                   *
+ *****************************************************
+ */
+
 package Core;
 
 import java.io.*;
 import java.util.*;
 import API.Information;
 
+
+/** 
+* A class serving as a front end to administrate policies and configure it.
+* <BR>
+* <pre>
+* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+* |            TECHNICAL DETAILS            |
+* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+* | Class ID    :  B05-Mosaic-policyEn-CORE |
+* | Class Name  :  SettingsInterface        |
+* | Since       :  0.0.1, 13-July-2020      |
+* | Updated on  :  0.1.4, 29-September-2020 |
+* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+* </pre>
+*/
 public final class SettingsInterface
 {
-	private String FileName="./System/Private/Settings/Settings.burn";
+	private final String FileName="./System/Private/Settings/Settings.burn";
 	private String pName="";
 	private String pValue="";
 	private boolean SB=false;
 	private boolean Admin=false;
+	private File file=null;
 	
-	Properties props = new Properties();
+	Properties props = null;
 	Console console=System.console();
-	
-	resetSettings re=new resetSettings();
 	
 	API.Tools.ReadFile ViewHelp = new API.Tools.ReadFile();
 	API.Information view=new API.Information();
@@ -36,29 +66,24 @@ public final class SettingsInterface
 	{
 		try
 		{
-			System.gc();
 			//assert if admin is true
 			if(Admin==false)
 			{
 				System.out.println("Only Administrators can access the settings interface. Press enter to return to main menu.");
 				return;
 			}
-			
-			String Choice="";
-			
-			//Asserts are run only once
-			File file=new File(FileName);
-			if(file.exists()==false)
+
+			while(true)
 			{
-				re.reset();
-			}
-			
-			do
-			{
+				//File is loaded every iteration
+				file=new File(FileName);
+				if(file.exists()==false)
+				{
+					resetInterface();
+				}
+				props=new Properties();
 				DisplaySettings();
-				System.out.print("\nEnter command to manage policies/settings\n[ Modify | Reset | Help | Exit ]\n>> ");
-				Choice=console.readLine().toLowerCase();
-				switch(Choice)
+				switch(console.readLine("\nWhat do you want to do?\n\n[ Modify | Reset | Help | Exit ]\n>> ").toLowerCase())
 				{
 					case "modify":  
 									Modify();
@@ -66,33 +91,64 @@ public final class SettingsInterface
 									
 					case "reset":	
 									resetInterface();
-									return;
+									console.readLine("Press enter to return to Main Menu.");
+									break;
 									
 					case "help":
 									ViewHelp.ShowHelp("Help/PolicyEnforcement.manual");
 									break;
 									
 					case "":
-					case "exit":
 									break;
+					case "exit":
+									return;
 									
 					default:
-									console.readLine("Unrecognized command: "+Choice+"\nPlease enter a valid command or module name.");
+									console.readLine("Unrecognized command.\nPlease enter a valid option.");
 									break;
 				}
 			}
-			while(!Choice.equals("exit"));
-			return;
 		}
 		catch(Exception E)
 		{
 			E.printStackTrace();
+			console.readLine();
 		}
 	}
 	
 	protected void resetInterface()throws Exception
 	{
-		re.reset();
+		try
+		{
+			props=new Properties();
+			FileOutputStream o = new FileOutputStream(FileName);
+			file=new File(FileName);
+			if(file.exists()==true)
+				file.delete();
+			
+			String [] Settings = 
+			{
+				"update",
+				"download",
+				"editor",
+				"chat",
+				"filemanager",
+				"no_debug"
+			};
+			for(int i=0; i<Settings.length;++i)
+			{
+				props.setProperty(Settings[i], "on");
+			}
+			props.storeToXML(o, "GlobalSettings");
+			o.close();
+			System.out.println("[ SYSTEM ] > Default Program Settings Saved Successfully!");
+			return;
+		}
+		catch(Exception E)
+		{
+			System.out.println("Error resetting policy file.");
+			E.printStackTrace();
+		}
 	}
 	
 	private void Modify()
@@ -103,13 +159,14 @@ public final class SettingsInterface
 			do
 			{
 				DisplaySettings();
-				pName=console.readLine("Enter the Name of the Policy/Setting:\n>> ").toLowerCase();
-				pValue=console.readLine("Enter the Value of the Policy/Setting:\n>> ").toLowerCase();
-				
+				System.out.println("Which Policy do you want to modify?\n[ TIP : TO ADD A NEW POLICY, JUST TYPE IN THE NEW POLICY NAME AND VALUE! ]");
+				pName=console.readLine("Policy Name:\n>> ").toLowerCase();
+				pValue=console.readLine("Policy Value:\n>> ").toLowerCase();
+				System.out.println("\nWriting policy to file. DO NOT TURN OFF THE SYSTEM!\n");
 				//logic to save the file
 				savePolicy();
 			}
-			while(console.readLine("Do you want to change another Policy/Setting?[ Y | N ]\n>> ").equalsIgnoreCase("Y"));
+			while(console.readLine("Do you want to modify another policy? [ Y | N ]\n>> ").equalsIgnoreCase("Y"));
 			return;
 		}
 		catch(Exception E)
@@ -121,69 +178,37 @@ public final class SettingsInterface
 	private void DisplaySettings()throws Exception
 	{
 		view.AboutProgram();
-		System.out.println("\nCurrent Configuration file: "+FileName+"\n");
+		System.gc();
+		System.out.println("          Mosaic Policy Editor 1.3\n");
+		System.out.println("--------------------------------------------");
+		System.out.println("      - Current Policy Configuration -      ");
+		System.out.println("--------------------------------------------");
+		System.out.println("\nPolicy File  : "+FileName);
+		System.out.println("Policy Format: XML\n");
 		FileInputStream configStream = new FileInputStream(FileName);
-		props.load(configStream);
+		props.loadFromXML(configStream);
 		configStream.close();
 		props.list(System.out);
+		System.out.println("\n--------------------------------------------\n");
 		return;
 	}
 	
 	private void savePolicy()throws Exception
 	{
 		try
-		{
-			System.out.println("Saving the settings...\nDO NOT TURN OFF OR RESET THE SYSTEM.\n");
+		{		
 			props.setProperty(pName, pValue);
 			FileOutputStream output = new FileOutputStream(FileName);
-			props.store(output, "GlobalSettings");
+			props.storeToXML(output, "GlobalSettings");
 			output.close();
-			System.out.println("Settings Saved Successfully.");
+			System.out.println("Policy "+pName+" was saved successfully.");
 			return;
 		}
 		catch(Exception E)
 		{
 			E.printStackTrace();
-			console.readLine("ERROR: Settings could not be saved.");
+			console.readLine("[ ERROR ] : Policy could not be saved.");
 			return;
-		}
-	}
-}
-
-
-class resetSettings
-{
-	API.RestartProgram rp = new API.RestartProgram();
-	protected void reset()throws Exception
-	{
-		System.gc();
-		Console console=System.console();
-		String FileName="./System/Private/Settings/Settings.burn";
-		Properties r=new Properties();
-		File file=new File(FileName);
-		FileOutputStream resetSettings = new FileOutputStream(file);
-		try
-		{
-			System.out.println("Writing default values to file...");
-			resetSettings.flush();
-			String [] Settings = 
-			{
-				"update",
-				"download",
-				"editor",
-				"chat",
-				"filemanager"
-			};
-
-			for(int i=0; i<Settings.length;i++)
-				r.setProperty(Settings[i], "on");
-			r.store(resetSettings, "GlobalSettings");
-			resetSettings.close();
-			console.readLine("Default Settings saved! Press enter to continue.");
-		}
-		catch(Exception E)
-		{
-			E.printStackTrace();
 		}
 	}
 }

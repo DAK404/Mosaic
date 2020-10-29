@@ -1,27 +1,27 @@
 Nion Documentation 1.0
 
-~~~~~~~~~~~~~~~~~~~~~~~~~
-|  MOSAIC DOCUMENTATION |
-~~~~~~~~~~~~~~~~~~~~~~~~~
-
-A Documentation for the program by the developers to
-enhance the comprehension and guidance for people who
-want to develop, build, add and improve to the current
-code.
-
-TIME TO READ: Approximately 10 minutes.
-
+               ~~~~~~~~~~~~~~~~~~~~~~~~~
+               |  MOSAIC DOCUMENTATION |
+               ~~~~~~~~~~~~~~~~~~~~~~~~~               
 --------------------------------------------------------
 
-~~~~~~~~~~~~~~~~~~~
- Table of Contents
-~~~~~~~~~~~~~~~~~~~
 
-1. Introduction
-2. About the Program
-3. History
-4. Approach
-5. Getting Started
+A documentation by the developers to give an insight 
+about the program to people who want to contribute 
+to the program code, implementation and optimization.
+
+TIME TO READ: Approximately 25 minutes.
+--------------------------------------------------------
+
+               ~~~~~~~~~~~~~~~~~~~~~~~~~
+                   Table of Contents
+               ~~~~~~~~~~~~~~~~~~~~~~~~~
+
+                  1. Introduction
+                  2. About the Program
+                  3. History
+                  4. Approach
+                  5. Getting Started
 
 --------------------------------------------------------
 
@@ -243,7 +243,8 @@ New features such as multiple Administrators, Policy enforcement,
 dedicated encryption and decryption service, changing password of
 currently logged in user and adding more users as Administrator or
 standard user. This project unified both Linux and Windows build
-to a single build.
+to a single build. Now includes a reworked implementation for a 
+file manager and more features!
 
 Contributors              : DAK
 Testing and Documentation : Bebhin Mathew, Siddharth (@Sidd_Dino)
@@ -255,4 +256,63 @@ Nion: "Lamashtu" [Future, Classified]
 
 [REDACTED]
 
+No details available for the public now.
+
 ***
+
+--------------------------------------------------------
+
+________________
+
+    APPROACH
+________________
+
+
+This project has a focus on security, modularity and
+flexibility.
+
+The project was written in Java since it was easy to
+implement, incorporate, improve, rework, debug and
+expand on the current code. The wide support and variety
+of tools supported helped a lot in implementing features 
+and core functionalities.
+
+Java is platform independent, so it was easier to use 
+the same build on multiple platforms. Experiments with
+the code were slow back then. More work has been put 
+into to make sure that the code testing becomes easy 
+and can be easily tested with almost no amount of 
+efforts.
+
+Easier approaches have been implemented with each 
+iteration which makes the program easier to use and work
+with. Future updates and improvements will have more of a 
+human touch for the program, which will make it a fun to
+use and work with.
+
+This is Mosaic, a Nion project.
+
+--------------------------------------------------------
+
+_________________
+
+ GETTING STARTED
+_________________
+
+
+This program is built to be simple. This will make sure
+that performance, usability and development.
+
+So if there are plans on developing more modules or 
+features for this project, you will need to:
+
+ -> Adhere to the license
+ -> Follow design principles
+ -> Specify changes and credit the developers
+
+The project requires the knowledge for core Java, which
+will help in creating efficient modules for Mosaic.
+
+If you are planning to use this project to build a new
+project on top of Mosaic, we'd love to be involved! Do
+keep us in the loop and do not hesitate to contact us!

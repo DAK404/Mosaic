@@ -2,54 +2,90 @@
   <HEAD>
     <TITLE>Mosaic: Documentation</TITLE>
 	<style>
+	html {
+		scroll-behavior: smooth;
+	}
 	body{
 	  font: 15px/1.5 Arial, Helvetica, sans-serif;
 	  color: #ffffff;
 	  margin: auto;
-	  background-color: #000000;
+	  background-color: #222222;
+	}
+	.container{
+		max-width: 64rem;
+		margin: 0 auto;
 	}
 	</style>
   </HEAD>
-  <BODY bgcolor="black" link= white vlink="white">
-    <font style="color: white;">
+  <BODY link= white vlink="white">
+  
     <hr color="grey" noshade>
+	<div class="container">
 	<center>
-    <H1>Mosaic: A Nion Project</h1>
+    <H1 style="color: #ff0000">Mosaic: A Nion Project</h1>
 	</center>
+	</div>
     <hr color="grey" noshade>
-    <marquee>| NEW! SUPPORTS BOTH WINDOWS AND LINUX OS! | Code is nearing to beta release. | Reworked code for restarting the program | Implemented ChangePassword feature to change the password of a given user. |</marquee>
+    <marquee>| ATTENTION: IT IS RECOMMENDED TO REINSTALL MOSAIC FOR THE NEW UPDATE. MAJOR CHANGES REQUIRE CHANGES WHICH MIGHT CAUSE INSTABILITIES WHEN USED OVER THE OLD PROGRAM. | Unified Build is a mainstream feature! | Improved memory usage, program now uses just 2 MB of memory! | Mosaic 0.8.7 is a maintainence update, code will be available on 30-October-2020 |</marquee>
     <hr color="grey" noshade>
-    <p>Mosaic is a project which aims at a platform which is flexible, robust and secure!
+	<div class="container">
+	<h2>Introduction</h2>
+    <p>Project Mosaic: A platform which helps in management and deployment of modules written in Java.
 	<BR>This program has built in powerful tools to work with and to work on, making it a platform to host, deploy and maintain with ease!
-	<BR>Want to learn more? <a href="https://www.github.com/DAK404/Mosaic">Click here</a> to see the source code and understand the program!</p>
-	
-    <p>Program Information.</p>
+	<BR>Want to learn more? <a href="https://www.github.com/DAK404/Mosaic">Click here</a> to see the source code and understand the program!
+	<BR>Want to grab the latest release? <a href="https://www.github.com/DAK404/https://raw.githubusercontent.com/DAK404/Mosaic-Releases/master/Release.zip">Click here</a> to download the latest build!</p>
+	</div>
+	<div class="container">
+	<hr color="grey" noshade>
+    <h2>About</h2>
+	NOTE:
 	<ul>
-	<li>Inital Release Date : 25-May-2020</li>
-	<li>Latest Release Date : 26-July-2020</li>
-	<li>Last Updated : 26-July-2020 0428 +0530 GMT</li>
-	<li>Release Type : Alpha Build</li>
-	<li>Documentation: <a href="./Documentation/Program_Documentation/index.html">Available</a></li>
-	</ul>
+	<li> This is the last major update that will be provided to Mosaic. After May 2021, Mosaic will get additional 2 updates, after which it will reach End Of Life (EOL) status. The project will be continued under Project Lamatshu, with new changes to the code and implemenation based on Mosaic. Work on Project Lamatshu will start during January 2021.</li>
+	<li> This update is more of a maintainence update, where features are optimized and issues are fixed. The implemenations are much more secure and memory usage is at the lowest till date.</li>
+	<li> Minor updates will be provided in the future as needed. No new features will be provided.</li>
+	</ul><BR>
+	<table border="1px" align="center" cellpadding="10px" style="text-align:center">
+		<th colspan="2"><h2>Program Information</h2></th>
+		<tr>
+			<td>Initial Release Date</td>
+			<td>25-May-2020</td>
+		</tr>
+		<tr>
+			<td>Latest Release Date</td>
+			<td>30-October-2020</td>
+		</tr>
+		<tr>
+			<td>Last Updated</td>
+			<td>30-Oct-2020 0000 +0530 GMT</td>
+		</tr>
+		<tr>
+			<td>Release Type</td>
+			<td>Alpha</td>
+		</tr>
+		<tr>
+			<td>Program Documentation</td>
+			<td><a href="./Documentation/Program_Documentation/index.html">Available Here!</a></td>
+		</tr>
+	</table>
+	<BR><BR>
+	</div>
+	<div class="container">
+	<hr color="grey" noshade>
     <h2>Features!</h2>
 	<p>This program/toolset has many built-in features which include:</p>
     <ul>
-	  <li> NEW! Supports Windows&reg; OS, Mac&reg; OS and Linux OS!</li>
-      <li> Mosaic Kernel: A successor to the Elixir Kernel, which improves security, performance and reliability!</li>
-      <li> Anima Database API tools, created afresh from start!<BR>NOTE: Fractal File Saving System is deprecated now. It is no more supported.</li>
-      <li> "Download API" to download, encrypt, decrypt files! Secure your important files!</li>
-      <li> Upgraded Updater program, to provide a seamless update process! the user now needs to sign out and sign in to apply changes!</li>
-      <li> Text Editor: Want to write your own files? Here you go! Text Editor is your notepad in Mosaic to help in securing confidential info!</li>
-	  <li> Censoring system in chat is stable as ever!</li>
-	  <li> Updates are now streamlined to a unified build! Which means any platform can run the program!</li>
-	  <li> Added BuildScript, Run_Program (for Windows&reg; OS), Run_Program_ WSL (for Windows&reg; OS with WSL installed)</li>
-      <li> Many many more features in work! Stay Tuned to know more!</li>
+	  <li> Unified Build&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;: Run the same build on any platform/OS now! (Tested on Windows<sup>&reg;</sup>, MacOS<sup>&reg;</sup> and Linux)</li>
+      <li> Mosaic Kernel&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;: A simple, secure, modular and efficient framework. Now has APIs to support 3rd party programs!</li>
+      <li> Anima Database&nbsp;&nbsp;&nbsp;: SQLite database used to manage the database containing credentials, under the Fractal Credential and Accounts Database.</li>
+      <li> Program Updater&nbsp;&nbsp;: Helps to update the program to the latest build from the given sources. Seamless OTA update, applied right after a program restart.</li>
+      <li> Built-in Tools&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;: Read/write/modify/download/manage files.</li>
+	  <li> Built in scripts&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;: Scripts which helps to Compile, debug and document the program components with scripts!</li>
     </ul>
     <p>Here is the link to access the documentation to design your new modules, or help in improving the program!</p>
     <center>
     <a href="./Documentation/Program_Documentation/index.html">
     <h1>Mosaic Documentation</h1></a></center>
-    </font>
+	</div>
     <hr color="grey" noshade>
   </body>
 </html>

@@ -7,9 +7,9 @@
  *                                                   *
  *            THIS CODE IS RELEASE READY.            *
  *                                                   *
- *       THIS CODE HAS BEEN TESTED HEAVILY AND       *
- *       CONSIDERED STABLE. THIS MODULE HAS NO       *
- *       KNOWN ISSUES. CONSIDERED RELEASE READY      *
+ *      THIS CODE HAS BEEN TESTED, REVIEWED AND      *
+ *      REVISED. THIS CODE HAS NO KNOWN ISSUES,      *
+ *      HENCE IT IS CONSIDERED AS RELEASE READY      *
  *                                                   *
  *****************************************************
  */
@@ -21,25 +21,25 @@ import java.sql.*;
 import API.*;
 import java.io.*;
 
-/**
- * An API for the program to validate and login a given user.
- *
- * <br>
- * @author Deepak Anil Kumar (DAK404)
- * @version 1.0.0
- * @since 06-May-2020
- * <p>
- * *** Technical Details ***<br>
- * - Module Name       : Mosaic:API_01_S03<BR>
- * - Module Version    : 1.0.0<BR>
- * - Module Author     : Deepak Anil Kumar (DAK404), Bebhin Mathew<BR></p>
- */
+/** 
+* A class to return status value of a queried username, password and security key for login programs
+* <BR>
+* <pre>
+* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+* |            TECHNICAL DETAILS            |
+* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+* | Class ID    :  AA3-Mosaic-LoginAPI-API  |
+* | Class Name  :  LoginAPI                 |
+* | Since       :  0.0.1, 31-July-2017      |
+* | Updated on  :  0.11.4, 04-October-2020  |
+* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+* </pre>
+*/
 public final class LoginAPI {
     //a universal string to read the file
     Console console = System.console();
     private String curDir = System.getProperty("user.dir");
     private String User, Pass, SecKey;
-    private boolean SB;
 	
 	PreparedStatement pstmt = null;
 	ResultSet rs = null;
@@ -47,18 +47,15 @@ public final class LoginAPI {
 	
 	
     /**
-     * Used to initialize the conditions for the login verification.
-     *
-     * The program will not proceed if SecureBoot is not true.
-     * @param SecureBoot Used to validate if the program has been accessed safely via the SecureBoot chain.
+     * Constructor to initialize the values of the user details to be queried to the database.
+	 * 
      * @param Us Used to initialize and store the username to be validated.
      * @param Pa Used to initialize and store the password provided to be validated.
      * @param SK Used to initialize and store the Security Key to complement the fractal decryption.
-	 * @throws Exception Used to catch general exceptions and error states in program
+	 * @throws Exception :  Throws any exception caught during runtime/execution
      */
-    public LoginAPI(boolean SecureBoot, String Us, String Pa, String SK)throws Exception 
+    public LoginAPI(String Us, String Pa, String SK)throws Exception 
 	{
-        SB = SecureBoot;
         User = Us;
         Pass = Pa;
         SecKey = SK;
@@ -68,19 +65,35 @@ public final class LoginAPI {
     }
 	
 	/**
-     * Returns whether the credentials provided exist in the database
+     * Returns whether the credentials provided are valid and exists in the database
      *
-     * @return boolean returns the status of login
-     */
-	public boolean status(){
-		return checkDetails();
+     * @return boolean : Returns whether the user credentials are valid and they exist in the database
+     * @throws Exception :  Throws any exception caught during runtime/execution
+	 */
+	public boolean status()throws Exception
+	{
+		try
+		{
+			return checkDetails();
+		}
+		catch(Exception E)
+		{
+			E.printStackTrace();
+			return false;
+		}
 	}
 
-    private boolean checkDetails() {
+	/**
+	* Implementation of the API to query the database
+	*
+	* @throws Exception :  Throws any exception caught during runtime/execution
+	*/
+    private boolean checkDetails()throws Exception
+	{
 		Connection conn = null;
         try {
 			conn = DriverManager.getConnection(url);			
-            String sql = "SELECT Username, Password, SecurityKey FROM FSAD WHERE Username = ? AND Password = ? AND SecurityKey = ?;";
+            String sql = "SELECT Username, Password, SecurityKey FROM FCAD WHERE Username = ? AND Password = ? AND SecurityKey = ?;";
             pstmt = conn.prepareStatement(sql);
             pstmt.setString(1, User);
             pstmt.setString(2, Pass);
@@ -101,6 +114,7 @@ public final class LoginAPI {
         }
         finally{
 			try{
+				rs.close();
 				conn.close();
 			}
 			catch(Exception E){

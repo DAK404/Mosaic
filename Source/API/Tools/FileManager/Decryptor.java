@@ -1,9 +1,25 @@
+/*
+ *****************************************************
+ *                                                   *
+ * ! IMPORTANT ! DO NOT DELETE COMMENT ! IMPORTANT ! *
+ *                                                   *
+ *****************************************************
+ *                                                   *
+ *            THIS CODE IS RELEASE READY.            *
+ *                                                   *
+ *      THIS CODE HAS BEEN TESTED, REVIEWED AND      *
+ *      REVISED. THIS CODE HAS NO KNOWN ISSUES,      *
+ *      HENCE IT IS CONSIDERED AS RELEASE READY      *
+ *                                                   *
+ *****************************************************
+ */
+
 package API.Tools.FileManager;
 
+import java.io.*;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.security.spec.KeySpec;
-import java.io.*;
 import javax.crypto.Cipher;
 import javax.crypto.SecretKey;
 import javax.crypto.SecretKeyFactory;
@@ -11,6 +27,20 @@ import javax.crypto.spec.IvParameterSpec;
 import javax.crypto.spec.PBEKeySpec;
 import javax.crypto.spec.SecretKeySpec;
 
+/** 
+* A class to decrypt any encrypted document
+* <BR>
+* <pre>
+* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+* |            TECHNICAL DETAILS            |
+* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+* | Class ID    :  BA1-Mosaic-DCRPT-FMGR    |
+* | Class Name  :  Decryptor                |
+* | Since       :  0.0.1, 07-May-2017       |
+* | Updated on  :  0.6.3, 01-October-2020   |
+* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+* </pre>
+*/
 final class Decryptor {
     private String nm, Pass, pw, Key;
     private String Username = "";
@@ -19,12 +49,23 @@ final class Decryptor {
     Console console = System.console();
 	API.SHA256 sha=new API.SHA256();
 	
+	
+	/**
+	* Constructor to initialize the username and the current directory path
+	*
+	* @throws Exception :  Throws any exception caught during runtime/execution
+	*/
     protected void dcr(String U, String dir) throws Exception {
         Username = U;
 		newDir=dir;
         welcome();
     }
 
+	/**
+	* Shows the welcome screen, receiving the credentials for the file to be decrypted
+	*
+	* @throws Exception :  Throws any exception caught during runtime/execution
+	*/
     private void welcome() throws Exception {
         System.out.println("DISCLAIMER: FILE CANNOT BE RECOVERED IF THE CREDENTIALS ARE LOST.\n");
         System.out.print("Enter the name of the file to be Decrypted: ");
@@ -46,12 +87,14 @@ final class Decryptor {
         }
     }
 
+	/**
+	* Method which contains the logic to decrypt the files
+	*
+	* @throws Exception :  Throws any exception caught during runtime/execution
+	*/
     void Decr() throws Exception {
-        try {
-            /* Description:
-             * Read the salt
-             * User must transfer salt, iv and password to the recipient securely
-             */
+        try 
+		{
             FileInputStream saltFis = new FileInputStream(newDir + nm +".salt");
             byte[] salt = new byte[8];
             saltFis.read(salt);
@@ -98,6 +141,9 @@ final class Decryptor {
         }
     }
 	
+	/**
+	* Method to delete the encoded file right after the decryption
+	*/
 	private void deleteEnc()
 	{
 		//delete the encrypted files once decrypted.
@@ -107,7 +153,7 @@ final class Decryptor {
 			newDir+nm+".salt"
 		};
 		
-		for(int i=0; i<fileNames.length;i++)
+		for(int i=0; i<fileNames.length;++i)
 		{
 			File f=new File(fileNames[i]);
 			f.delete();

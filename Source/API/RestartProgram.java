@@ -19,25 +19,24 @@ package API;
 import java.io.*;
 import API.ErrorHandler;
 
-/**
- * Helps in restarting the program
- *
- * <br>
- * @author Deepak Anil Kumar (DAK404)
- * @version 1.0.0
- * @since 12-July-2020
- * <p>
- * *** Technical Details ***<br>
- * - Module Name       : Mosaic: API_04<BR>
- * - Module Version    : 1.0.0<BR>
- * - Module Author     : Deepak Anil Kumar (DAK404)<BR></p>
- */
+/** 
+* A class to restart the program (HAS KNOWN ISSUES)
+* <BR>
+* <pre>
+* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+* |            TECHNICAL DETAILS            |
+* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+* | Class ID    :  A0X-Mosaic-Restart-API   |
+* | Class Name  :  RestartProgram           |
+* | Since       :  0.0.1, 12-April-2020     |
+* | Updated on  :  0.0.8, 04-October-2020   |
+* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+* </pre>
+*/
 public final class RestartProgram
 {
 	/**
-     * This constructor has little use in this program.
-     *
-     * This constructor is a stub. It doesnt have any usable part of the program.
+     * This constructor is a stub.
      */
 	public RestartProgram() {}
 	
@@ -46,7 +45,7 @@ public final class RestartProgram
      *
      * System.getProperty() will help in retrieving the name of the OS
 	 *
-	 * @throws Exception Used to catch general exceptions and error states in program
+	 * @throws Exception :  Throws any exception caught during runtime/execution* @throws Exception Used to catch general exceptions and error states in program
      */
 	public void restart()throws Exception
 	{
@@ -70,7 +69,7 @@ public final class RestartProgram
 		}
 		catch(Exception E)
 		{
-			eh.displayError(E);
+			eh.handleError(E);
 		}
 	}
 }

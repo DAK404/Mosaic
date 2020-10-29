@@ -7,9 +7,9 @@
  *                                                   *
  *            THIS CODE IS RELEASE READY.            *
  *                                                   *
- *       THIS CODE HAS BEEN TESTED HEAVILY AND       *
- *       CONSIDERED STABLE. THIS MODULE HAS NO       *
- *       KNOWN ISSUES. CONSIDERED RELEASE READY      *
+ *      THIS CODE HAS BEEN TESTED, REVIEWED AND      *
+ *      REVISED. THIS CODE HAS NO KNOWN ISSUES,      *
+ *      HENCE IT IS CONSIDERED AS RELEASE READY      *
  *                                                   *
  *****************************************************
  */
@@ -21,19 +21,20 @@ import java.util.*;
 import java.text.*;
 import java.time.*;
 
-/**
- * Program to display build information 
- *
- * <br>
- * @author Deepak Anil Kumar (DAK404)
- * @version 1.0.0
- * @since 06-May-2020
- * <p>
- * *** Technical Details ***<br>
- * - Module Name       : Mosaic: API_01<BR>
- * - Module Version    : 1.0.0<BR>
- * - Module Author     : Deepak Anil Kumar (DAK404)<BR></p>
- */
+/** 
+* A class to display the program information across modules.
+* <BR>
+* <pre>
+* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+* |            TECHNICAL DETAILS            |
+* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+* | Class ID    :  A01-Mosaic-info-CORE     |
+* | Class Name  :  Information              |
+* | Since       :  0.0.1, 15-June-2016      |
+* | Updated on  :  0.9.8, 04-October-2020   |
+* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+* </pre>
+*/
 public final class Information 
 {
 	DateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy HH:mm:ss");
@@ -42,9 +43,7 @@ public final class Information
 	static String day;
 
 	/**
-     * This constructor has little use in this program.
-     *
-     * This constructor is a stub. It doesnt have any usable part of the program.
+     * This constructor is a stub.
      */
     public Information() {}
 
@@ -63,17 +62,31 @@ public final class Information
     public void AboutProgram() throws Exception {
         System.gc();
 		ClearScreen();
-		System.out.println("      _________________________");
-	    System.out.println("     /                        /");
-        System.out.println("    /    ---  Mosaic  ---    / ");
-		System.out.println("   /________________________/  ");
-		System.out.println("       > Prototype Build <     ");
-		System.out.println("           Build: 0.8        \n");
+		//System.out.println("+----------------------------+");
+		System.out.println("+------------------------------------+");
+		System.out.println("|   __  __ ___  ____ ___  _  _  ___  |");
+		System.out.println("|  |  \\/  | _ |[___ | __|  ||  |     |");
+		System.out.println("|  |_|\\/|_|___|____]|   | _||_ |___  |");
+		System.out.println("|                                    |");
+		System.out.println("+------------------------------------+");
+		System.out.println("|        > Prototype Build <         |");
+		System.out.println("|            Build: 0.8.7            |");
+		System.out.println("+------------------------------------+\n");
+		
+		
+		/*System.out.println("+---------------------------+");
+        System.out.println("|        -  Mosaic  -       |");
+		System.out.println("+---------------------------+");
+		System.out.println("|    > Prototype Build <    |");
+		System.out.println("|        Build: 0.8.3       |");
+		System.out.println("+---------------------------+\n");
+		*/
+		
 		Date date = new Date();
-		System.out.println(day+"'s MOTD: "+MOTD+"\n");
 		System.out.println("Good "+ timeOfDayGreeting() + "!");
 		System.out.println(dateFormat.format(date)+ ", "+ day +"\n");
-		System.out.println("              ******         \n");
+		System.out.println("MOTD: "+MOTD+"\n");
+		System.out.println("--------------------------------------\n");
 		
 		//ATTENTION! Uncomment debug() only when developing the program. It is a debug feature.
 		//debug();
@@ -89,21 +102,33 @@ public final class Information
 	 * @throws Exception Used to catch general exceptions and error states in program
 	 */
     public void ClearScreen() throws Exception {
-		if(System.getProperty("os.name").contains("Windows"))
+		try
 		{
-			//For Windows Builds use this
-			new ProcessBuilder("cmd", "/c", "cls").inheritIO().start().waitFor();
+			if(System.getProperty("os.name").contains("Windows"))
+			{
+				//For Windows Builds use this
+				new ProcessBuilder("cmd", "/c", "cls").inheritIO().start().waitFor();
+			}
+			else
+				//For Linux/Unix or Mac Builds use this
+			{
+				//System.out.print("\033[H\033[2J");
+				new ProcessBuilder("/bin/bash", "-c" ,"clear").inheritIO().start().waitFor();
+				System.out.flush();
+			}		
+			return;
 		}
-		else
-			//For Linux/Unix or Mac Builds use this
+		catch(Exception E)
 		{
-			//System.out.print("\033[H\033[2J");
-			new ProcessBuilder("/bin/bash", "-c" ,"clear").inheritIO().start().waitFor();
-			System.out.flush();
-		}		
-		return;
+			E.printStackTrace();
+		}
     }
 	
+	/**
+     * This method prints a greeting message based on the time of day
+	 *
+	 * @throws Exception Used to catch general exceptions and error states in program
+	 */
 	private String timeOfDayGreeting()
 	{
 		LocalDateTime LD = LocalDateTime.now();
@@ -113,7 +138,7 @@ public final class Information
 		{
 			Greeting="Morning";
 		}
-		else if(hr > 12 & hr <= 16)
+		else if(hr >= 12 & hr < 16)
 		{
 			Greeting="Afternoon";
 		}
@@ -124,6 +149,11 @@ public final class Information
 		return Greeting;
 	}
 	
+	/**
+     * This method prints a message of the day.
+	 *
+	 * @throws Exception Used to catch general exceptions and error states in program
+	 */
 	private static String MOTD()
 	{
 		LocalDateTime LD = LocalDateTime.now();
@@ -227,6 +257,13 @@ public final class Information
 		return "";
 	}
 	
+	/**
+     * This method prints the debug information.
+	 *
+	 * Note: Must be enabled during development
+	 *
+	 * @throws Exception Used to catch general exceptions and error states in program
+	 */
 	private void debug()
 	{
 		int mb = 1024 * 1024; 

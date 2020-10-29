@@ -7,9 +7,9 @@
  *                                                   *
  *            THIS CODE IS RELEASE READY.            *
  *                                                   *
- *       THIS CODE HAS BEEN TESTED HEAVILY AND       *
- *       CONSIDERED STABLE. THIS MODULE HAS NO       *
- *       KNOWN ISSUES. CONSIDERED RELEASE READY      *
+ *      THIS CODE HAS BEEN TESTED, REVIEWED AND      *
+ *      REVISED. THIS CODE HAS NO KNOWN ISSUES,      *
+ *      HENCE IT IS CONSIDERED AS RELEASE READY      *
  *                                                   *
  *****************************************************
  */
@@ -19,22 +19,22 @@ package API.Tools;
 import java.io.*;
 import API.*;
 
-/**
- * Program to read files written by the user
- *
- * <br>
- * @author Deepak Anil Kumar (DAK404)
- * @version 1.0.0
- * @since 09-May-2020
- * <p>
- * *** Technical Details ***<br>
- * - Module Name       : Mosaic: API_S04<BR>
- * - Module Version    : 1.7.0<BR>
- * - Module Author     : Deepak Anil Kumar (DAK404), Bebhin Mathew<BR></p>
- */
+/** 
+* A class to read a help file or a user's file.
+* <BR>
+* <pre>
+* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+* |            TECHNICAL DETAILS            |
+* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+* | Class ID    :  B03-Mosaic-txtEdt-API    |
+* | Class Name  :  textEdit                 |
+* | Since       :  0.0.1, 26-May-2014       |
+* | Updated on  :  0.6.8, 04-October-2020   |
+* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+* </pre>
+*/
 public final class textEdit {	
     private String message = "";
-    private String User    = "";
 	private File file = null;
 	
     Console console = System.console();
@@ -43,27 +43,39 @@ public final class textEdit {
 	BufferedWriter obj = null;
 	PrintWriter pr = null;
 	
+	/**
+	* Constructor is a stub.
+	*/
     public textEdit()
 	{
 		
 	}
 	
-	
-    public void editScript(String user, String dir) throws Exception
+	/**
+	* Method to create or edit a file.
+	*
+	* @param dir : receives the directory where the file needs to be written.
+	* @throws Exception Used to catch general exceptions and error states in program.
+	*/
+    public void editScript(String dir) throws Exception
 	{
 		try
 		{
-			User=user;
 			file = new File(dir+console.readLine("Enter the name of file to be saved: "));
 			writeContent();
 			return;
 		}
 		catch(Exception E)
 		{
-			//E.printStackTrace();
+			E.printStackTrace();
 		}
 	}
 	
+	/**
+	* Method which implements the logic to write strings into a file.
+	*
+	* @throws Exception Used to catch general exceptions and error states in program
+	*/
     private void writeContent() throws Exception 
 	{
         try 

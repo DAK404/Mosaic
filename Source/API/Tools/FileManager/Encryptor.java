@@ -1,32 +1,73 @@
+/*
+ *****************************************************
+ *                                                   *
+ * ! IMPORTANT ! DO NOT DELETE COMMENT ! IMPORTANT ! *
+ *                                                   *
+ *****************************************************
+ *                                                   *
+ *            THIS CODE IS RELEASE READY.            *
+ *                                                   *
+ *      THIS CODE HAS BEEN TESTED, REVIEWED AND      *
+ *      REVISED. THIS CODE HAS NO KNOWN ISSUES,      *
+ *      HENCE IT IS CONSIDERED AS RELEASE READY      *
+ *                                                   *
+ *****************************************************
+ */
+
 package API.Tools.FileManager;
 
+import java.io.*;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.security.AlgorithmParameters;
 import java.security.SecureRandom;
 import java.security.spec.KeySpec;
-import java.io.*;
 import javax.crypto.Cipher;
 import javax.crypto.SecretKey;
 import javax.crypto.SecretKeyFactory;
 import javax.crypto.spec.IvParameterSpec;
 import javax.crypto.spec.PBEKeySpec;
 import javax.crypto.spec.SecretKeySpec;
-import API.SHA256;
 
+
+/** 
+* A class to decrypt any encrypted document
+* <BR>
+* <pre>
+* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+* |            TECHNICAL DETAILS            |
+* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+* | Class ID    :  BA2-Mosaic-ENCRPT-FMGR   |
+* | Class Name  :  Encryptor                |
+* | Since       :  0.0.1, 07-May-2017       |
+* | Updated on  :  0.6.3, 01-October-2020   |
+* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+* </pre>
+*/
 final class Encryptor {
     private String nm, Pass, pw, Key, cpw, cKey;
-    private String Username = "";
-	
+    private String Username = "";	
     private String newDir = "";
+	
     Console console = System.console();
 	API.SHA256 sha=new API.SHA256();
 	
+	/**
+	* Constructor to initialize the username and the current directory path
+	*
+	* @throws Exception :  Throws any exception caught during runtime/execution
+	*/
     protected void encr(String U, String dir) throws Exception {
         Username = U;
 		newDir=dir;
         welcome();
     }
+	
+	/**
+	* Shows the welcome screen, receiving the credentials for the file to be encrypted
+	*
+	* @throws Exception :  Throws any exception caught during runtime/execution
+	*/
     private void welcome() throws Exception {
 
         System.out.println("DISCLAIMER: FILE CANNOT BE RECOVERED IF THE CREDENTIALS ARE LOST.\n");
@@ -53,16 +94,18 @@ final class Encryptor {
             }
         }
     }
+	
+	/**
+	* Method which contains the logic to decrypt the files
+	*
+	* @throws Exception :  Throws any exception caught during runtime/execution
+	*/
     void Encr() throws Exception {
 
         //File to be encrypted
         FileInputStream inFile = new FileInputStream(newDir+nm);
         //Encrypted Output of the fractal file
         FileOutputStream outFile = new FileOutputStream(newDir + nm + ".LOCK");
-        /* Description:
-         * Password, iv and salt should be transferred to the other end securely
-         * salt is for encoding, written to file and must be transferred to the recipient securely for decryption
-         */
         byte[] salt = new byte[8];
         SecureRandom secureRandom = new SecureRandom();
         secureRandom.nextBytes(salt);

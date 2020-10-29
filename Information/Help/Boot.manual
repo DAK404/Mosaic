@@ -1,4 +1,4 @@
-Mosaic User Reference Documentation 1.5
+Mosaic User Reference Documentation 1.6
 
 ~~~~~~~~~~~~~~~~~~~
 Boot Program Manual 
@@ -24,7 +24,6 @@ Help          - Views the helpfile for the boot program
 Help Login    - Views the helpfile for the login program
 
 Login         - This will take you to the login program to login to an account
-Create User   - This will take you to sign up for a new standard user account
 Update        - This will run the updater to upgrade to latest version of program
 Restart       - This will restart the current instance of the program running
 Exit          - This will exit the program

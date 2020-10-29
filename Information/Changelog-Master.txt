@@ -128,6 +128,97 @@ ISSUES:
 * Added more data to be displayed in Information.java
 
 ***
+
+-----------------------------------------------------------
+
+                  October-2020 Changelog
+
+  _______________________________________________________
+
+                02-Oct-2020 0050 +0530 GMT
+  _______________________________________________________
+  
+  
+  * Initial update to the documentation
+  * Updated build version to 0.8.3
+  * Refactored and improved Add User code 
+  * Re-implemented and updated Change password program
+    to UpdateCredentials
+  * Reworked guest user interface in Boot program
+  * Changed input lock out period to 15 minutes in Boot
+    program
+  * Minor code improvements to Main Menu and Messenger
+  
+  NOTE : WORK STILL UNDER PROGRESS. DO NOT COMMIT.
+
+  ***
+  _______________________________________________________
+
+                18-Oct-2020 0504 +0530 GMT
+  _______________________________________________________
+  
+  
+  [ ADDED ]  
+  
+  * Added program and developer documentation
+  * Added a debugger to debug the program
+  * Added Debug Builds and Release builds scripts
+  * Added ASCII ART format for program info.
+  * Added tree view in file manager
+  * Added copy/move function in file manager.
+  
+  [ IMPROVEMENTS ]
+  
+  * Improved UpdateCredentials program
+  * Improved program scripts
+  * Improved the ErrorHandler program
+  * Improved policy enforcement efficiency.
+  * Improved the Time of Day detection logic.
+  * Improved setup code significantly
+  * Improved the help manuals
+  * Improved LoginAPI, AddUser and UpdateCredentials.
+  * Improved memory usage by removing unwanted classes.
+    in MainMenu program.
+	
+  [ REMOVED ]
+  
+  * Removed Messenger program.
+  * Remove ChangePassword program.
+  * Removed Add user command from guest user interface.
+  * Fixed bug where Reset didn't work until the program
+    was restarted.
+  
+  [ FIXED ]
+  
+  * Fixed documentation format to latest specification.
+  * Fixed memory leak issues.
+  * Fix bug where user files are re-created if deleted.
+  
+  [ CHANGED ]
+  
+  * Changed database table name from FSAD to FCAD
+    (Fractal Credential Account Database)
+  
+  NOTE : THIS IS THE LAST MAJOR UPDATE FOR MOSAIC. FUTURE
+  SUPPORT WILL BE LIMITED TO SECURITY, PERFORMANCE AND BUG
+  FIXES, IMPROVEMENTS AND PATCHES. DEVELOPER DOCUMENTATION
+     WILL BE RELEASED IN A FUTURE UPDATE. STAY TUNED.
+  
+  
+  
+ *********************************************************
+ *                   ! IMPORTANT !                       *
+ *********************************************************
+ *	                                                     *				  
+ * MOSAIC 0.8.7 WILL BE THE LAST UPDATE FOR THIS PROJECT *
+ *  2 UPDATES ARE SCHEDULED RIGHT AFTER UPDATE 0.8.7 IS  *
+ *  ROLLED OUT. ON FEBRUARY 2022, MOSAIC WILL REACH END  * 
+ *  OF LIFE (EOL) STAGE. NEW FEATURES AND CONCEPTS WILL  *
+ *    NOT BE INCORPORATED, IMPLEMENTED AND DEVELOPED.    *
+ *	                                                     *
+ *********************************************************
+    
+  ***
   
 -----------------------------------------------------------
                    

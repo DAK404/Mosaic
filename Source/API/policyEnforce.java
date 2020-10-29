@@ -7,9 +7,9 @@
  *                                                   *
  *            THIS CODE IS RELEASE READY.            *
  *                                                   *
- *       THIS CODE HAS BEEN TESTED HEAVILY AND       *
- *       CONSIDERED STABLE. THIS MODULE HAS NO       *
- *       KNOWN ISSUES. CONSIDERED RELEASE READY      *
+ *      THIS CODE HAS BEEN TESTED, REVIEWED AND      *
+ *      REVISED. THIS CODE HAS NO KNOWN ISSUES,      *
+ *      HENCE IT IS CONSIDERED AS RELEASE READY      *
  *                                                   *
  *****************************************************
  */
@@ -20,19 +20,21 @@ package API;
 import java.util.*;
 import java.io.*;
 
-/**
- * Helps Administrators to enforce policies in the program
- *
- * <br>
- * @author Deepak Anil Kumar (DAK404)
- * @version 1.0.0
- * @since 24-July-2020
- * <p>
- * *** Technical Details ***<br>
- * - Module Name       : Mosaic: API_06<BR>
- * - Module Version    : 1.0.0<BR>
- * - Module Author     : Deepak Anil Kumar (DAK404)<BR></p>
- */
+/** 
+* A class to check if a policy for a module is enabled or not.
+* <BR>
+* <pre>
+* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+* |            TECHNICAL DETAILS            |
+* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+* | Class ID    :  A02-Mosaic-diag-API      |
+* | Class Name  :  ErrorHandler             |
+* | Since       :  0.0.1, 15-July-2020      |
+* | Updated on  :  0.1.7, 04-October-2020   |
+* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+* </pre>
+*/
+
 public final class policyEnforce
 {
 	Console console=System.console();
@@ -55,22 +57,30 @@ public final class policyEnforce
      * This API is public and the program will run it only if the policy matches with the criterion
 	 * SecureBoot will be implemented later on to enforce the security of the program.
 	 *
-	 * @throws Exception Used to catch general exceptions and error states in program
-	 * @return boolean Returns the policy status set for the requested feature or module.
-     */
+	 * @return boolean   :  Returns the policy status set for the requested feature or module.
+     * @throws Exception :  Throws any exception caught during runtime/execution
+	 */
 	public boolean checkPolicy()throws Exception
 	{
-		System.gc();
-		Properties prop = new Properties();
-		String propsFileName="./System/Private/Settings/Settings.burn";
-		FileInputStream configStream = new FileInputStream(propsFileName);
-		prop.load(configStream);
-		if(prop.getProperty(PN).equalsIgnoreCase("off"))
-			console.readLine("The Administrator has disabled this feature. Contact the Administrator for more information.\nPress enter to continue.");
-		else if(prop.getProperty(PN).equalsIgnoreCase("on"))
-			stat=true;
-		
-		configStream.close();
-		return stat;
+		try
+		{
+			System.gc();
+			Properties prop = new Properties();
+			String propsFileName="./System/Private/Settings/Settings.burn";
+			FileInputStream configStream = new FileInputStream(propsFileName);
+			prop.loadFromXML(configStream);
+			if(prop.getProperty(PN).equalsIgnoreCase("off"))
+				console.readLine("The Administrator has disabled this feature. Contact the Administrator for more information.\nPress enter to continue.");
+			else if(prop.getProperty(PN).equalsIgnoreCase("on"))
+				stat=true;
+			
+			configStream.close();
+			return stat;
+		}
+		catch(Exception E)
+		{
+			console.readLine("[ ATTENTION ] : This policy or module is either not configured or has an issue with it. Contact your administrator for more info.");
+			return false;
+		}
 	}
 }

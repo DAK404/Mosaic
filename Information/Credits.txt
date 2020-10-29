@@ -1,30 +1,41 @@
-~~~~~~~~~~~
-~ Credits ~
-~~~~~~~~~~~
+               ~~~~~~~~~~~
+               ~ Credits ~
+               ~~~~~~~~~~~
 
 Here are the credits to people contributing to
 Mosaic!
 
 --------------------------------------------------
 
-- Sidd Dino
+              ~~~~~~~~~~~~~
+              - Sidd Dino -
+              ~~~~~~~~~~~~~
 
 	* Suggested the Unified Build idea
 	* Tested the Linux Build
-	
-- DAK
+
+
+                ~~~~~~~~
+                 - DAK -
+                ~~~~~~~~
 
 	* Programming
 	* Tested Windows Builds
 	* Documentation
 
-- Bebhin Mathew
+
+             ~~~~~~~~~~~~~~~~~
+             - Bebhin Mathew -
+             ~~~~~~~~~~~~~~~~~
 
 	* Module Testing and Build Testing
 	* Documentation review
 	* Module optimization
 
-- A Taggable Tanner
+
+            ~~~~~~~~~~~~~~~~~~~
+            - Taggable Tanner -
+            ~~~~~~~~~~~~~~~~~~~
 
 	* Proof-read all the documents!
 	* Grammatical corrections

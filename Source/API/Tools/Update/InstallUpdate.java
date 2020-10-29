@@ -7,9 +7,9 @@
  *                                                   *
  *            THIS CODE IS RELEASE READY.            *
  *                                                   *
- *       THIS CODE HAS BEEN TESTED HEAVILY AND       *
- *       CONSIDERED STABLE. THIS MODULE HAS NO       *
- *       KNOWN ISSUES. CONSIDERED RELEASE READY      *
+ *      THIS CODE HAS BEEN TESTED, REVIEWED AND      *
+ *      REVISED. THIS CODE HAS NO KNOWN ISSUES,      *
+ *      HENCE IT IS CONSIDERED AS RELEASE READY      *
  *                                                   *
  *****************************************************
  */
@@ -24,17 +24,41 @@ import java.util.List;
 import java.util.zip.ZipEntry;
 import java.util.zip.ZipInputStream;
 
+/**
+* Class which helps in installing the downloaded update package.
+* <BR>
+* <pre>
+* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+* |            TECHNICAL DETAILS            |
+* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+* | Class ID    :  BB3-Mosaic-InsUpd-Updater|
+* | Class Name  :  InstallUpdate            |
+* | Since       :  0.0.1, 06-February-2020  |
+* | Updated on  :  0.3.2, 28-September-2020 |
+* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+* </pre>
+*/
 final class InstallUpdate {
     List < String > fileList;
     private String curDir = System.getProperty("user.dir");
     private final String INPUT_ZIP_FILE = curDir + "/Update.zip";
     private final String OUTPUT_FOLDER = curDir;
 
+
+	/**
+	* Method which encapsulates the installation implementation.
+	*/
     protected boolean install() {
         InstallUpdate unZip = new InstallUpdate();
         return unZip.unZipIt(INPUT_ZIP_FILE, OUTPUT_FOLDER);
     }
 
+	/**
+	* The implementation for unzipping the package to copy new files in the directory hierarchy.
+	*
+	* @param zipFile       : The name of the file to be unzipped.
+	* @param outputFolder  : The directory where the update must be installed.
+	*/
     private boolean unZipIt(String zipFile, String outputFolder) {
         byte[] buffer = new byte[1024];
         try {

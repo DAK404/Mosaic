@@ -1,6 +1,6 @@
                RELEASE NOTES FOR 
                     Mosaic
-                 VERSION: 0.8
+                VERSION: 0.8.7
 
             _____________________
 
