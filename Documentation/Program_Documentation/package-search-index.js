@@ -1,1 +1,1 @@
-packageSearchIndex = [{"l":"All Packages","url":"allpackages-index.html"},{"l":"API"},{"l":"API.Anima"},{"l":"API.Tools"},{"l":"API.Tools.FileManager"},{"l":"API.Tools.Update"},{"l":"Core"}]
+packageSearchIndex = [{"l":"All Packages","u":"allpackages-index.html"},{"l":"Mosaic.API"},{"l":"Mosaic.API.Anima"},{"l":"Mosaic.API.Tools"},{"l":"Mosaic.API.Tools.FileManager"},{"l":"Mosaic.API.Tools.Update"},{"l":"Mosaic.Core"}];updateSearchResults();

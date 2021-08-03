@@ -1,7 +1,7 @@
 unnamed package
-API
-API.Anima
-API.Tools
-API.Tools.FileManager
-API.Tools.Update
-Core
+Mosaic.API
+Mosaic.API.Anima
+Mosaic.API.Tools
+Mosaic.API.Tools.FileManager
+Mosaic.API.Tools.Update
+Mosaic.Core

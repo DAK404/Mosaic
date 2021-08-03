@@ -17,7 +17,7 @@
 * Fixed a few Restart related bugs
 * Enforced rule: 8 characters for passwords
 (NOTE: FOR DEBUGGING, YOU MAY DISABLE THE ASSERT LOGIC)
-* Added a build ID to keep track of bugs and issues. 
+* Added a build ID to keep track of bugs and issues.
 * Fixed the SecureBoot enforcement issues (Under Construction)
 * Chat module (BETA) being worked on.
 * Updated the Readme file
@@ -42,8 +42,8 @@
 
                20-July-2020 1752 +0530 GMT
   _______________________________________________________
-  
-  
+
+
 * Updated version to Test 1.8.3
 * Fixed bug where editor program crashed when the filename
 was blank when writing to file.
@@ -72,8 +72,8 @@ program crashes
 
                31-July-2020 1842 +0530 GMT
   _______________________________________________________
- 
- 
+
+
 * Updated to version Alpha 0.2.1
 * Updated help version to 1.5
 * Updated and filled documentation for complete modules
@@ -96,13 +96,13 @@ ISSUES:
 
                17-Sept-2020 0614 +0530 GMT
   _______________________________________________________
-  
-  
+
+
 * Updated to version Alpha 0.8
 * Updated help modules with better content
 * Added SHA3-256 Hashing algorithm
 * Fixed critical issues regarding user nomenclature
-* Refactored Boot module code 
+* Refactored Boot module code
 * Memory Optimizations
 * Refactored user database code and table structure
 * Implemented fixes regarding encryption
@@ -137,18 +137,18 @@ ISSUES:
 
                 02-Oct-2020 0050 +0530 GMT
   _______________________________________________________
-  
-  
+
+
   * Initial update to the documentation
   * Updated build version to 0.8.3
-  * Refactored and improved Add User code 
+  * Refactored and improved Add User code
   * Re-implemented and updated Change password program
     to UpdateCredentials
   * Reworked guest user interface in Boot program
   * Changed input lock out period to 15 minutes in Boot
     program
   * Minor code improvements to Main Menu and Messenger
-  
+
   NOTE : WORK STILL UNDER PROGRESS. DO NOT COMMIT.
 
   ***
@@ -156,19 +156,19 @@ ISSUES:
 
                 18-Oct-2020 0504 +0530 GMT
   _______________________________________________________
-  
-  
-  [ ADDED ]  
-  
+
+
+  [ ADDED ]
+
   * Added program and developer documentation
   * Added a debugger to debug the program
   * Added Debug Builds and Release builds scripts
   * Added ASCII ART format for program info.
   * Added tree view in file manager
   * Added copy/move function in file manager.
-  
+
   [ IMPROVEMENTS ]
-  
+
   * Improved UpdateCredentials program
   * Improved program scripts
   * Improved the ErrorHandler program
@@ -179,49 +179,112 @@ ISSUES:
   * Improved LoginAPI, AddUser and UpdateCredentials.
   * Improved memory usage by removing unwanted classes.
     in MainMenu program.
-	
+
   [ REMOVED ]
-  
+
   * Removed Messenger program.
   * Remove ChangePassword program.
   * Removed Add user command from guest user interface.
   * Fixed bug where Reset didn't work until the program
     was restarted.
-  
+
   [ FIXED ]
-  
+
   * Fixed documentation format to latest specification.
   * Fixed memory leak issues.
   * Fix bug where user files are re-created if deleted.
-  
+
   [ CHANGED ]
-  
+
   * Changed database table name from FSAD to FCAD
     (Fractal Credential Account Database)
-  
+
   NOTE : THIS IS THE LAST MAJOR UPDATE FOR MOSAIC. FUTURE
   SUPPORT WILL BE LIMITED TO SECURITY, PERFORMANCE AND BUG
   FIXES, IMPROVEMENTS AND PATCHES. DEVELOPER DOCUMENTATION
      WILL BE RELEASED IN A FUTURE UPDATE. STAY TUNED.
-  
-  
-  
+
+
+
  *********************************************************
  *                   ! IMPORTANT !                       *
  *********************************************************
- *	                                                     *				  
+ *	                                                     *
  * MOSAIC 0.8.7 WILL BE THE LAST UPDATE FOR THIS PROJECT *
  *  2 UPDATES ARE SCHEDULED RIGHT AFTER UPDATE 0.8.7 IS  *
- *  ROLLED OUT. ON FEBRUARY 2022, MOSAIC WILL REACH END  * 
+ *  ROLLED OUT. ON FEBRUARY 2022, MOSAIC WILL REACH END  *
  *  OF LIFE (EOL) STAGE. NEW FEATURES AND CONCEPTS WILL  *
  *    NOT BE INCORPORATED, IMPLEMENTED AND DEVELOPED.    *
  *	                                                     *
  *********************************************************
-    
+
   ***
-  
+  _______________________________________________________
+
+                02-Aug-2021 01134 +0530 GMT
+  _______________________________________________________
+
+  [ IMPROVEMENTS ]
+
+  * Updated the program to conform to the Nion Program
+    specification.
+  * Bumped version to 0.8.9.
+  * Lots of code cleanup, removed many unwanted code
+    which had no significant impact in functionality.
+  * Stopped importing the API and Core libraries
+    for all the modules in the program.
+  * Reduced the memory usage by importing the required
+    Java modules and not importing all the modules.
+  * Added instances of the Garbage collector after
+    specific statements to reduce the memory usage
+    and for good memory optimization.
+  * Minor documentation improvements and updates.
+
+  [ FIXED ]
+
+  * Fixed a bug in the LoginAPI program where the
+    connection, PreparedStatement and ResultSet was not
+    closed.
+  * Fixed an issue when FCAD could not be found at rare
+    cases.
+  * Memory leak in some of the Anima classes which could
+    be exploited to snoop at the transactions.
+  * Trimmed the trailing white spaces and changed
+    indentation from tabs to spaced for uniformity.
+
+  [ REMOVED ]
+
+  * SecureBoot variables across programs and the modules.
+
+  [ KNOWN ISSUES ]
+
+  * There is a security issue regarding the Login
+    method in the Boot program. This issue will not
+    be fixed since the same issue has been mitigated
+    in Truncheon.
+  * Further security issues regarding the setup and
+    Boot program has been found which will not be
+    addressed, since the same has been changed in
+    Truncheon.
+
+ *********************************************************
+ *                   ! IMPORTANT !                       *
+ *********************************************************
+ *	                                                     *
+ *   MOSAIC 0.8.9 IS THE FIRST UPDATE AFTER THE EOL TO   *
+ *  UPDATE AND IMPROVE THE FUNCTIONALITY OF THE PROGRAM. *
+ *  MANY MORE IMPROVEMENTS HAVE BEEN INCORPORATED INTO   *
+ *   TRUNCHEON TO CREATE A BETTER SHELL ENVIRONEMT TO    *
+ *    PROVIDE THE BEST FUNCTIONALITY TO THE PROGRAM.     *
+ *                                                       *
+ *********************************************************
+ *                                                       *
+ *  USERS ARE RECOMMENDED TO SWITCH TO TRUNCHEON ASAP.   *
+ *	                                                     *
+ *********************************************************
+
 -----------------------------------------------------------
-                   
+
                 ---End Of File---
-				
+
 -----------------------------------------------------------

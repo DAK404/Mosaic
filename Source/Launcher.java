@@ -14,11 +14,7 @@
  *****************************************************
  */
 
-import java.io.*;
-import Core.Boot;
-
-
-/** 
+/**
 * Class that will help in launching the program correctly. <BR>
 * <BR>
 * <pre>
@@ -35,32 +31,31 @@ import Core.Boot;
 */
 public class Launcher
 {
-	/**
-	* Constructor which is a stub. Constructor has a little use.
-	*/	
-	public Launcher()
-	{
-		
-	}
-	
-	/**
-	* Method which helps in creating a thread<BR>
-	*
-	* @param Args []    : An array to possibly accept the command line arguments.
-	* @throws Exception : Throws general exceptions which are encountered during program execution
-	*/
-	public static void main(String[] Args)throws Exception
-	{
-		try
-		{
-			System.gc();
-			System.out.println("Booting Program: Mosaic 2.0");
-			Boot a=new Boot(true);
-			a.BootScript();
-		}
-		catch(Exception E)
-		{
-			E.printStackTrace();
-		}
-	}
+    /**
+    * Constructor which is a stub. Constructor has a little use.
+    */
+    public Launcher()
+    {
+
+    }
+
+    /**
+    * Method which helps in creating a thread<BR>
+    *
+    * @param Args []    : An array to possibly accept the command line arguments.
+    * @throws Exception : Throws general exceptions which are encountered during program execution
+    */
+    public static void main(String[] Args)throws Exception
+    {
+        try
+        {
+            System.gc();
+            System.out.println("Booting Program: Mosaic 2.0");
+            new Mosaic.Core.Boot().BootScript();
+        }
+        catch(Exception E)
+        {
+            E.printStackTrace();
+        }
+    }
 }
