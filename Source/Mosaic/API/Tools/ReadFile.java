@@ -56,7 +56,7 @@ public final class ReadFile {
     {
         try
         {
-            file=new File("./Information/"+helpFile);
+            file=new File("./Information/Mosaic/"+helpFile);
             readFile();
             return;
         }

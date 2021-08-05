@@ -228,7 +228,7 @@ ISSUES:
 
   * Updated the program to conform to the Nion Program
     specification.
-  * Bumped version to 0.8.9.
+  * Bumped version to 0.9.0.
   * Lots of code cleanup, removed many unwanted code
     which had no significant impact in functionality.
   * Stopped importing the API and Core libraries
@@ -254,9 +254,12 @@ ISSUES:
 
   [ REMOVED ]
 
-  * SecureBoot variables across programs and the modules.
+  * Removed redundant SecureBoot variables across 
+    programs and the modules.
 
   [ KNOWN ISSUES ]
+
+  - WON'T FIX -
 
   * There is a security issue regarding the Login
     method in the Boot program. This issue will not
@@ -271,8 +274,10 @@ ISSUES:
  *                   ! IMPORTANT !                       *
  *********************************************************
  *	                                                     *
- *   MOSAIC 0.8.9 IS THE FIRST UPDATE AFTER THE EOL TO   *
- *  UPDATE AND IMPROVE THE FUNCTIONALITY OF THE PROGRAM. *
+ *   MOSAIC 0.9.0 IS THE FIRST UPDATE AFTER THE EOL TO   *
+ *      MAINTATIN AND IMPROVE THE FUNCTIONALITY OF       *
+ *                    THE PROGRAM.                       *
+ *                                                       *
  *  MANY MORE IMPROVEMENTS HAVE BEEN INCORPORATED INTO   *
  *   TRUNCHEON TO CREATE A BETTER SHELL ENVIRONEMT TO    *
  *    PROVIDE THE BEST FUNCTIONALITY TO THE PROGRAM.     *
@@ -285,6 +290,6 @@ ISSUES:
 
 -----------------------------------------------------------
 
-                ---End Of File---
+                     ---End Of File---                     
 
 -----------------------------------------------------------

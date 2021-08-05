@@ -75,7 +75,7 @@ public final class FileManager
         if(confirmIdentity()==true)
         {
             System.out.println("Identity Confirmed.");
-            CurDir="./Users/"+User+'/';
+            CurDir="./Users/Mosaic/"+User+'/';
             //FileManager logic
             FileManagerLogic();
         }
@@ -236,10 +236,10 @@ public final class FileManager
     {
         CurDir=CurDir.substring(0, CurDir.length()-1);
         CurDir=CurDir.replace(CurDir.substring(CurDir.lastIndexOf('/'), CurDir.length()), "/");
-        if(CurDir.equals("./Users/"))
+        if(CurDir.equals("./Users/Mosaic/"))
         {
             System.out.println("[ WARNING ] : File Management cannot be above user's home path. Reverting to user's home path.");
-            CurDir="./Users/"+User+"/";
+            CurDir="./Users/Mosaic/"+User+"/";
         }
         return;
     }

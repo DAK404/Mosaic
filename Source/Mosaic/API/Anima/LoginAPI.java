@@ -104,7 +104,9 @@ public final class LoginAPI {
             while (rs.next()) 
                 if (rs.getString("Username").equals(User) & rs.getString("Password").equals(Pass) & rs.getString("SecurityKey").equals(SecKey))
                     status = true;
-            System.out.println("Incorrect Credentials, Please try again.");
+
+            if(status==false)
+                System.out.println("Incorrect Credentials, Please try again.");
             
             rs.close();
             pstmt.close();

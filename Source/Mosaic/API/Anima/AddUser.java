@@ -18,6 +18,7 @@ package Mosaic.API.Anima;
 
 //import java libraries
 import java.io.Console;
+import java.io.File;
 
 import java.sql.DriverManager;
 import java.sql.Connection;
@@ -382,6 +383,8 @@ public final class AddUser
             pstmt.setString(6, ADM);
             pstmt.executeUpdate();
             conn.close();
+            setupFolders();
+            System.gc();
             console.readLine("The user \""+NAME+"\" was successfully created! Press enter to continue.");
             return true;
         } catch (Exception E) {
@@ -389,6 +392,28 @@ public final class AddUser
             console.readLine();
             System.out.println("Failed to create user. Please try again."); //e.getMessage());
             return false;
+        }
+    }
+
+    /**
+    * Method which is run when the user folders are not found or has not been setup
+    *
+    * @throws Exception  : Throws any exception caught during runtime/execution
+    */
+    private void setupFolders()throws Exception
+    {
+        try
+        {
+            byte i = 0;
+            String [] FileList = { UNM, UNM+"/Documents", UNM+"/Downloads", UNM+"/Miscellaneous" };
+            for(i = 0; i < FileList.length; ++i)
+            {
+                new File("./Users/Mosaic/"+FileList[i]+"/").mkdir();
+            }
+        }
+        catch(Exception E)
+        {
+            E.printStackTrace();
         }
     }
 }

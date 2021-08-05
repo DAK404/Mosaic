@@ -18,7 +18,6 @@ package Mosaic.Core;
 
 //import java libraries
 import java.io.Console;
-import java.io.File;
 
 
 
@@ -43,7 +42,6 @@ public final class MainMenu {
     private char prompt = '*';
     private String cmd = "";
     private String PIN_Value="";
-    private File usrDir = null;
 
     //Initialize the stream for accepting inputs from the user.
     Console console = System.console();
@@ -63,7 +61,6 @@ public final class MainMenu {
             } else {
                 Name = name;
                 User = Username;
-                usrDir = new File("./Users/"+User+"/");
                 if (Administrator == true) {
                     Admin = true;
                     prompt = '!';
@@ -98,8 +95,6 @@ public final class MainMenu {
         try
         {
             while (true) {
-                if(usrDir.exists()==false)
-                    setupFolders();
                 System.gc();
                 new Mosaic.API.Information().AboutProgram();
                 System.out.println("Welcome Back, " + Name + "!");
@@ -224,26 +219,5 @@ public final class MainMenu {
         return;
     }
 
-    /**
-    * Method which is run when the user folders are not found or has not been setup
-    *
-    * @throws Exception  : Throws any exception caught during runtime/execution
-    */
-    private void setupFolders()throws Exception
-    {
-        try
-        {
-            byte i = 0;
-            String [] FileList = { User, User+"/Documents", User+"/Downloads", User+"/Miscellaneous" };
-            for(i = 0; i < FileList.length; ++i)
-            {
-                usrDir = new File("./Users/"+FileList[i]+"/");
-                usrDir.mkdir();
-            }
-        }
-        catch(Exception E)
-        {
-            E.printStackTrace();
-        }
-    }
+    
 }

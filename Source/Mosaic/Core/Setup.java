@@ -136,13 +136,13 @@ public final class Setup {
             "/System/Private/ChatRooms",
             "/System/Private/Settings",
             "/System/Public/ChatRooms",
-            "/Users"
+            "/Users/Mosaic"
         };
         for (int i = 0; i < FilesList.length; ++i) {
             //Convert the String format into a file format.
             File DirCrt = new File(curDir + FilesList[i]);
             //Create the directory.
-            stat = DirCrt.mkdir();
+            stat = DirCrt.mkdirs();
             if (stat == true) {
                 System.out.println("Created : [*] " + FilesList[i]);
             } else {

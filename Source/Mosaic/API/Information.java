@@ -71,7 +71,7 @@ public final class Information
         System.out.println("|                                    |");
         System.out.println("+------------------------------------+");
         System.out.println("|        > Prototype Build <         |");
-        System.out.println("|            Build: 0.8.9            |");
+        System.out.println("|           Build : 0.9.0            |");
         System.out.println("+------------------------------------+\n");
 
 
