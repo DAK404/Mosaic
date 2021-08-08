@@ -111,7 +111,7 @@ final class Encryptor {
         saltOutFile.write(salt);
         saltOutFile.close();
         SecretKeyFactory factory = SecretKeyFactory
-            .getInstance("PBKDF2WithHmacnew Mosaic.API.SHA256()1");
+            .getInstance("PBKDF2WithHmacSHA1");
         KeySpec keySpec = new PBEKeySpec(Pass.toCharArray(), salt, 65536,
             256);
         SecretKey secretKey = factory.generateSecret(keySpec);
