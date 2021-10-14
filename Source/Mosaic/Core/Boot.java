@@ -59,26 +59,39 @@ public final class Boot
     }
 
     /**
+     * Implement a compatibility layer for the newer program Launcher to invoke Mosaic
+     * 
+     * See Truncheon for more details.
+     * 
+     * @param args : general arguments which are rejected by Mosaic
+     * @throws Exception : Handle exceptions thrown by the program
+     */
+    public static void main(String[] args)throws Exception
+    {
+        try
+        {
+            new Boot().BootScript();
+        }
+        catch(Exception E)
+        {
+            new Mosaic.API.ErrorHandler().handleError(E);
+        }
+    }
+
+    /**
     * A Script which is run once, which will display a menu for various options.
     *
     * @throws Exception :  Throws any exception caught during runtime/execution
     */
     public void BootScript()throws Exception
     {
-        //Check if the setup has been completed successfully
-        File SysChk = new File("./System");
-        File UsrChk = new File("./Users");
-        if ((SysChk.exists() == false) | (UsrChk.exists() == false)) {
-            //SysChk.delete();
-            //UsrChk.delete();
-            Setup setupObj = new Setup();
-            setupObj.SetupScript();
-        }
+        if( ! (new File("./System").exists() & new File("./Users/Mosaic").exists()))
+            if( ! (new File("./System/Private/Mosaic").exists() & new File("./System/Public/Mosaic").exists()))
+                new Setup().SetupScript();
 
         while(menu()==true);
         while(login()==false);
-        MainMenu ot = new MainMenu(Name, User , Admin, PIN);
-        ot.MenuScript();
+        new MainMenu(Name, User , Admin, PIN).MenuScript();
     }
 
 
@@ -122,7 +135,7 @@ public final class Boot
                 break;
 
             case "changelog":
-                new Mosaic.API.Tools.ReadFile().ShowHelp("Changelog.txt");
+                new Mosaic.API.Tools.ReadFile().ShowHelp("Changelog-master.txt");
                 break;
 
             case "":

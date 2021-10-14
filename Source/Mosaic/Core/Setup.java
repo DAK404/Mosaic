@@ -146,9 +146,7 @@ public final class Setup {
             if (stat == true) {
                 System.out.println("Created : [*] " + FilesList[i]);
             } else {
-                System.out.println("Error while creating: " + FilesList[i]);
-                System.out.println("Aborting... Recommended that you run the Troubleshoot program. ");
-                break;
+                System.out.println(DirCrt + " already exists! Skipping...");
             }
         }
         if (stat == true)

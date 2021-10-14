@@ -7,37 +7,22 @@ Mosaic!
 
 --------------------------------------------------
 
-              ~~~~~~~~~~~~~
-              - Sidd Dino -
-              ~~~~~~~~~~~~~
+- Sidd Dino -
+    * Suggested the Unified Build idea
+    * Tested the Linux Build
 
-	* Suggested the Unified Build idea
-	* Tested the Linux Build
+- DAK -
+    * Programming
+    * Tested Windows Builds
+    * Documentation
 
+- Bebhin Mathew -
+    * Module Testing and Build Testing
+    * Documentation review
+    * Module optimization
 
-                ~~~~~~~~
-                 - DAK -
-                ~~~~~~~~
-
-	* Programming
-	* Tested Windows Builds
-	* Documentation
-
-
-             ~~~~~~~~~~~~~~~~~
-             - Bebhin Mathew -
-             ~~~~~~~~~~~~~~~~~
-
-	* Module Testing and Build Testing
-	* Documentation review
-	* Module optimization
-
-
-            ~~~~~~~~~~~~~~~~~~~
-            - Taggable Tanner -
-            ~~~~~~~~~~~~~~~~~~~
-
-	* Proof-read all the documents!
-	* Grammatical corrections
+- Taggable Tanner -
+    * Proof-read all the documents!
+    * Grammatical corrections
 
 --------------------------------------------------

@@ -209,19 +209,19 @@ ISSUES:
  *********************************************************
  *                   ! IMPORTANT !                       *
  *********************************************************
- *	                                                     *
+ *                                                       *
  * MOSAIC 0.8.7 WILL BE THE LAST UPDATE FOR THIS PROJECT *
  *  2 UPDATES ARE SCHEDULED RIGHT AFTER UPDATE 0.8.7 IS  *
  *  ROLLED OUT. ON FEBRUARY 2022, MOSAIC WILL REACH END  *
  *  OF LIFE (EOL) STAGE. NEW FEATURES AND CONCEPTS WILL  *
  *    NOT BE INCORPORATED, IMPLEMENTED AND DEVELOPED.    *
- *	                                                     *
+ *                                                       *
  *********************************************************
 
   ***
   _______________________________________________________
 
-                02-Aug-2021 01134 +0530 GMT
+                02-Aug-2021 1134 +0530 GMT
   _______________________________________________________
 
   [ IMPROVEMENTS ]
@@ -254,17 +254,26 @@ ISSUES:
 
   [ REMOVED ]
 
-  * Removed redundant SecureBoot variables across 
+  * Removed redundant SecureBoot variables across
     programs and the modules.
 
   [ KNOWN ISSUES ]
+
+  * Setup program will fail to create directories
+    if Truncheon or other programs have created the
+    /System and /Users directories, and abort the
+    setup process completely.
+
+  * Truncheon's launcher will fail to invoke Mosaic
+    due to the newer architecture. Fixes are being
+    worked on.
 
   - WON'T FIX -
 
   * There is a security issue regarding the Login
     method in the Boot program. This issue will not
-    be fixed since the same issue has been mitigated
-    in Truncheon.
+    be fixed since the issue has been mitigated
+    Truncheon.
   * Further security issues regarding the setup and
     Boot program has been found which will not be
     addressed, since the same has been changed in
@@ -273,23 +282,67 @@ ISSUES:
  *********************************************************
  *                   ! IMPORTANT !                       *
  *********************************************************
- *	                                                     *
- *   MOSAIC 0.9.0 IS THE FIRST UPDATE AFTER THE EOL TO   *
- *      MAINTATIN AND IMPROVE THE FUNCTIONALITY OF       *
- *                    THE PROGRAM.                       *
  *                                                       *
- *  MANY MORE IMPROVEMENTS HAVE BEEN INCORPORATED INTO   *
- *   TRUNCHEON TO CREATE A BETTER SHELL ENVIRONEMT TO    *
- *    PROVIDE THE BEST FUNCTIONALITY TO THE PROGRAM.     *
+ *    0.9.0 IS THE FIRST UPDATE PROVIDED AFTER EOL TO    *
+ *  MAINTAIN AND FIX THE PROGRAM FOR A BETTER EXPERIENCE *
+ *                                                       *
+ *    MANY IMPROVEMENTS ARE INCORPORATED INTO THE NEXT   *
+ *  ITERATION, KNOWN AS TRUNCHEON, WHICH HAS AN IMPROVED *
+ *   SHELL ENVIRONMENT WITH MANY MORE FEATURES. PLEASE   *
+ *        CONSIDER MIGRATING TO TRUNCHEON FOR A          *
+ *                   BETTER EXPERIENCE.                  *
  *                                                       *
  *********************************************************
  *                                                       *
- *  USERS ARE RECOMMENDED TO SWITCH TO TRUNCHEON ASAP.   *
- *	                                                     *
+ *   USERS ARE RECOMMENDED TO SWITCH TO TRUNCHEON ASAP.  *
+ *                                                       *
+ *********************************************************
+
+ ***
+  _______________________________________________________
+
+                14-Oct-2021 1111 +0530 GMT
+  _______________________________________________________
+
+  [ IMPROVEMENTS ]
+
+  * Cleaned up some code in Information.java.
+  * Cleaned up the messy boot logic which was ambiguous.
+  * Added a main method to improve the compatibility with
+    Truncheon's Program launcher.
+  * Added a note that Mosaic was no longer supported.
+
+  [ FIXES ]
+
+  * Fixed the setup program to fully work with Truncheon
+    by skipping the files which already exist.
+  * Fixed the changelog texts.
+  * Fixed the program to read the changelog file.
+  * Updated Readme to reflect changes on removal of chat
+    program.
+  * Fixed the credits file to be more readable.
+
+ *********************************************************
+ *                   ! IMPORTANT !                       *
+ *********************************************************
+ *                                                       *
+ *    0.9.2 IS THE FINAL UPDATE PROVIDED AFTER EOL TO    *
+ * MAINTAIN AND FIX THE PROGRAM FOR A BETTER EXPERIENCE  *
+ *                                                       *
+ *   MANY IMPROVEMENTS ARE INCORPORATED INTO THE NEXT    *
+ * ITERATION, KNOWN AS TRUNCHEON, WHICH HAS AN IMPROVED  *
+ *   SHELL ENVIRONMENT WITH MANY MORE FEATURES. PLEASE   *
+ *        CONSIDER MIGRATING TO TRUNCHEON FOR A          *
+ *                   BETTER EXPERIENCE.                  *
+ *                                                       *
+ *********************************************************
+ *                                                       *
+ *   USERS ARE RECOMMENDED TO SWITCH TO TRUNCHEON ASAP.  *
+ *                                                       *
  *********************************************************
 
 -----------------------------------------------------------
 
-                     ---End Of File---                     
+                     ---End Of File---
 
 -----------------------------------------------------------

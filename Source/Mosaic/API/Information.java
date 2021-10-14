@@ -71,24 +71,16 @@ public final class Information
         System.out.println("|                                    |");
         System.out.println("+------------------------------------+");
         System.out.println("|        > Prototype Build <         |");
-        System.out.println("|           Build : 0.9.0            |");
+        System.out.println("|           Build : 0.9.1            |");
         System.out.println("+------------------------------------+\n");
-
-
-        /*System.out.println("+---------------------------+");
-        System.out.println("|        -  Mosaic  -       |");
-        System.out.println("+---------------------------+");
-        System.out.println("|    > Prototype Build <    |");
-        System.out.println("|        Build: 0.8.3       |");
-        System.out.println("+---------------------------+\n");
-        */
 
         Date date = new Date();
         System.out.println("Good "+ timeOfDayGreeting() + "!");
         System.out.println(dateFormat.format(date)+ ", "+ day +"\n");
         System.out.println("MOTD: "+MOTD+"\n");
-        System.out.println("--------------------------------------\n");
-
+        System.out.println("----------------------------------------");
+        System.out.println("ATTENTION: MOSAIC IS NO LONGER SUPPORTED\nFROM 14-10-2021. v0.9.2 WILL BE THE LAST\nUPDATE THAT THE PROGRAM SHALL RECEIVE.\nPLEASE MIGRATE TO TRUNCHEON IF POSSIBLE!");
+        System.out.println("----------------------------------------\n");
         //ATTENTION! Uncomment debug() only when developing the program. It is a debug feature.
         //debug();
 
@@ -265,7 +257,7 @@ public final class Information
      *
      * @throws Exception Used to catch general exceptions and error states in program
      */
-    private void debug()
+    /*private void debug()
     {
         int mb = 1024 * 1024;
 
@@ -286,5 +278,5 @@ public final class Information
         System.out.println("      [*]  Max Memory   : " + instance.maxMemory() / mb + " MB");
         System.out.println("\n*********************************************\n\n");
 
-    }
+    }*/
 }

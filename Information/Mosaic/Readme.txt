@@ -1,4 +1,4 @@
-               RELEASE NOTES FOR 
+               RELEASE NOTES FOR
                     Mosaic
                 VERSION: 0.8.7
 
@@ -24,19 +24,40 @@ _______________________
 _______________________
 
 
+ --------------------------------------------------------------------------
+                                 ATTENTION!
+ --------------------------------------------------------------------------
+
+ THIS PROGRAM IS NO MORE SUPPORTED!
+ PLEASE MIGRATE TO TRUNCHEON IF POSSIBLE!
+
+ Mosaic has reached the End Of Life [EOL] status since version 0.8.7. It
+ has received 2 more updates, bumping the version up to 0.9.2, which will
+ be the final update that will be given to Mosaic.
+
+ The program architecture is old, and is currently unsupported. The project
+ will nonetheless be free and open source. Feel free to fork it and improve
+ it. This program repository will be marked as Read-Only and will not be
+ taking anymore pull requests or changes. Thank you for sticking along the
+ journey, and see you all in Truncheon ;)
+
+ --------------------------------------------------------------------------
+                                 ATTENTION!
+ --------------------------------------------------------------------------
+
 If you do not agree with the License Agreement of the program, do not
-use or install this Software. BY INSTALLING THE PROGRAM, YOU ACCEPT AND 
-AGREE TO THE END USER LICENSE AGREEMENT (EULA) specified in the license 
+use or install this Software. BY INSTALLING THE PROGRAM, YOU ACCEPT AND
+AGREE TO THE END USER LICENSE AGREEMENT (EULA) specified in the license
 file.
 
 THIS PROGRAM NEITHER OFFERS ANY WARRANTIES NOR TAKES RESPONSIBILTY FOR
-ANY LIABILITIES. THE END USER IS RESPONSIBLE FOR USING THE PROGRAM AND 
+ANY LIABILITIES. THE END USER IS RESPONSIBLE FOR USING THE PROGRAM AND
 BY DOING SO, ACKNOWLEDGES THAT THE USER HAS READ THE LICENSE IN THE
 LICENSE FILE.
 
 -----------------------------------------------------------------------------
 _______________________
-  	      
+
      INTRODUCTION
 _______________________
 
@@ -44,9 +65,9 @@ Mosaic focuses on the following: Security, Speed, Size and Reliability.
 The new iteration of the Nion Project has a lot of new features, which
 aims to simplify and enhance user experience with the least hassle.
 
-Mosaic built upon the previous Elixir Kernel. Mosaic is a program which 
-streamlines the flow of SecureBoot technology. This improves security, 
-supports faster module loading speeds, uses lower memory and resources 
+Mosaic built upon the previous Elixir Kernel. Mosaic is a program which
+streamlines the flow of SecureBoot technology. This improves security,
+supports faster module loading speeds, uses lower memory and resources
 to provide the same, or in some cases, better performance.
 
 -----------------------------------------------------------------------------
@@ -91,12 +112,10 @@ _______________________
        FEATURES
 _______________________
 
-- Enhanced Real Time Chat (over LAN only for now)
-- Censoring subsystem to keep the conversation civil and clean
 - User database for easy user management and convenience
 - Faster downloads of files using the given download links
-(does not load the advertisements on pages to be loaded along with 
-the actual download content. One member can fetch the link so others 
+(does not load the advertisements on pages to be loaded along with
+the actual download content. One member can fetch the link so others
 can download it easily)
 - Easy OTA updates with quick and automated installation
 - Small size of program, memory footprint and high performance
@@ -125,15 +144,15 @@ The following programs are a few which can unzip the program:
 
 -----
 
-The program will set itself up during the first run, while the 
-administrator can provide the details for the server program. 
+The program will set itself up during the first run, while the
+administrator can provide the details for the server program.
 
 Note that the program is in the compiled Java format ("*.class")
-and it is recommended NOT to delete those files for smooth 
+and it is recommended NOT to delete those files for smooth
 functionality of the program.
 
-The program uses a Type 4 JDBC driver by SQLite which can be 
-updated by running the update command or by downloading the 
+The program uses a Type 4 JDBC driver by SQLite which can be
+updated by running the update command or by downloading the
 latest driver and extracting the contents of the JAR file to
 the root of the program folder.
 
@@ -149,8 +168,8 @@ The folder structure must be in this format after the setup.
   |- Launcher.class
   |- Run_Program (*.bat or *.sh)
 
-If there are issues with the build, grab the latest one from 
-the official GitHub repository or clone it to customize the 
+If there are issues with the build, grab the latest one from
+the official GitHub repository or clone it to customize the
 program and deploy it!
 
 -----------------------------------------------------------------------------
@@ -178,7 +197,7 @@ Q) The program fails to add the user to the database.
 A) Please make sure that the program folder has write access permitted.
 
 Q) Setup fails. Not able to set it up again.
-A) Please delete the following directories /Users and /System to begin the 
+A) Please delete the following directories /Users and /System to begin the
 setup program again.
 
 -----------------------------------------------------------------------------
@@ -207,9 +226,9 @@ _______________________
 Programming             : DAK404
 
 Testing                 : DAK404    (Windows Builds)
-                        : Sidd_Dino (Unix Builds)
+                        : Sidd_Dino (Linux Builds)
                         : Bebhin Mathew (Additional Module Testing)
-						
+
 Documentation           : DAK404
                         : Taggable Tanner (Proof-reading)
 
