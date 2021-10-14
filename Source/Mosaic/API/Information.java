@@ -71,7 +71,7 @@ public final class Information
         System.out.println("|                                    |");
         System.out.println("+------------------------------------+");
         System.out.println("|        > Prototype Build <         |");
-        System.out.println("|           Build : 0.9.1            |");
+        System.out.println("|           Build : 0.9.2            |");
         System.out.println("+------------------------------------+\n");
 
         Date date = new Date();
