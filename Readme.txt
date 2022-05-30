@@ -1,6 +1,19 @@
                RELEASE NOTES FOR 
                     Mosaic
-                VERSION: 0.8.7
+                VERSION: 0.9.2
+
+-----------------------------------------------------------------------------
+NOTICE!
+
+THE SOURCE CODE IS NO LONGER MAINTAINED! THE PROGRAM WILL NOT BE SUPPORTED
+ANYMORE. PLEASE UPGRADE TO TRUNCHEON TO GET NEW FEATURES AND SECURITY FIXES.
+
+THERE IS A BUILD (WHICH IS OLD AT THIS POINT THOUGH) WHICH WILL HELP YOU TO
+MIGRATE YOUR MOSAIC CONFIGURATION INTO TRUNCHEON.
+
+BY USING MOSAIC CODE, YOU WILL NOT HAVE ANY SUPPORT TO ANY ISSUES OPENED AND
+NO PULL REQUESTS, FIXES AND OPTIMIZATIONS WILL BE LOOKED INTO & IMPLEMENTED.
+-----------------------------------------------------------------------------
 
             _____________________
 
@@ -91,8 +104,6 @@ _______________________
        FEATURES
 _______________________
 
-- Enhanced Real Time Chat (over LAN only for now)
-- Censoring subsystem to keep the conversation civil and clean
 - User database for easy user management and convenience
 - Faster downloads of files using the given download links
 (does not load the advertisements on pages to be loaded along with 
